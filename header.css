@@ -1,9 +1,10 @@
 .header {
     font-family: arial;
-    color: black;
+    color: white;
     display: flex;
     flex-direction: row;
     height: 10%;
+    margin-top: 30px;
     margin-left: 10%;
     margin-right: 10%;
 
@@ -11,7 +12,7 @@
 
 a {
     text-decoration: none;
-    color: black
+    color: white
 }
 a:hover {
     text-decoration: none;
@@ -24,11 +25,12 @@ span {
     margin-left: 2%;
 }
 
-.titre {
+.header_titre {
+    font-size: 30px;
     width: 50%;
 }
 
-.boutton {
+.header_boutton {
     justify-content: space-between;
     width: auto;
 }
