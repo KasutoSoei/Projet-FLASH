@@ -1,6 +1,7 @@
 body {
     font-family: arial;
     background-color: rgb(16, 14, 44);
+    color: white;
 }
 
 .register_titre {
@@ -16,9 +17,9 @@ body {
 
 .inscription {
     margin-top: 5vh;
-    margin-left: 33%;
+    margin-left: 33vw;
     height: 25vh;
-    width: 33%;
+    width: 33vw;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -32,19 +33,28 @@ body {
     background-color: rgb(40, 40, 70);
     color:rgb(130, 130, 130);
     font-size: 2vmin;
-    height: 4vh;
-    line-height: 4vh;
+    height: 8vh;
+    line-height: 8vh;
     width: 100%;
 }
 
 .inscription_bouton {
     margin-top: 5vh;
+    margin-bottom: 5vh;
     border-radius: 1vmin;
     background-color: rgb(223, 149, 62);
     color:white;
     font-size: 1.5vmin;
-    height: 4vh;
-    line-height: 4vh;
+    height: 8vh;
+    line-height: 8vh;
     text-align: center;
     width: 25%;
+}
+
+.register_link {
+    color: yellow;
+    text-align: center;
+}
+.register_link:hover {
+    color: orange
 }
