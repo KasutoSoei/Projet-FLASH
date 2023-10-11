@@ -3,11 +3,12 @@
     color: white;
     display: flex;
     flex-direction: row;
-    height: 10%;
-    margin-top: 30px;
-    margin-left: 10%;
-    margin-right: 10%;
-
+    justify-content: flex-end;
+    align-items: center;
+    height: 10vh;
+    margin-top: 1vh;
+    margin-left: 1vw;
+    margin-right: 1vw;
 }
 
 a {
@@ -18,19 +19,15 @@ a:hover {
     text-decoration: none;
     color: orange
 }
-span {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    margin-left: 2%;
-}
 
 .header_titre {
-    font-size: 30px;
+    margin-left: 2vw;
+    font-size: 4vmin;
     width: 50%;
 }
 
-.header_boutton {
-    justify-content: space-between;
+.header_bouton {
+    font-size: 2vmin;
+    margin-right: 2vw;
     width: auto;
 }
