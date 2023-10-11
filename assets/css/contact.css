@@ -67,10 +67,10 @@ body {
     padding-left: 3vmin;
     border-radius: 1vmin;
     background-color: rgb(40, 40, 70);
+    border: none;
     color:rgb(130, 130, 130);
     font-size: 2vmin;
     height: 8vh;
-    line-height: 8vh;
     width: 100%; 
 }
 
@@ -78,10 +78,10 @@ body {
     margin-top: 3vh;
     border-radius: 1vmin;
     background-color: rgb(223, 149, 62);
+    border: none;
     color:white;
     height: 8vh;
     font-size: 2vmin;
-    line-height: 8vh;
     text-align: center;
     width: 25%;
 }
