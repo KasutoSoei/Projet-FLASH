@@ -58,3 +58,136 @@ body {
     background-color: rgba(52, 37, 154, 0.20);
     text-shadow: 0 0 20px rgba(255, 255, 255, 0.50);
 }
+
+.chat-container {
+
+    bottom: 10px;
+    right: 30px;
+    position: fixed;
+    width: 300px;
+    margin: 20px auto;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+.chat-header {
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px;
+    text-align: left;
+    padding-left: 30px;
+    font-weight: bold;
+}
+
+.chat-messages {
+    padding: 10px;
+    max-height: 300px;
+    overflow-y: scroll;
+}
+
+.message {
+    color: black;
+    margin-bottom: 10px;
+}
+
+.message2 {
+    color: black;
+    margin-bottom: 10px;
+}
+
+.test {
+    display: flex;
+    justify-content: flex-end;
+}
+
+
+.message-sender {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-right: 10px;
+    text-align: right;
+    color: rgb(161, 158, 158);
+}
+
+.message-sender2 {
+    padding-left: 5px;
+    max-width: 50%;
+    border-radius: 5px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    text-align: left;
+    color: rgb(161, 158, 158);
+}
+
+.date {
+    padding-right: 15px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    text-align: right;
+    font-size: small;
+    color: rgb(161, 158, 158);
+}
+
+.date2 {
+    padding-left: 5px;
+    width: 50%;
+    border-radius: 5px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    text-align: left;
+    font-size: small;
+    color: rgb(161, 158, 158);
+}
+
+
+
+.chat-input {
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    background-color: #f2f2f2;
+}
+
+.message-content {
+    max-width: 50%;
+    width: fit-content;
+    border-radius: 10px;
+    padding: 10px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+
+
+    color: white;
+    background-color: #007bff;
+}
+
+.message-content2 {
+    max-width: 50%;
+    width: fit-content;
+    border-radius: 10px;
+    padding: 10px;
+    margin-bottom: 100px;
+    background-color: rgb(212, 212, 212);
+    text-align: left;
+    color: black;
+    margin-bottom: 10px;
+}
+
+#message-input {
+    flex: 1;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+}
+
+#send-button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 3px;
+    padding: 5px 10px;
+    cursor: pointer;
+}
