@@ -1,0 +1,101 @@
+body {
+    font-family: arial;
+    background-color: rgb(16, 14, 44);
+    color: white;
+}
+
+.myAccount_titre {
+    margin-top: 1vh;
+    background-image: url("../images/background.jpg");
+    background-position: center;
+    background-size: 100%;
+    color: white;
+    font-size: 5vmin;
+    text-align: center;
+    height: 20vh;
+    line-height: 20vh;
+}
+
+.myAccount {
+    margin-top: 5vh;
+    margin-left: 7vw;
+    margin-right: 7vw;
+    border-radius: 1vmin;
+    background-color: rgb(36, 34, 64);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    height: 50vh;
+}
+
+.myAccount_stats {
+    margin-left: 10vw;
+    margin-right: 10vw;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    width: 80vw;
+    color: darkviolet;
+    font-size: 5vmin;
+    height: 20vh;
+    line-height: 10vh;
+    text-align: center;
+}
+
+.myAccount_stats_case {
+    box-sizing: border-box;
+    border-left: 1px solid lightslategray;
+    border-right: 1px solid lightslategray;
+    font-size: 3vmin;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 100%;
+}
+
+.myAccount_confidentialites {
+    margin-top: 5vh;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+.myAccount_changer {
+    width: 33vw;
+    display: flex;
+    flex-direction: column;
+}
+
+.myAccount_changer_titre {
+    font-size: 4vmin;
+    text-align: center;
+}
+
+.myAccount_entree {
+    margin-top: 3vh;
+    box-sizing: border-box;
+    padding-left: 1vmin;
+    border-radius: 1vmin;
+    background-color: rgb(40, 40, 70);
+    border: none;
+    color:rgb(130, 130, 130);
+    font-size: 2vmin;
+    height: 8vh                                                                                                         ;
+    line-height: 8vh;
+    width: 100%;
+}
+
+.myAccount_bouton {
+    margin-top: 5vh;
+    margin-bottom: 5vh;
+    border-radius: 1vmin;
+    background-color: rgb(223, 149, 62);
+    border: none;
+    color:white;
+    font-size: 1.5vmin;
+    height: 8vh;
+    line-height: 8vh;
+    text-align: center;
+    width: 25%;
+}
