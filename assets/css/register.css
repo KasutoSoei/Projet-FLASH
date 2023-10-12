@@ -7,6 +7,7 @@ body {
 .register_titre {
     margin-top: 1vh;
     background-image: url("../images/background.jpg");
+    background-position: center;
     background-size: 100%;
     color: white;
     font-size: 5vmin;
