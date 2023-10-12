@@ -16,7 +16,8 @@
     color: white
 }
 .header_link:hover {
-    text-decoration: none;
+    text-decoration: underline;
+    text-underline-offset: -6vh;
     color: orange
 }
 
@@ -36,4 +37,10 @@
     border-radius: 100%;
     width: 5vmin;
     height: auto;
+}
+
+.header_logo:hover {
+    background-color: orange;
+    transform: scale(1.3);
+    transition: 500ms;
 }
