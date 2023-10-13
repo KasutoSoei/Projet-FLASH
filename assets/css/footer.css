@@ -37,6 +37,10 @@ footer .main {
     row-gap: 8%;
     margin-left: 18vw;
 }
+.POM a{
+    text-decoration: none;
+    color: rgb(190, 190, 220)
+}
 
 .copyright {
     position: relative;
@@ -53,7 +57,7 @@ footer h3 {
 
 footer p {
     font-size: 2vmin;
-    color: rgb(190, 190, 220)
+    
 }
 
 footer h3 {
