@@ -1,0 +1,46 @@
+.header {
+    font-family: arial;
+    color: white;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+    height: 10vh;
+    margin-top: 1vh;
+    margin-left: 1vw;
+    margin-right: 1vw;
+}
+
+.header_link {
+    text-decoration: none;
+    color: white
+}
+.header_link:hover {
+    text-decoration: underline;
+    text-underline-offset: -6vh;
+    color: orange
+}
+
+.header_titre {
+    font-size: 4vmin;
+    width: 50%;
+}
+
+.header_bouton {
+    margin-right: 2vw;
+    font-size: 2vmin;
+    width: auto;
+}
+
+.header_logo {
+    margin-right: 2vw;
+    border-radius: 100%;
+    width: 5vmin;
+    height: auto;
+}
+
+.header_logo:hover {
+    background-color: orange;
+    transform: scale(1.1);
+    transition: 500ms;
+}
