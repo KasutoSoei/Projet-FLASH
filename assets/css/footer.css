@@ -41,7 +41,9 @@ footer .main {
     text-decoration: none;
     color: rgb(190, 190, 220)
 }
-
+.POM a:hover{
+    color: rgb(220, 147, 63);
+}
 .copyright {
     position: relative;
     display: flex;
