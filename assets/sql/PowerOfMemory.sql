@@ -184,9 +184,9 @@ FROM Chat
 INNER JOIN Utilisateur ON Chat.idExpediteur=Utilisateur.id
 WHERE dateHeureMessage> "2023-10-16 12:09:00";
 
---Story 12, rechercher le pseudo d'un joueur est afficher son score
+--Story 12, rechercher le pseudo d'un joueur et afficher son score
 
-SELECT Scores.*
+SELECT Utilisateur.pseudo, Scores.*
 FROM Scores
 INNER JOIN Utilisateur ON idJoueur=Utilisateur.id
 WHERE pseudo LIKE "%nel%";
