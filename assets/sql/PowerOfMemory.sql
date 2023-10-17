@@ -132,9 +132,12 @@ SELECT Scores.*
 FROM Scores
 INNER JOIN Jeu ON Scores.idJeu=Jeu.id
 INNER JOIN Utilisateur ON Scores.idJoueur=Utilisateur.id
-ORDER BY CASE WHEN difficulte="facile" THEN 1
-              WHEN difficulte="medium" THEN 2
-              ELSE 3 END;
+ORDER BY Jeu.nomJeu ASC,
+CASE
+    WHEN difficulte="facile" THEN 1
+    WHEN difficulte="medium" THEN 2
+    ELSE 3 END,
+score ASC;
 
 --Story 8, story 7 mais avec des filtres
 
@@ -145,9 +148,12 @@ INNER JOIN Utilisateur ON Scores.idJoueur=Utilisateur.id
 WHERE nomJeu="The Power Of Memory"
 AND pseudo="LeDieuDeTous"
 AND difficulte="difficile"
-ORDER BY CASE WHEN difficulte="facile" THEN 1
-              WHEN difficulte="medium" THEN 2
-              ELSE 3 END;
+ORDER BY Jeu.nomJeu ASC,
+CASE
+    WHEN difficulte="facile" THEN 1
+    WHEN difficulte="medium" THEN 2
+    ELSE 3 END,
+score ASC;
 
 --Story 9, actualiser le score d'un utilisateur s'il est meilleur que l'ancien ou ajoute une ligne si c'est son premier score
 
