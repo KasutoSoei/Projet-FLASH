@@ -4,7 +4,7 @@ CREATE DATABASE PowerOfMemory;
 
 USE PowerOfMemory;
 
---Story 1, création des tables
+/*Story 1, création des tables*/
 
 CREATE TABLE Utilisateur (
     id INT UNSIGNED NOT NULL AUTO_INCREMENT,
@@ -12,10 +12,10 @@ CREATE TABLE Utilisateur (
     mdp VARCHAR(255) NOT NULL,
     pseudo VARCHAR(127) NOT NULL,
     dateHeureInscription DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    dateHeureConnexion DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP, --la date de connexion et d'inscription sont par défaut la date de création du compte
+    dateHeureConnexion DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP, /*la date de connexion et d'inscription sont par défaut la date de création du compte*/
     PRIMARY KEY (id),
     CONSTRAINT ak_email UNIQUE(email),
-    CONSTRAINT ak_pseudo UNIQUE(pseudo) --création de clés alternatives pour rendre l'email et le pseudo unique
+    CONSTRAINT ak_pseudo UNIQUE(pseudo) /*création de clés alternatives pour rendre l'email et le pseudo unique*/
 )
 CHARACTER SET 'utf8'
 ENGINE = INNODB;
@@ -37,7 +37,7 @@ CREATE TABLE Scores (
     dateHeureScore DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
     PRIMARY KEY (id),
     CONSTRAINT fk_Scores_idJoueur FOREIGN KEY (idJoueur) REFERENCES Utilisateur(id) ON DELETE CASCADE,
-    CONSTRAINT fk_Scores_idJeu FOREIGN KEY (idJeu) REFERENCES Jeu(id) ON DELETE CASCADE --Supprime les scores d'un joueur si son id ou le jeu est supprimé
+    CONSTRAINT fk_Scores_idJeu FOREIGN KEY (idJeu) REFERENCES Jeu(id) ON DELETE CASCADE /*Supprime les scores d'un joueur si son id ou le jeu est supprimé*/
 )
 CHARACTER SET 'utf8'
 ENGINE = INNODB;
@@ -55,7 +55,7 @@ CREATE TABLE Chat (
 CHARACTER SET 'utf8'
 ENGINE = INNODB;  
 
---Story 2, ajouter des valeurs dans les tables
+/*Story 2, ajouter des valeurs dans les tables*/
 
 INSERT INTO Utilisateur (email, mdp, pseudo, dateHeureInscription, dateHeureConnexion)
 VALUES ("kristian.chou@gmail.com", "JeSuisKristian", "ChouKri", "2023-10-16 11:54:00", "2023-10-16 12:00:00"),
@@ -101,9 +101,9 @@ VALUES (1, 1, "Blablabla", "2023-10-16 12:00:00"),
     (1, 2, "Blablabla", "2023-10-16 12:21:00"),
     (1, 3, "Blablabla", "2023-10-16 12:22:00");
 
---Story 3 déjà faite
+/*Story 3 déjà faite*/
 
---Story 4, changement du mot de passe ou du mail
+/*Story 4, changement du mot de passe ou du mail*/
 
 UPDATE Utilisateur
 SET mdp = "motdepassezinzin"
@@ -113,7 +113,7 @@ UPDATE Utilisateur
 SET email="different@gmail.com"
 WHERE id=3 AND mdp="motdepassezinzin";
 
---Story 5, s'identifier sur internet
+/*Story 5, s'identifier sur internet*/
 
 SELECT *
 FROM Utilisateur
@@ -124,9 +124,9 @@ SELECT *
 FROM Utilisateur
 WHERE pseudo="LAIGRI ORIGINEL";
 
---Story 6 déjà faite
+/*Story 6 déjà faite*/
 
---Story 7, afficher les scores selon l'ordre demandé
+/*Story 7, afficher les scores selon l'ordre demandé*/
 
 SELECT Scores.*
 FROM Scores
@@ -139,7 +139,7 @@ CASE
     ELSE 3 END,
 score ASC;
 
---Story 8, story 7 mais avec des filtres
+/*Story 8, story 7 mais avec des filtres*/
 
 SELECT Scores.*
 FROM Scores
@@ -155,7 +155,7 @@ CASE
     ELSE 3 END,
 score ASC;
 
---Story 9, actualiser le score d'un utilisateur s'il est meilleur que l'ancien ou ajoute une ligne si c'est son premier score
+/*Story 9, actualiser le score d'un utilisateur s'il est meilleur que l'ancien ou ajoute une ligne si c'est son premier score*/
 
 SELECT idJoueur, idJeu, difficulte, score
 FROM Scores
@@ -172,19 +172,19 @@ AND difficulte="difficile";
 INSERT INTO Scores (idJoueur, idJeu, difficulte, score, dateHeureScore)
 VALUES (5, 1, 'difficile', 175, CURRENT_TIMESTAMP);
 
---Story 10, ajouter un message au chat
+/*Story 10, ajouter un message au chat*/
 
 INSERT INTO Chat (idJeu, idExpediteur, messageChat, dateHeureMessage)
 VALUES (1, 3, "BlablablaBis", "2023-10-16 12:00:00");
 
---Story 11, afficher la table chat avec une colonne 'isSender' si le message est assez récent
+/*Story 11, afficher la table chat avec une colonne 'isSender' si le message est assez récent*/
 
 SELECT messageChat, pseudo, dateHeureMessage, Utilisateur.id=3 as isSender
 FROM Chat
 INNER JOIN Utilisateur ON Chat.idExpediteur=Utilisateur.id
 WHERE dateHeureMessage> "2023-10-16 12:09:00";
 
---Story 12, rechercher le pseudo d'un joueur et afficher son score
+/*Story 12, rechercher le pseudo d'un joueur et afficher son score*/
 
 SELECT Utilisateur.pseudo, Scores.*
 FROM Scores
