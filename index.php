@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html lang="fr">    
 <?php 
-    require_once 'partials/head.php';
-    require_once 'partials/footer.php';
-    require_once 'partials/header.php';
+    require_once 'utils/common.php';
+    require_once SITE_ROOT.'partials/head.php';
+    require_once SITE_ROOT.'partials/header.php';
+    require_once SITE_ROOT.'chat.php';
 ?>
 <section class="indexhtml">
     <body>
@@ -89,113 +90,45 @@
             <div id="text">
                 <p><span>Notre Équipe</span></p>
                 <p>Quisque commodo facilisis purus. interdum volutoat arcu viverra sec.</p>
-                <img id="transi" src="assets/images/Transi.jpg">
+                <img id="transi" src="<?= PROJECT_FOLDER ?>assets/images/Transi.jpg">
             </div>
             <section class="container">
                 <div class="item">
-                    <img class="pp" src="assets/images/Kristian.jpg">
+                    <img class="pp" src="<?= PROJECT_FOLDER ?>assets/images/Kristian.jpg">
                     <p><span>Kristian (avec un K)</span></p>
                     <p class="text">Game Developer</p>
                             <div class="reseaux">
-                                <a href="https://facebook.com" target="_blank"><img src="assets/Images/fb.png"></a>
-                                <a href="https://pinterest.fr" target="_blank"><img src="assets/Images/pinterest.png"></a>
-                                <a href="https://x.com" target="_blank"><img src="assets/Images/twitter.png"></a>                    
+                                <a href="https://facebook.com" target="_blank"><img src="<?= PROJECT_FOLDER ?>assets/Images/fb.png"></a>
+                                <a href="https://pinterest.fr" target="_blank"><img src="<?= PROJECT_FOLDER ?>assets/Images/pinterest.png"></a>
+                                <a href="https://x.com" target="_blank"><img src="<?= PROJECT_FOLDER ?>assets/Images/twitter.png"></a>                    
                             </div>
                             
                         </div>
                         
                         <div class="item">
-                            <img class="pp" src="assets/images/Rizz.JPG">
+                            <img class="pp" src="<?= PROJECT_FOLDER ?>assets/images/Rizz.JPG">
                             <p><span>ELWAN DECRYPTE</span></p>
                             <p class="text">Game Developer</p>
                             <div class="reseaux">
-                                <a href="https://facebook.com" target="_blank"><img src="assets/Images/fb.png"></a>
-                                <a href="https://pinterest.fr" target="_blank"><img src="assets/Images/pinterest.png"></a>
-                                <a href="https://x.com" target="_blank"><img src="assets/Images/twitter.png"></a>                    
+                                <a href="https://facebook.com" target="_blank"><img src="<?= PROJECT_FOLDER ?>assets/Images/fb.png"></a>
+                                <a href="https://pinterest.fr" target="_blank"><img src="<?= PROJECT_FOLDER ?>assets/Images/pinterest.png"></a>
+                                <a href="https://x.com" target="_blank"><img src="<?= PROJECT_FOLDER ?>assets/Images/twitter.png"></a>                    
                             </div>
                         </div>
                         
                         <div class="item">
-                    <img class="pp" src="assets/images/Gwendal.jpg">
+                    <img class="pp" src="<?= PROJECT_FOLDER ?>assets/images/Gwendal.jpg">
                     <p><span>L'AIGRI ORIGINEL</span></p>
                     <p class="text">Game Developer</p>
                     <div class="reseaux">
-                        <a href="https://facebook.com" target="_blank"><img src="assets/Images/fb.png"></a>
-                        <a href="https://pinterest.fr" target="_blank"><img src="assets/Images/pinterest.png"></a>
-                        <a href="https://x.com" target="_blank"><img src="assets/Images/twitter.png"></a>                    
+                        <a href="https://facebook.com" target="_blank"><img src="<?= PROJECT_FOLDER ?>assets/Images/fb.png"></a>
+                        <a href="https://pinterest.fr" target="_blank"><img src="<?= PROJECT_FOLDER ?>assets/Images/pinterest.png"></a>
+                        <a href="https://x.com" target="_blank"><img src="<?= PROJECT_FOLDER ?>assets/Images/twitter.png"></a>                    
                     </div>
                 </div>
             </section>
         </div>
-        <div class="chat-container">
-            <div class="chat-header">
-                Chat général
-            </div>
-            <div class="chat-messages">
-                <div class="message">
-                    <div class="message-sender info">Moi</div>
-                    <div class="test">
-                        <div class="message-content">Salut la team</div>
-                    </div>
-                    <div class="date info">Aujourd'hui à 15h22</div>
-                </div>
-                <div class="message2">
-                    <div class="message-sender2 info">Joueur 1</div>
-                    <div class="message-content2">Lorem ipsum dolor sit amet</div>
-                    <div class="date2 info">Aujourhui à 15h22</div>
-                </div>
-                <div class="message2">
-                    <div class="message-sender2 info">Joueur 1</div>
-                    <div class="message-content2">tsais le mec qui parle en latin</div>
-                    <div class="date2 info">Aujourd'hui à 15h22</div>
-                </div>
-                <div class="message">
-                    <div class="message-sender info">Moi</div>
-                    <div class="test">
-                        <div class="message-content">t'es trop une galere</div>
-                    </div>
-                    <div class="date info">Aujourd'hui à 15h22</div>
-                </div>
-            </div>
-            <div class="chat-input">
-                <input type="text" id="message-input" placeholder="Votre message...">
-                <button id="send-button">Envoyer</button>
-            </div>
-        </div>
-        <footer>
-            <div class="main">
-                
-                <div class="info">
-                    <h3>Information</h3>
-                    
-                    <p class="line-space">Quisque commodo facilisis purus, interdum volutpat arcu viverra sed.</p>
-                    <p><span class="orange">Tél :</span> 06 07 08 09 10</p>
-                    <p><span class="orange">E-mail :</span> <span class="udline">Support@powerofmemory.com</span></p>
-                    <p><span class="orange">Location :</span> Cergy</p>
-                    <div class="logo">
-                        <a href="https://facebook.com" target="_blank"><img src="assets/Images/fb.png"></a>
-                        <a href="https://pinterest.fr" target="_blank"><img src="assets/Images/pinterest.png"></a>
-                        <a href="https://x.com" target="_blank"><img src="assets/Images/twitter.png"></a>
-                        <a href="https://plus.google.com" target="_blank"><img src="assets/Images/ggl.png"></a>
-                        <a href="https://instagram.com" target="_blank"><img src="assets/Images/ig.png"></a>
-                    </div>
-                    
-                </div>
-                
-                
-                <div class="POM">
-                    <h3>Power Of Memory</h3>
-                    
-                    <p><span class="orange">&bull;</span> <a href="memory.php">Jouer !</a></p>
-                    <p><span class="orange">&bull;</span> <a href="scores.php">Les scores</a></p>
-                    <p><span class="orange">&bull;</span> <a href="contact.php">Nous contacter</a></p>            
-                </div>
-                
-            </div>
-            <div class="copyright"><p>Copyright &copy; 2023 Tous droits réservés</p></div>
-            
-            
-        </footer>
     </body>
+    <?php require SITE_ROOT.'partials/footer.php'; ?>
 </section>
     
