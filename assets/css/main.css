@@ -4,7 +4,7 @@ body{
     color: white;
 }
 
-/*---------------------------INDEX.HTML--------------------------*/
+/*---------------------------INDEX.php--------------------------*/
 .indexhtml .accueil{
     padding-top: 10vh;
     padding-bottom: 10vh;
@@ -248,7 +248,7 @@ body{
     transform:scale(1.3) ;
     transition: 500ms;
 }
-/*---------------------------INDEX.HTML--------------------------*/
+/*---------------------------INDEX.php--------------------------*/
 
 
 
@@ -395,7 +395,7 @@ body{
 
 
 
-/*---------------------------CONTACT.HTML--------------------------*/
+/*---------------------------CONTACT.php--------------------------*/
 .contacthtml .contact_titre {
     margin-top: 1vh;
     background-image: url("../images/background.jpg");
@@ -479,14 +479,14 @@ body{
     text-align: center;
     width: 25%;
 }
-/*---------------------------CONTACT.HTML--------------------------*/
+/*---------------------------CONTACT.php--------------------------*/
 
 
 
 
 
 
-/*---------------------------MEMORY.HTML--------------------------*/
+/*---------------------------MEMORY.php--------------------------*/
 .memoryhtml .game_titre {
     margin-top: 1vh;
     background-image: url("../images/background.jpg");
@@ -610,7 +610,7 @@ body{
     font-size: 3vmin;
     text-align: center;
 }
-/*---------------------------MEMORY.HTML--------------------------*/
+/*---------------------------MEMORY.php--------------------------*/
 
 
 
@@ -620,7 +620,7 @@ body{
 
 
 
-/*---------------------------MYACCOUNT.HTML--------------------------*/
+/*---------------------------MYACCOUNT.php--------------------------*/
 .myaccounthtml .myAccount_titre {
     margin-top: 1vh;
     background-image: url("../images/background.jpg");
@@ -716,14 +716,14 @@ body{
     text-align: center;
     width: 25%;
 }
-/*---------------------------MYACCOUNT.HTML--------------------------*/
+/*---------------------------MYACCOUNT.php--------------------------*/
 
 
 
 
 
 
-/*---------------------------REGISTER.HTML--------------------------*/
+/*---------------------------REGISTER.php--------------------------*/
 .registerhtml .register_titre {
     margin-top: 1vh;
     background-image: url("../images/background.jpg");
@@ -781,12 +781,12 @@ body{
     color: orange
 }
 
-/*---------------------------REGISTER.HTML--------------------------*/
+/*---------------------------REGISTER.php--------------------------*/
 
 
 
 
-/*---------------------------LOGIN.HTML--------------------------*/
+/*---------------------------LOGIN.php--------------------------*/
 .loginhtml .login_titre {
     margin-top: 1vh;
     background-image: url("../images/background.jpg");
@@ -843,14 +843,14 @@ body{
 .loginhtml .login_link:hover {
     color: orange
 }
-/*---------------------------LOGIN.HTML--------------------------*/
+/*---------------------------LOGIN.php--------------------------*/
 
 
 
 
 
 
-/*---------------------------SCORES.HTML--------------------------*/
+/*---------------------------SCORES.php--------------------------*/
 .scoreshtml .scores_titre {
     margin-top: 1vh;
     background-image: url("../images/background.jpg");
@@ -907,4 +907,4 @@ body{
     text-shadow: 0 0 20px rgba(255, 255, 255, 0.50);
 }
 
-/*---------------------------SCORES.HTML--------------------------*/
+/*---------------------------SCORES.php--------------------------*/

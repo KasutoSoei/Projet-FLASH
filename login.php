@@ -15,22 +15,22 @@
         <header>
             <div class="header">
                 <span class="header_titre">
-                    <a href="index.html" style="color: white; text-decoration: none;">The Power Of Memory</a>
+                    <a href="index.php" style="color: white; text-decoration: none;">The Power Of Memory</a>
                 </span>
                 <span class="header_bouton">
-                    <a href="index.html" class="header_link">ACCUEIL</a>
+                    <a href="index.php" class="header_link">ACCUEIL</a>
                 </span>
                 <span class="header_bouton">
-                    <a href="memory.html".html class="header_link">JEU</a>
+                    <a href="memory.php".php class="header_link">JEU</a>
                 </span>
                 <span class="header_bouton">
-                    <a href="scores.html" class="header_link">SCORES</a>
+                    <a href="scores.php" class="header_link">SCORES</a>
                 </span>
                 <span class="header_bouton">
-                    <a href="contact.html" class="header_link">NOUS CONTACTER</a>
+                    <a href="contact.php" class="header_link">NOUS CONTACTER</a>
                 </span>
                 <span>
-                    <a href="myAccount.html"><img src="assets\images\profile.png" class="header_logo"></a>
+                    <a href="myAccount.php"><img src="assets\images\profile.png" class="header_logo"></a>
                 </span>
             </div>
         </header>
@@ -39,16 +39,16 @@
             CONNEXION
         </div>
         <div class="connexion">
-            <form action="myAccount.html" style="width: 100%;">
+            <form action="myAccount.php" style="width: 100%;">
                 <input type="email" placeholder="Email" required="required" class="login_entree">
                 <input type="password" placeholder="Mot de passe" required="required" class="login_entree">
                 <span style="display: flex; justify-content: space-between;">
                     <input type="submit" value="Connexion" class="login_bouton">
-                    <a href="register.html" class="login_link" style="margin-top: 2vh; margin-right: 1vw; font-size: 1.5vmin; height: 1.5vmin;">Mot de passe oublié ?</a>
+                    <a href="register.php" class="login_link" style="margin-top: 2vh; margin-right: 1vw; font-size: 1.5vmin; height: 1.5vmin;">Mot de passe oublié ?</a>
                 </span>
             </form>
             <span style="font-size: 2vmin;">
-                Vous n'avez pas de compte ? <a href="register.html" class="login_link">Inscrivez-vous</a> !
+                Vous n'avez pas de compte ? <a href="register.php" class="login_link">Inscrivez-vous</a> !
             </span>
         </div>
         <footer>
@@ -75,9 +75,9 @@
                 <div class="POM">
                     <h3>Power Of Memory</h3>
                     
-                    <p><span class="orange">&bull;</span> <a href="memory.html">Jouer !</a></p>
-                    <p><span class="orange">&bull;</span> <a href="scores.html">Les scores</a></p>
-                    <p><span class="orange">&bull;</span> <a href="contact.html">Nous contacter</a></p>           
+                    <p><span class="orange">&bull;</span> <a href="memory.php">Jouer !</a></p>
+                    <p><span class="orange">&bull;</span> <a href="scores.php">Les scores</a></p>
+                    <p><span class="orange">&bull;</span> <a href="contact.php">Nous contacter</a></p>           
                 </div>
                 
             </div>

@@ -11,22 +11,22 @@
 <header>
     <div class="header">
         <span class="header_titre">
-            <a href="index.html" style="color: white; text-decoration: none;">The Power Of Memory</a>
+            <a href="index.php" style="color: white; text-decoration: none;">The Power Of Memory</a>
         </span>
         <span class="header_bouton">
-            <a href="index.html" class="header_link">ACCUEIL</a>
+            <a href="index.php" class="header_link">ACCUEIL</a>
         </span>
         <span class="header_bouton">
-            <a href="memory.html" class="header_link">JEU</a>
+            <a href="memory.php" class="header_link">JEU</a>
         </span>
         <span class="header_bouton">
-            <a href="scores.html" class="header_link">SCORES</a>
+            <a href="scores.php" class="header_link">SCORES</a>
         </span>
         <span class="header_bouton">
-            <a href="contact.html" class="header_link">NOUS CONTACTER</a>
+            <a href="contact.php" class="header_link">NOUS CONTACTER</a>
         </span>
         <span>
-            <a href="myAccount.html"><img src="assets\images\profile.png" class="header_logo"></a>
+            <a href="myAccount.php"><img src="assets\images\profile.png" class="header_logo"></a>
         </span>
     </div>
 </header>
@@ -41,13 +41,13 @@
                 Theme :
             </span>
             <span>
-                <a href="EasyCartes.html" class="game_theme_button">Cartes</a>
+                <a href="EasyCartes.php" class="game_theme_button">Cartes</a>
             </span>
             <span>
-                <a href="EasyVoitures.html" class="game_theme_button">Voitures</a>
+                <a href="EasyVoitures.php" class="game_theme_button">Voitures</a>
             </span>
             <span>
-                <a href="EasyWaifus.html" class="game_theme_button">Waifus</a>
+                <a href="EasyWaifus.php" class="game_theme_button">Waifus</a>
             </span>
         </div>
     
@@ -56,13 +56,13 @@
                 Difficulté :
             </span>
             <span>
-                <a href="EasyCartes.html" class="game_difficulte_facile">Facile</a>
+                <a href="EasyCartes.php" class="game_difficulte_facile">Facile</a>
             </span>
             <span>
-                <a href="MediumCartes.html" class="game_difficulte_moyen">Moyen</a>
+                <a href="MediumCartes.php" class="game_difficulte_moyen">Moyen</a>
             </span>
             <span>
-                <a href="HardCartes.html" class="game_difficulte_difficile">Difficile</a>
+                <a href="HardCartes.php" class="game_difficulte_difficile">Difficile</a>
             </span>
         </div>
     
@@ -99,7 +99,7 @@
     
                 <p style="margin-left: 3vw;">
                     Le but est de retouner toutes les cases de la grille. <br>
-                    Vous pouvez ensuite comparer votre temps à celui des meilleurs dans le <a href="scores.html" class="regles_lien">classement</a>
+                    Vous pouvez ensuite comparer votre temps à celui des meilleurs dans le <a href="scores.php" class="regles_lien">classement</a>
                 </p>
     
                 <strong style="text-decoration: underline;">Difficultés</strong> :
@@ -110,7 +110,7 @@
                     En Difficile, il y a également 2 paires par image mais pour 50 images différentes. <br>
                 </p>
             </p>
-            Voilà, vous savez tout. <a href="login.html" class="regles_lien">Connectez-vous</a> et faites place à votre mémoire !
+            Voilà, vous savez tout. <a href="login.php" class="regles_lien">Connectez-vous</a> et faites place à votre mémoire !
         </div>
         <footer>
             <div class="main">
@@ -136,9 +136,9 @@
                 <div class="POM">
                     <h3>Power Of Memory</h3>
     
-                    <p><span class="orange">&bull;</span> <a href="memory.html">Jouer !</a></p>
-                    <p><span class="orange">&bull;</span> <a href="scores.html">Les scores</a></p>
-                    <p><span class="orange">&bull;</span> <a href="contact.html">Nous contacter</a></p>           
+                    <p><span class="orange">&bull;</span> <a href="memory.php">Jouer !</a></p>
+                    <p><span class="orange">&bull;</span> <a href="scores.php">Les scores</a></p>
+                    <p><span class="orange">&bull;</span> <a href="contact.php">Nous contacter</a></p>           
                 </div>
     
             </div>

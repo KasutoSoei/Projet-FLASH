@@ -13,22 +13,22 @@
         <header>
             <div class="header">
                 <span class="header_titre">
-                    <a href="index.html" style="color: white; text-decoration: none;">The Power Of Memory</a>
+                    <a href="index.php" style="color: white; text-decoration: none;">The Power Of Memory</a>
                 </span>
                 <span class="header_bouton">
-                    <a href="index.html" class="header_link">ACCUEIL</a>
+                    <a href="index.php" class="header_link">ACCUEIL</a>
                 </span>
                 <span class="header_bouton">
-                    <a href="memory.html" class="header_link">JEU</a>
+                    <a href="memory.php" class="header_link">JEU</a>
                 </span>
                 <span class="header_bouton">
-                    <a href="scores.html" class="header_link">SCORES</a>
+                    <a href="scores.php" class="header_link">SCORES</a>
                 </span>
                 <span class="header_bouton">
-                    <a href="contact.html" class="header_link">NOUS CONTACTER</a>
+                    <a href="contact.php" class="header_link">NOUS CONTACTER</a>
                 </span>
                 <span>
-                    <a href="myAccount.html"><img src="assets\images\profile.png" class="header_logo"></a>
+                    <a href="myAccount.php"><img src="assets\images\profile.png" class="header_logo"></a>
                 </span>
             </div>
         </header>
@@ -37,7 +37,7 @@
             INSCRIPTION
         </div>
         <div class="inscription">
-            <form action="myAccount.html" style="width: 100%;">
+            <form action="myAccount.php" style="width: 100%;">
                 <input type="email" placeholder="Email" required="required" class="inscription_entree">
                 <input type="text" placeholder="Pseudo" required="required" class="inscription_entree">
                 <input type="password" placeholder="Mot de passe" required="required" class="inscription_entree">
@@ -45,7 +45,7 @@
                 <input type="submit" value="Inscription" class="inscription_bouton">
             </form>
             <span style="font-size: 2vmin;">
-                Vous avez déjà un compte ? <a href="login.html" class="register_link">Connectez-vous</a> !
+                Vous avez déjà un compte ? <a href="login.php" class="register_link">Connectez-vous</a> !
             </span>
         </div>
         
@@ -110,9 +110,9 @@
             <div class="POM">
                 <h3>Power Of Memory</h3>
 
-                <p><span class="orange">&bull;</span> <a href="memory.html">Jouer !</a></p>
-                <p><span class="orange">&bull;</span> <a href="scores.html">Les scores</a></p>
-                <p><span class="orange">&bull;</span> <a href="contact.html">Nous contacter</a></p>             
+                <p><span class="orange">&bull;</span> <a href="memory.php">Jouer !</a></p>
+                <p><span class="orange">&bull;</span> <a href="scores.php">Les scores</a></p>
+                <p><span class="orange">&bull;</span> <a href="contact.php">Nous contacter</a></p>             
             </div>
 
         </div>

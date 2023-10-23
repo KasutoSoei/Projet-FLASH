@@ -1,88 +1,68 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="assets/css/header.css">
     <link rel="stylesheet" href="assets/css/main.css">
     <link rel="stylesheet" href="assets/css/footer.css">
     <link rel="icon" href="assets/images/icone.png">
-    <title>Mon Espace</title>
+    <title>Contact</title>
 </head>
-<section class="myaccounthtml">
+<section class="contacthtml">
     <body>
         <header>
             <div class="header">
                 <span class="header_titre">
-                    <a href="index.html" style="color: white; text-decoration: none;">The Power Of Memory</a>
+                    <a href="index.php" style="color: white; text-decoration: none;">The Power Of Memory</a>
                 </span>
                 <span class="header_bouton">
-                    <a href="index.html" class="header_link">ACCUEIL</a>
+                    <a href="index.php" class="header_link">ACCUEIL</a>
                 </span>
                 <span class="header_bouton">
-                    <a href="memory.html".html class="header_link">JEU</a>
+                    <a href="memory.php" class="header_link">JEU</a>
                 </span>
                 <span class="header_bouton">
-                    <a href="scores.html" class="header_link">SCORES</a>
+                    <a href="scores.php" class="header_link">SCORES</a>
                 </span>
                 <span class="header_bouton">
-                    <a href="contact.html" class="header_link">NOUS CONTACTER</a>
+                    <a href="contact.php" class="header_link">NOUS CONTACTER</a>
                 </span>
                 <span>
-                    <a href="myAccount.html"><img src="assets\images\profile.png" class="header_logo"></a>
+                    <a href="myAccount.php"><img src="assets\images\profile.png" class="header_logo"></a>
                 </span>
             </div>
         </header>
+    
+        <div class="contact_titre">
+            NOUS CONTACTER
+        </div>
+    
+        <div class="contact">
+            <span class="contact_coordonnees">
+                <img src="assets/images/phone.png" class="contact_logo">
+                06 07 08 09 10
+            </span>
+            <span class="contact_coordonnees">
+                <img src="assets/images/mail.png" class="contact_logo">
+                support@powerofmemory.com
+            </span>
+            <span class="contact_coordonnees">
+                <img src="assets/images/location.png" class="contact_logo">
+                Cergy
+            </span>
+        </div>
         
-        <div class="myAccount_titre">
-            MON ESPACE
-        </div>
-    
-        <div class="myAccount">
-            <span>
-                <img src="assets\images\profile.png" style="border-radius: 100%; width: 15vmin; height: auto;"></a>
-            </span>
-            <span style="font-size: 5vmin;">
-                MemoryMaster
-                <img src="assets/images/rewrite.png" style="width: 4vmin;">
-            </span>
-            <span>
-                <div class="myAccount_stats">
-                    <span class="myAccount_stats_case">
-                        Parties jouées <br>
-                        <strong style="font-size: 7vmin; color: indigo; -webkit-text-stroke: 1px darkgray;">128</strong>
-                    </span>
-                    <span class="myAccount_stats_case">
-                        Temps de jeu total <br>
-                        <strong style="font-size: 7vmin; color: indigo; -webkit-text-stroke: 1px darkgray;">25:45:38</strong>
-                    </span>
-                    <span class="myAccount_stats_case">
-                        Meilleur temps <br>
-                        <strong style="font-size: 7vmin; color: indigo; -webkit-text-stroke: 1px darkgray;">01:09</strong>
-                    </span>
+        <form action="memory.php">
+            <div class="mail">    
+                <div class="mail_identite">
+                    <input type="text" placeholder="Nom" required="required" class="mail_entree" style="width: 49%;">
+                    <input type="email" placeholder="Email" required="required" class="mail_entree" style="width: 49%;">
                 </div>
-            </span>
-        </div>
-    
-        <div class="myAccount_confidentialites">
-            <div class="myAccount_changer">
-                <p class="myAccount_changer_titre">Changer d'email</p>
-                <form action="myAccount.html">
-                    <input type="email" placeholder="Ancien email" required="required" class="myAccount_entree">
-                    <input type="email" placeholder="Nouvel email" required="required" class="myAccount_entree">
-                    <input type="password" placeholder="Mot de passe" required="required" class="myAccount_entree">
-                    <input type="submit" value="Confirmer" class="myAccount_bouton">
-                </form>
+                <input type="text" placeholder="Sujet" required="required" class="mail_entree">
+                <input type="text" placeholder="Message" required="required" class="mail_entree" style="height: 32vh;">
+                <input type="submit" value="Envoyer" class="mail_bouton">
             </div>
-            <div class="myAccount_changer">
-                <p class="myAccount_changer_titre">Changer de mot de passe</p>
-                <form action="myAccount.html">
-                    <input type="password" placeholder="Ancien mot de passe" required="required" class="myAccount_entree">
-                    <input type="password" placeholder="Nouveau mot de passe" required="required" class="myAccount_entree">
-                    <input type="password" placeholder="Confirmez le nouveau mot de passe" required="required" class="myAccount_entree">
-                    <input type="submit" value="Confirmer" class="myAccount_bouton">
-                </form>
-            </div>
-        </div>
+        </form>
         <footer>
             <div class="main">
                 
@@ -107,15 +87,14 @@
                 <div class="POM">
                     <h3>Power Of Memory</h3>
     
-                    <p><span class="orange">&bull;</span> <a href="memory.html">Jouer !</a></p>
-                    <p><span class="orange">&bull;</span> <a href="scores.html">Les scores</a></p>
-                    <p><span class="orange">&bull;</span> <a href="contact.html">Nous contacter</a></p>            
+                    <p><span class="orange">&bull;</span> <a href="memory.php">Jouer !</a></p>
+                    <p><span class="orange">&bull;</span> <a href="scores.php">Les scores</a></p>
+                    <p><span class="orange">&bull;</span> <a href="contact.php">Nous contacter</a></p>            
                 </div>
     
             </div>
     
-            
-    
+
             <div class="copyright"><p>Copyright &copy; 2023 Tous droits réservés</p></div>
     
     
@@ -125,7 +104,6 @@
             Chat général
         </div>
         <div class="chat-messages">
-        
             <div class="message">
                 <div class="message-sender info">Moi</div>
                 <div class="test">
@@ -150,7 +128,6 @@
                 </div>
                 <div class="date info">Aujourd'hui à 15h22</div>
             </div>
-        
             </div>
         <div class="chat-input">
             <input type="text" id="message-input" placeholder="Votre message...">
