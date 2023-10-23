@@ -5,13 +5,21 @@
     require_once SITE_ROOT.'partials/head.php';
     require_once SITE_ROOT.'partials/header.php';
     require_once SITE_ROOT.'chat.php';
+    require_once SITE_ROOT.'utils/database.php';
+
+    
+    $pdoScores = $pdo->prepare('SELECT score FROM Scores ORDER BY score ASC LIMIT 1');
+    $pdoScores->execute([]);
+    $meilleurScore = $pdoScores->fetch();
 ?>
 <section class="indexhtml">
+
     <body>
+        
         <div class="accueil">       
             <h1 style="font-size: 6vmin;">BIENVENUE DANS NOTRE STUDIO !</h1>
             <span style="color: rgb(200, 200, 200); font-size: 2.8vmin;">Venez challenger les cerveaux les plus agiles !</span>
-            <a href="memory.php" id="play"> <strong>JOUER !</strong></a>
+            <a href="<?= PROJECT_FOLDER ?>games/memory/memory.php" id="play"> <strong>JOUER !</strong></a>
         </div>        
         <div class="present">
             <img src="https://www.ass-security.fr/blog/wp-content/uploads/2021/08/console-theme.jpg" class="present_img">
@@ -73,7 +81,7 @@
                 <div class="stats_ligne">
                     <span class="stats_petit_carre" style="background-color: rgb(170, 46, 163); font-size: 2vmin;">
                         <p>
-                            <strong style="font-size: 5vmin;">00:00:10</strong> <br><br>
+                            <strong style="font-size: 5vmin;"><?php echo $meilleurScore?></strong> <br><br>
                             Temps Record
                         </p>
                     </span>
