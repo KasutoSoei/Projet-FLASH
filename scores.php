@@ -1,68 +1,78 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="assets/css/header.css">
     <link rel="stylesheet" href="assets/css/main.css">
     <link rel="stylesheet" href="assets/css/footer.css">
     <link rel="icon" href="assets/images/icone.png">
-    <title>Contact</title>
+    <title>Scores</title>
+
 </head>
-<section class="contacthtml">
+<section class="scoreshtml">
     <body>
         <header>
             <div class="header">
                 <span class="header_titre">
-                    The Power Of Memory
+                    <a href="index.php" style="color: white; text-decoration: none;">The Power Of Memory</a>
                 </span>
                 <span class="header_bouton">
-                    <a href="index.html" class="header_link">ACCUEIL</a>
+                    <a href="index.php" class="header_link">ACCUEIL</a>
                 </span>
                 <span class="header_bouton">
-                    <a href="memory.html" class="header_link">JEU</a>
+                    <a href="memory.php".php class="header_link">JEU</a>
                 </span>
                 <span class="header_bouton">
-                    <a href="scores.html" class="header_link">SCORES</a>
+                    <a href="scores.php" class="header_link">SCORES</a>
                 </span>
                 <span class="header_bouton">
-                    <a href="contact.html" class="header_link">NOUS CONTACTER</a>
+                    <a href="contact.php" class="header_link">NOUS CONTACTER</a>
                 </span>
                 <span>
-                    <a href="myAccount.html"><img src="assets\images\profile.png" class="header_logo"></a>
+                    <a href="myAccount.php"><img src="assets/images/profile.png" class="header_logo"></a>
                 </span>
             </div>
         </header>
-    
-        <div class="contact_titre">
-            NOUS CONTACTER
-        </div>
-    
-        <div class="contact">
-            <span class="contact_coordonnees">
-                <img src="assets/images/phone.png" class="contact_logo">
-                06 07 08 09 10
-            </span>
-            <span class="contact_coordonnees">
-                <img src="assets/images/mail.png" class="contact_logo">
-                support@powerofmemory.com
-            </span>
-            <span class="contact_coordonnees">
-                <img src="assets/images/location.png" class="contact_logo">
-                Cergy
-            </span>
-        </div>
         
-        <form action="memory.html">
-            <div class="mail">    
-                <div class="mail_identite">
-                    <input type="text" placeholder="Nom" required="required" class="mail_entree" style="width: 49%;">
-                    <input type="email" placeholder="Email" required="required" class="mail_entree" style="width: 49%;">
-                </div>
-                <input type="text" placeholder="Sujet" required="required" class="mail_entree">
-                <input type="text" placeholder="Message" required="required" class="mail_entree" style="height: 32vh;">
-                <input type="submit" value="Envoyer" class="mail_bouton">
-            </div>
-        </form>
+        <div class="scores_titre">
+            SCORES
+        </div>
+        <div class="scores">
+            <table class="styled-table">
+                <thead>
+                    <tr>
+                        <th>Nom du jeu</th>
+                        <th>Pseudo du joueur</th>
+                        <th>Niveau de difficulté</th>
+                        <th>Score (en sec)</th>
+                        <th>Date et Heure de la partie</th>
+                    </tr>    
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Memory</td>
+                        <td>Joueur</td>
+                        <td>Facile</td>
+                        <td>45</td>
+                        <td>11/10/2023 14:30:00</td>
+                    </tr>
+                    <tr class="active-row">
+                        <td>Memory</td>
+                        <td>Moi</td>
+                        <td>Moyen</td>
+                        <td>60</td>
+                        <td>11/10/2023 09:15:00</td>
+                    </tr>
+                    <tr>
+                        <td>Memory</td>
+                        <td>Joueur</td>
+                        <td>Difficile</td>
+                        <td>35</td>
+                        <td>11/10/2023 20:45:00</td>
+                    </tr>    
+                </tbody>
+            </table>
+        </div>
         <footer>
             <div class="main">
                 
@@ -87,14 +97,15 @@
                 <div class="POM">
                     <h3>Power Of Memory</h3>
     
-                    <p><span class="orange">&bull;</span> <a href="memory.html">Jouer !</a></p>
-                    <p><span class="orange">&bull;</span> <a href="scores.html">Les scores</a></p>
-                    <p><span class="orange">&bull;</span> <a href="contact.html">Nous contacter</a></p>            
+                    <p><span class="orange">&bull;</span> <a href="memory.php">Jouer !</a></p>
+                    <p><span class="orange">&bull;</span> <a href="scores.php">Les scores</a></p>
+                    <p><span class="orange">&bull;</span> <a href="contact.php">Nous contacter</a></p>           
                 </div>
     
             </div>
     
-
+            
+    
             <div class="copyright"><p>Copyright &copy; 2023 Tous droits réservés</p></div>
     
     
@@ -104,6 +115,7 @@
             Chat général
         </div>
         <div class="chat-messages">
+        
             <div class="message">
                 <div class="message-sender info">Moi</div>
                 <div class="test">
@@ -128,6 +140,7 @@
                 </div>
                 <div class="date info">Aujourd'hui à 15h22</div>
             </div>
+        
             </div>
         <div class="chat-input">
             <input type="text" id="message-input" placeholder="Votre message...">

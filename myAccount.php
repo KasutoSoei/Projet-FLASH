@@ -13,22 +13,22 @@
         <header>
             <div class="header">
                 <span class="header_titre">
-                    The Power Of Memory
+                    <a href="index.php" style="color: white; text-decoration: none;">The Power Of Memory</a>
                 </span>
                 <span class="header_bouton">
-                    <a href="index.html" class="header_link">ACCUEIL</a>
+                    <a href="index.php" class="header_link">ACCUEIL</a>
                 </span>
                 <span class="header_bouton">
-                    <a href="memory.html".html class="header_link">JEU</a>
+                    <a href="memory.php".php class="header_link">JEU</a>
                 </span>
                 <span class="header_bouton">
-                    <a href="scores.html" class="header_link">SCORES</a>
+                    <a href="scores.php" class="header_link">SCORES</a>
                 </span>
                 <span class="header_bouton">
-                    <a href="contact.html" class="header_link">NOUS CONTACTER</a>
+                    <a href="contact.php" class="header_link">NOUS CONTACTER</a>
                 </span>
                 <span>
-                    <a href="myAccount.html"><img src="assets\images\profile.png" class="header_logo"></a>
+                    <a href="myAccount.php"><img src="assets\images\profile.png" class="header_logo"></a>
                 </span>
             </div>
         </header>
@@ -66,7 +66,7 @@
         <div class="myAccount_confidentialites">
             <div class="myAccount_changer">
                 <p class="myAccount_changer_titre">Changer d'email</p>
-                <form action="myAccount.html">
+                <form action="myAccount.php">
                     <input type="email" placeholder="Ancien email" required="required" class="myAccount_entree">
                     <input type="email" placeholder="Nouvel email" required="required" class="myAccount_entree">
                     <input type="password" placeholder="Mot de passe" required="required" class="myAccount_entree">
@@ -75,7 +75,7 @@
             </div>
             <div class="myAccount_changer">
                 <p class="myAccount_changer_titre">Changer de mot de passe</p>
-                <form action="myAccount.html">
+                <form action="myAccount.php">
                     <input type="password" placeholder="Ancien mot de passe" required="required" class="myAccount_entree">
                     <input type="password" placeholder="Nouveau mot de passe" required="required" class="myAccount_entree">
                     <input type="password" placeholder="Confirmez le nouveau mot de passe" required="required" class="myAccount_entree">
@@ -107,9 +107,9 @@
                 <div class="POM">
                     <h3>Power Of Memory</h3>
     
-                    <p><span class="orange">&bull;</span> <a href="memory.html">Jouer !</a></p>
-                    <p><span class="orange">&bull;</span> <a href="scores.html">Les scores</a></p>
-                    <p><span class="orange">&bull;</span> <a href="contact.html">Nous contacter</a></p>            
+                    <p><span class="orange">&bull;</span> <a href="memory.php">Jouer !</a></p>
+                    <p><span class="orange">&bull;</span> <a href="scores.php">Les scores</a></p>
+                    <p><span class="orange">&bull;</span> <a href="contact.php">Nous contacter</a></p>            
                 </div>
     
             </div>

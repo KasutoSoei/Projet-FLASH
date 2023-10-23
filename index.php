@@ -1,43 +1,16 @@
 <!DOCTYPE html>
 <html lang="fr">    
-    <link rel="stylesheet" href="assets/css/main.css">
-    <link rel="stylesheet" href="assets/css/header.css">
-    <link rel="stylesheet" href="assets/css/footer.css">
-    <link rel="icon" href="assets/images/icone.png">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width initial-scale=1.0">
-    <title>Accueil</title>
-
-</head>
+<?php 
+    require_once 'partials/head.php';
+    require_once 'partials/footer.php';
+    require_once 'partials/header.php';
+?>
 <section class="indexhtml">
-    <header>
-        <div class="header" >
-            <span class="header_titre">
-                <a href="index.html" style="color: white; text-decoration: none;">The Power Of Memory</a>
-            </span>
-            <span class="header_bouton">
-                <a href="index.html" class="header_link">ACCUEIL</a>
-            </span>
-            <span class="header_bouton">
-                <a href="memory.html" class="header_link">JEU</a>
-            </span>
-            <span class="header_bouton">
-                <a href="scores.html" class="header_link">SCORES</a>
-            </span>
-            <span class="header_bouton">
-                <a href="contact.html" class="header_link">NOUS CONTACTER</a>
-            </span>
-            <span>
-                <a href="myAccount.html"><img src="assets\images\profile.png" class="header_logo"></a>
-            </span>
-        </div>
-    </header>
     <body>
         <div class="accueil">       
             <h1 style="font-size: 6vmin;">BIENVENUE DANS NOTRE STUDIO !</h1>
             <span style="color: rgb(200, 200, 200); font-size: 2.8vmin;">Venez challenger les cerveaux les plus agiles !</span>
-            <a href="memory.html" id="play"> <strong>JOUER !</strong></a>
+            <a href="memory.php" id="play"> <strong>JOUER !</strong></a>
         </div>        
         <div class="present">
             <img src="https://www.ass-security.fr/blog/wp-content/uploads/2021/08/console-theme.jpg" class="present_img">
@@ -213,15 +186,12 @@
                 <div class="POM">
                     <h3>Power Of Memory</h3>
                     
-                    <p><span class="orange">&bull;</span> <a href="memory.html">Jouer !</a></p>
-                    <p><span class="orange">&bull;</span> <a href="scores.html">Les scores</a></p>
-                    <p><span class="orange">&bull;</span> <a href="contact.html">Nous contacter</a></p>            
+                    <p><span class="orange">&bull;</span> <a href="memory.php">Jouer !</a></p>
+                    <p><span class="orange">&bull;</span> <a href="scores.php">Les scores</a></p>
+                    <p><span class="orange">&bull;</span> <a href="contact.php">Nous contacter</a></p>            
                 </div>
                 
             </div>
-            
-            
-            
             <div class="copyright"><p>Copyright &copy; 2023 Tous droits réservés</p></div>
             
             
