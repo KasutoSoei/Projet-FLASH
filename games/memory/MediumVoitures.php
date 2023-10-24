@@ -1,18 +1,19 @@
 <!DOCTYPE html>
 <html lang="fr">
-<?php 
-    require_once '../../utils/common.php';
-    require_once SITE_ROOT.'partials/head.php';
-    require_once SITE_ROOT.'partials/header.php';
-    require_once SITE_ROOT.'chat.php';
+<?php
+require_once '../../utils/common.php';
+require_once SITE_ROOT . 'partials/head.php';
+require_once SITE_ROOT . 'partials/header.php';
+require_once SITE_ROOT . 'chat.php';
 ?>
 
 <section class="memoryhtml">
+
     <body>
         <div class="game_titre">
             JEU
         </div>
-    
+
         <div class="game_theme">
             <span>
                 Theme :
@@ -27,7 +28,7 @@
                 <a href="MediumWaifus.php" class="game_theme_button">Waifus</a>
             </span>
         </div>
-    
+
         <div class="game_difficulte">
             <span>
                 Difficulté :
@@ -42,7 +43,7 @@
                 <a href="HardVoitures.php" class="game_difficulte_difficile">Difficile</a>
             </span>
         </div>
-    
+
         <div class="game">
             <span class="game_score">
                 <p>Score : 20</p>
@@ -371,6 +372,6 @@
                 </tr>
             </table>
         </div>
-        <?php require_once SITE_ROOT.'partials/footer.php'; ?>
+        <?php require_once SITE_ROOT . 'partials/footer.php'; ?>
     </body>
 </section>

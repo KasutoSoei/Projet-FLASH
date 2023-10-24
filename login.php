@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html lang="fr">
-<?php 
-    require_once 'utils/common.php';
-    require_once SITE_ROOT.'partials/head.php';
-    require_once SITE_ROOT.'partials/header.php';
-    require_once SITE_ROOT.'chat.php';
+<?php
+require_once 'utils/common.php';
+require_once SITE_ROOT . 'partials/head.php';
+require_once SITE_ROOT . 'partials/header.php';
+require_once SITE_ROOT . 'chat.php';
 ?>
 <section class="loginhtml">
+
     <body>
         <div class="login_titre">
             CONNEXION
@@ -24,7 +25,6 @@
                 Vous n'avez pas de compte ? <a href="<?= PROJECT_FOLDER ?>register.php" class="login_link">Inscrivez-vous</a> !
             </span>
         </div>
-<?php require_once SITE_ROOT.'partials/footer.php'; ?>
+        <?php require_once SITE_ROOT . 'partials/footer.php'; ?>
     </body>
 </section>
-

@@ -1,18 +1,19 @@
 <!DOCTYPE html>
 <html lang="fr">
-<?php 
-    require_once 'utils/common.php';
-    require_once SITE_ROOT.'partials/head.php';
-    require_once SITE_ROOT.'partials/header.php';
-    require_once SITE_ROOT.'chat.php';
+<?php
+require_once 'utils/common.php';
+require_once SITE_ROOT . 'partials/head.php';
+require_once SITE_ROOT . 'partials/header.php';
+require_once SITE_ROOT . 'chat.php';
 ?>
 <section class="myaccounthtml">
+
     <body>
-        
+
         <div class="myAccount_titre">
             MON ESPACE
         </div>
-    
+
         <div class="myAccount">
             <span>
                 <img src="<?= PROJECT_FOLDER ?>assets\images\profile.png" style="border-radius: 100%; width: 15vmin; height: auto;"></a>
@@ -38,7 +39,7 @@
                 </div>
             </span>
         </div>
-    
+
         <div class="myAccount_confidentialites">
             <div class="myAccount_changer">
                 <p class="myAccount_changer_titre">Changer d'email</p>
@@ -59,6 +60,6 @@
                 </form>
             </div>
         </div>
-        <?php require_once SITE_ROOT.'partials/footer.php'; ?>
+        <?php require_once SITE_ROOT . 'partials/footer.php'; ?>
     </body>
 </section>
