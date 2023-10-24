@@ -7,6 +7,10 @@ require_once SITE_ROOT . 'partials/header.php';
 require_once SITE_ROOT . 'chat.php';
 require_once SITE_ROOT . 'utils/database.php';
 
+if (!isset($_GET['recherche_pseudo'])){
+    $_GET['recherche_pseudo'] = '';
+}
+
 $pdoTablo = $pdo->prepare('SELECT Jeu.nomJeu, pseudo, difficulte, score , dateHeureScore
     FROM Scores
     INNER JOIN Jeu ON Scores.idJeu=Jeu.id
@@ -19,11 +23,7 @@ $pdoTablo = $pdo->prepare('SELECT Jeu.nomJeu, pseudo, difficulte, score , dateHe
         WHEN difficulte="hard" THEN 3 END,
     score ASC;');
 
-if (!isset($_POST['recherche_pseudo'])){
-    $_POST['recherche_pseudo'] = '';
-}
-
-$pdoTablo->execute([':pseudo' => $_POST['recherche_pseudo']]);
+$pdoTablo->execute([':pseudo' => $_GET['recherche_pseudo']]);
 $scoreTablo = $pdoTablo->fetchAll();
 
 ?>
@@ -35,7 +35,7 @@ $scoreTablo = $pdoTablo->fetchAll();
             SCORES
         </div>
         <div class="scores">
-            <form method="post" style="width: 100%;">
+            <form method="get" style="width: 100%;">
                 <span class="scores_recherche">
                     <img src="<?= PROJECT_FOLDER ?>assets/images/recherche.png">
                     <input type="text" name="recherche_pseudo" placeholder="Recherche" class="scores_recherche_entree">

@@ -5,6 +5,9 @@ require_once 'utils/common.php';
 require_once SITE_ROOT . 'partials/head.php';
 require_once SITE_ROOT . 'partials/header.php';
 require_once SITE_ROOT . 'chat.php';
+
+var_dump($_POST == NULL);
+
 ?>
 <section class="loginhtml">
 
