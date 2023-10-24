@@ -1,26 +1,36 @@
 <!DOCTYPE html>
-<html lang="fr">    
-<?php 
-    require_once 'utils/common.php';
-    require_once SITE_ROOT.'partials/head.php';
-    require_once SITE_ROOT.'partials/header.php';
-    require_once SITE_ROOT.'chat.php';
-    require_once SITE_ROOT.'utils/database.php';
+<html lang="fr">
+<?php
+require_once 'utils/common.php';
+require_once SITE_ROOT . 'partials/head.php';
+require_once SITE_ROOT . 'partials/header.php';
+require_once SITE_ROOT . 'chat.php';
+require_once SITE_ROOT . 'utils/database.php';
 
-    
-    $pdoScores = $pdo->prepare('SELECT score FROM Scores ORDER BY score ASC LIMIT 1');
-    $pdoScores->execute([]);
-    $meilleurScore = $pdoScores->fetch();
+
+$pdoScores = $pdo->prepare('SELECT score FROM Scores ORDER BY score ASC LIMIT 1');
+$pdoScores->execute([]);
+$meilleurScore = $pdoScores->fetch();
+
+$pdoInscrits = $pdo->prepare('SELECT COUNT(*) AS nombre FROM Utilisateur');
+$pdoInscrits->execute([]);
+$nbJoueursInscrits = $pdoInscrits->fetch();
+
+$pdoParties = $pdo->prepare('SELECT COUNT(*) AS nombre FROM Scores');
+$pdoParties->execute([]);
+$nbPartiesJouees = $pdoParties->fetch();
+
+
 ?>
 <section class="indexhtml">
 
     <body>
-        
-        <div class="accueil">       
+
+        <div class="accueil">
             <h1 style="font-size: 6vmin;">BIENVENUE DANS NOTRE STUDIO !</h1>
             <span style="color: rgb(200, 200, 200); font-size: 2.8vmin;">Venez challenger les cerveaux les plus agiles !</span>
             <a href="<?= PROJECT_FOLDER ?>games/memory/memory.php" id="play"> <strong>JOUER !</strong></a>
-        </div>        
+        </div>
         <div class="present">
             <img src="https://www.ass-security.fr/blog/wp-content/uploads/2021/08/console-theme.jpg" class="present_img">
             <img src="https://previews.123rf.com/images/rastudio/rastudio1702/rastudio170204329/72501883-jeune-homme-d-affaires-africain-sur-un-trottinette-homme-d-affaires-avec-mallette-d-équitation-pour.jpg" class="present_img">
@@ -29,14 +39,14 @@
         <div class="present_texte">
             <div class="box">
                 <span>
-                    <strong class="nb">01</strong> 
+                    <strong class="nb">01</strong>
                 </span>
                 <span style="color: gray; font-size: 2vmin;">
                     <strong style="color: white; font-size: 2vmin;">Lorem ipsum</strong><br><br>
-                    dolor sit amet, consectetur adipiscing 
-                    elit. Morbi luctus ipsum auctor mattis placerat. Vivamus consequat convallis luctus. Interdum et malesuada 
+                    dolor sit amet, consectetur adipiscing
+                    elit. Morbi luctus ipsum auctor mattis placerat. Vivamus consequat convallis luctus. Interdum et malesuada
                     fames ac ante ipsum primis in faucibus. In fermentum tristique vestibulum. Sed pulvinar purus nec.
-                </span>       
+                </span>
             </div>
             <div class="box">
                 <span>
@@ -44,10 +54,10 @@
                 </span>
                 <span style="color: gray; font-size: 2vmin;">
                     <strong style="color: white; font-size: 2vmin;">Lorem ipsum</strong><br><br>
-                    dolor sit amet, consectetur adipiscing 
-                    elit. Morbi luctus ipsum auctor mattis placerat. Vivamus consequat convallis luctus. Interdum et malesuada 
+                    dolor sit amet, consectetur adipiscing
+                    elit. Morbi luctus ipsum auctor mattis placerat. Vivamus consequat convallis luctus. Interdum et malesuada
                     fames ac ante ipsum primis in faucibus. In fermentum tristique vestibulum. Sed pulvinar purus nec.
-                </span>  
+                </span>
             </div>
             <div class="box">
                 <span>
@@ -55,10 +65,10 @@
                 </span>
                 <span style="color: gray; font-size: 2vmin;">
                     <strong style="color: white; font-size: 2vmin;">Lorem ipsum</strong><br><br>
-                    dolor sit amet, consectetur adipiscing 
-                    elit. Morbi luctus ipsum auctor mattis placerat. Vivamus consequat convallis luctus. Interdum et malesuada 
+                    dolor sit amet, consectetur adipiscing
+                    elit. Morbi luctus ipsum auctor mattis placerat. Vivamus consequat convallis luctus. Interdum et malesuada
                     fames ac ante ipsum primis in faucibus. In fermentum tristique vestibulum. Sed pulvinar purus nec.
-                </span>         
+                </span>
             </div>
         </div>
         <div class="stats">
@@ -67,7 +77,7 @@
                 <div class="stats_ligne">
                     <span class="stats_petit_carre" style="background-color: rgb(52, 37, 154); font-size: 2vmin;">
                         <p>
-                            <strong style="font-size: 5vmin;">310</strong> <br><br>
+                            <strong style="font-size: 5vmin;"> <?php echo $nbPartiesJouees->nombre ?> </strong> <br><br>
                             Parties Jouées
                         </p>
                     </span>
@@ -81,13 +91,13 @@
                 <div class="stats_ligne">
                     <span class="stats_petit_carre" style="background-color: rgb(170, 46, 163); font-size: 2vmin;">
                         <p>
-                            <strong style="font-size: 5vmin;"><?php echo $meilleurScore?></strong> <br><br>
+                            <strong style="font-size: 5vmin;"><?php echo $meilleurScore->score ?></strong> <br><br>
                             Temps Record
                         </p>
                     </span>
                     <span class="stats_petit_carre" style="background-color: rgb(218, 145, 61); font-size: 2vmin;">
                         <p>
-                            <strong style="font-size: 5vmin;">21 300</strong> <br><br>
+                            <strong style="font-size: 5vmin;"><?php echo $nbJoueursInscrits->nombre ?></strong> <br><br>
                             Joueurs Inscrits
                         </p>
                     </span>
@@ -105,38 +115,37 @@
                     <img class="pp" src="<?= PROJECT_FOLDER ?>assets/images/Kristian.jpg">
                     <p><span>Kristian (avec un K)</span></p>
                     <p class="text">Game Developer</p>
-                            <div class="reseaux">
-                                <a href="https://facebook.com" target="_blank"><img src="<?= PROJECT_FOLDER ?>assets/Images/fb.png"></a>
-                                <a href="https://pinterest.fr" target="_blank"><img src="<?= PROJECT_FOLDER ?>assets/Images/pinterest.png"></a>
-                                <a href="https://x.com" target="_blank"><img src="<?= PROJECT_FOLDER ?>assets/Images/twitter.png"></a>                    
-                            </div>
-                            
-                        </div>
-                        
-                        <div class="item">
-                            <img class="pp" src="<?= PROJECT_FOLDER ?>assets/images/Rizz.JPG">
-                            <p><span>ELWAN DECRYPTE</span></p>
-                            <p class="text">Game Developer</p>
-                            <div class="reseaux">
-                                <a href="https://facebook.com" target="_blank"><img src="<?= PROJECT_FOLDER ?>assets/Images/fb.png"></a>
-                                <a href="https://pinterest.fr" target="_blank"><img src="<?= PROJECT_FOLDER ?>assets/Images/pinterest.png"></a>
-                                <a href="https://x.com" target="_blank"><img src="<?= PROJECT_FOLDER ?>assets/Images/twitter.png"></a>                    
-                            </div>
-                        </div>
-                        
-                        <div class="item">
+                    <div class="reseaux">
+                        <a href="https://facebook.com" target="_blank"><img src="<?= PROJECT_FOLDER ?>assets/Images/fb.png"></a>
+                        <a href="https://pinterest.fr" target="_blank"><img src="<?= PROJECT_FOLDER ?>assets/Images/pinterest.png"></a>
+                        <a href="https://x.com" target="_blank"><img src="<?= PROJECT_FOLDER ?>assets/Images/twitter.png"></a>
+                    </div>
+
+                </div>
+
+                <div class="item">
+                    <img class="pp" src="<?= PROJECT_FOLDER ?>assets/images/Rizz.JPG">
+                    <p><span>ELWAN DECRYPTE</span></p>
+                    <p class="text">Game Developer</p>
+                    <div class="reseaux">
+                        <a href="https://facebook.com" target="_blank"><img src="<?= PROJECT_FOLDER ?>assets/Images/fb.png"></a>
+                        <a href="https://pinterest.fr" target="_blank"><img src="<?= PROJECT_FOLDER ?>assets/Images/pinterest.png"></a>
+                        <a href="https://x.com" target="_blank"><img src="<?= PROJECT_FOLDER ?>assets/Images/twitter.png"></a>
+                    </div>
+                </div>
+
+                <div class="item">
                     <img class="pp" src="<?= PROJECT_FOLDER ?>assets/images/Gwendal.jpg">
                     <p><span>L'AIGRI ORIGINEL</span></p>
                     <p class="text">Game Developer</p>
                     <div class="reseaux">
                         <a href="https://facebook.com" target="_blank"><img src="<?= PROJECT_FOLDER ?>assets/Images/fb.png"></a>
                         <a href="https://pinterest.fr" target="_blank"><img src="<?= PROJECT_FOLDER ?>assets/Images/pinterest.png"></a>
-                        <a href="https://x.com" target="_blank"><img src="<?= PROJECT_FOLDER ?>assets/Images/twitter.png"></a>                    
+                        <a href="https://x.com" target="_blank"><img src="<?= PROJECT_FOLDER ?>assets/Images/twitter.png"></a>
                     </div>
                 </div>
             </section>
         </div>
     </body>
-    <?php require SITE_ROOT.'partials/footer.php'; ?>
+    <?php require SITE_ROOT . 'partials/footer.php'; ?>
 </section>
-    

@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html lang="fr">
-<?php 
-    require_once 'utils/common.php';
-    require_once SITE_ROOT.'partials/head.php';
-    require_once SITE_ROOT.'partials/header.php';
-    require_once SITE_ROOT.'chat.php';
+<?php
+require_once 'utils/common.php';
+require_once SITE_ROOT . 'partials/head.php';
+require_once SITE_ROOT . 'partials/header.php';
+require_once SITE_ROOT . 'chat.php';
 ?>
 <section class="registerhtml">
+
     <body>
         <div class="register_titre">
             INSCRIPTION
@@ -23,6 +24,6 @@
                 Vous avez déjà un compte ? <a href="login.php" class="register_link">Connectez-vous</a> !
             </span>
         </div>
-        <?php require_once SITE_ROOT.'partials/footer.php'; ?>
+        <?php require_once SITE_ROOT . 'partials/footer.php'; ?>
     </body>
 </section>
