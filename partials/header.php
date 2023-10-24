@@ -22,7 +22,7 @@
                 <a href="<?= PROJECT_FOLDER ?>contact.php" <?php if ($page == "contact.php") : ?>style="color: orange;" <?php endif; ?>class="header_link">NOUS CONTACTER</a>
             </span>
             <span>
-                <a href="<?= PROJECT_FOLDER ?>myAccount.php"><img src="<?= PROJECT_FOLDER ?>assets\images\profile.png" class="header_logo" <?php if ($page == "myAccount.php") : ?>style="background-color:orange;" <?php endif; ?>></a>
+                <a href="<?= PROJECT_FOLDER ?>myAccount.php"><img src="<?= PROJECT_FOLDER ?>assets/images/profile.png" class="header_logo" <?php if ($page == "myAccount.php") : ?>style="background-color:orange;" <?php endif; ?>></a>
             </span>
         </div>
     </header>
