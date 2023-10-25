@@ -870,6 +870,26 @@ body{
 
 }
 
+.scoreshtml .scores_recherche {
+    margin-right: 50vw;
+    margin-top: 3vh;
+    display: flex;
+    flex-direction: row;
+    height: 6vh;
+  }
+  
+  .scoreshtml .scores_recherche_entree {
+    margin-left: 1vw;
+    box-sizing: border-box;
+    padding-left: 1vmin;
+    border-radius: 1vmin;
+    background-color: rgb(40, 40, 70);
+    border: none;
+    color: rgb(130, 130, 130);
+    font-size: 2vmin;
+    line-height: 6vh;
+    width: 100%;
+  }
 .scoreshtml .styled-table{
     border-collapse: collapse;
     margin-top: 5vh;
