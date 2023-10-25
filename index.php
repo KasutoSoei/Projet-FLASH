@@ -8,19 +8,9 @@ require_once SITE_ROOT . 'chat.php';
 require_once SITE_ROOT . 'utils/database.php';
 
 
-$pdoScores = $pdo->prepare('SELECT score FROM Scores ORDER BY score ASC LIMIT 1');
-$pdoScores->execute([]);
-$meilleurScore = $pdoScores->fetch();
-
-$pdoInscrits = $pdo->prepare('SELECT COUNT(*) AS nombre FROM Utilisateur');
-$pdoInscrits->execute([]);
-$nbJoueursInscrits = $pdoInscrits->fetch();
-
-$pdoParties = $pdo->prepare('SELECT COUNT(*) AS nombre FROM Scores');
-$pdoParties->execute([]);
-$nbPartiesJouees = $pdoParties->fetch();
-
-
+$meilleurScore = getMeilleurScore($pdo);
+$nbJoueursInscrits = getNbJoueursInscrits($pdo);
+$nbPartiesJouees = getNbPartiesJouees($pdo);
 ?>
 <section class="indexhtml">
 
@@ -77,7 +67,7 @@ $nbPartiesJouees = $pdoParties->fetch();
                 <div class="stats_ligne">
                     <span class="stats_petit_carre" style="background-color: rgb(52, 37, 154); font-size: 2vmin;">
                         <p>
-                            <strong style="font-size: 5vmin;"> <?php echo $nbPartiesJouees->nombre ?> </strong> <br><br>
+                            <strong style="font-size: 5vmin;"> <?php echo $nbPartiesJouees ?> </strong> <br><br>
                             Parties Jouées
                         </p>
                     </span>
@@ -91,13 +81,13 @@ $nbPartiesJouees = $pdoParties->fetch();
                 <div class="stats_ligne">
                     <span class="stats_petit_carre" style="background-color: rgb(170, 46, 163); font-size: 2vmin;">
                         <p>
-                            <strong style="font-size: 5vmin;"><?php echo $meilleurScore->score ?></strong> <br><br>
+                            <strong style="font-size: 5vmin;"><?php echo $meilleurScore ?></strong> <br><br>
                             Temps Record
                         </p>
                     </span>
                     <span class="stats_petit_carre" style="background-color: rgb(218, 145, 61); font-size: 2vmin;">
                         <p>
-                            <strong style="font-size: 5vmin;"><?php echo $nbJoueursInscrits->nombre ?></strong> <br><br>
+                            <strong style="font-size: 5vmin;"><?php echo $nbJoueursInscrits ?></strong> <br><br>
                             Joueurs Inscrits
                         </p>
                     </span>

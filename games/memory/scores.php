@@ -11,21 +11,7 @@ if (!isset($_GET['recherche_pseudo'])){
     $_GET['recherche_pseudo'] = '';
 }
 
-$pdoTablo = $pdo->prepare('SELECT Jeu.nomJeu, pseudo, difficulte, score , dateHeureScore
-    FROM Scores
-    INNER JOIN Jeu ON Scores.idJeu=Jeu.id
-    INNER JOIN Utilisateur ON Scores.idJoueur=Utilisateur.id
-    WHERE pseudo LIKE "%":pseudo"%"
-    ORDER BY Jeu.nomJeu ASC,
-    CASE
-        WHEN difficulte="easy" THEN 1
-        WHEN difficulte="medium" THEN 2
-        WHEN difficulte="hard" THEN 3 END,
-    score ASC;');
-
-$pdoTablo->execute([':pseudo' => $_GET['recherche_pseudo']]);
-$scoreTablo = $pdoTablo->fetchAll();
-
+$score_table = getScoreTable($pdo, $_GET['recherche_pseudo']);
 ?>
 
 <section class="scoreshtml">
@@ -52,13 +38,13 @@ $scoreTablo = $pdoTablo->fetchAll();
                         <th>Date et Heure de la partie</th>
                     </tr>
                 </thead>
-                <?php for ($i = 0; $i < sizeof($scoreTablo); $i++) { ?>
-                    <tr <?php if ($scoreTablo[$i]->pseudo == "ChouKri") : ?>class="active-row" <?php endif; ?>>
-                        <td><?php echo $scoreTablo[$i]->nomJeu ?> </td>
-                        <td><?php echo $scoreTablo[$i]->pseudo ?> </td>
-                        <td><?php echo $scoreTablo[$i]->difficulte ?> </td>
-                        <td><?php echo $scoreTablo[$i]->score ?> </td>
-                        <td><?php echo $scoreTablo[$i]->dateHeureScore ?> </td>
+                <?php for ($i = 0; $i < sizeof($score_table); $i++) { ?>
+                    <tr <?php if ($score_table[$i]->pseudo == "ChouKri") : ?>class="active-row" <?php endif; ?>>
+                        <td><?php echo $score_table[$i]->nomJeu ?> </td>
+                        <td><?php echo $score_table[$i]->pseudo ?> </td>
+                        <td><?php echo $score_table[$i]->difficulte ?> </td>
+                        <td><?php echo $score_table[$i]->score ?> </td>
+                        <td><?php echo $score_table[$i]->dateHeureScore ?> </td>
                     </tr>
                 <?php
                 }
