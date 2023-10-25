@@ -7,10 +7,6 @@ require_once SITE_ROOT . 'partials/header.php';
 require_once SITE_ROOT . 'chat.php';
 require_once SITE_ROOT . 'utils/database.php';
 
-$pdoPseudoExistant = $pdo->prepare('SELECT pseudo FROM Utilisateur WHERE pseudo = :pseudo;');
-$pdoEmailExistant = $pdo->prepare('SELECT email FROM Utilisateur WHERE email = :email;');
-$pdoInsertionUtilisateur = $pdo->prepare('INSERT INTO Utilisateur (email, mdp, pseudo) VALUES(:email, :mdp, :pseudo)');
-
 ?>
 <section class="registerhtml">
 
@@ -32,14 +28,8 @@ $pdoInsertionUtilisateur = $pdo->prepare('INSERT INTO Utilisateur (email, mdp, p
                 <span style="font-size: 2vmin;">
                     Vous avez déjà un compte ? <a href="login.php" class="register_link">Connectez-vous</a> !
                 </span>
+
                 <?php else :
-                $pdoPseudoExistant->execute([':pseudo' => $_POST['pseudo']]);
-                $pseudoExistant = $pdoPseudoExistant->fetch();
-
-                $pdoEmailExistant->execute([':email' => $_POST['email']]);
-                $emailExistant = $pdoEmailExistant->fetch();
-
-                        
 
                 if (
                     preg_match('/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*]).{8,}$/', $_POST['mdp'])
@@ -48,15 +38,15 @@ $pdoInsertionUtilisateur = $pdo->prepare('INSERT INTO Utilisateur (email, mdp, p
                     &&
                     ($_POST['mdp'] == $_POST['mdp_confirme'])
                     &&
-                    ($pseudoExistant == NULL)
+                    (!estPseudoExistant($pdo, $_POST['pseudo']))
                     &&
-                    ($emailExistant == NULL)
+                    (!estEmailExistant($pdo, $_POST['email']))
                 ) :
                     $_POST['mdp'] = hash('sha256', $_POST['mdp']);
-                    $pdoInsertionUtilisateur ->execute([':email'=> $_POST['email'], ':mdp'=> $_POST['mdp'], ':pseudo'=> $_POST['pseudo']]);
+                    InsertionUtilisateur($pdo, $_POST['email'], $_POST['mdp'], $_POST['pseudo']);
                 ?>
                     <p style="font-size: 2vmin;">Vous êtes bien inscrit!</p>
-                    
+
 
                 <?php else : ?>
 
