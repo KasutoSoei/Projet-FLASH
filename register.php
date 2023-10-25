@@ -7,14 +7,9 @@ require_once SITE_ROOT . 'partials/header.php';
 require_once SITE_ROOT . 'chat.php';
 require_once SITE_ROOT . 'utils/database.php';
 
-
-
-
-
 $pdoPseudoExistant = $pdo->prepare('SELECT pseudo FROM Utilisateur WHERE pseudo = :pseudo;');
 $pdoEmailExistant = $pdo->prepare('SELECT email FROM Utilisateur WHERE email = :email;');
 $pdoInsertionUtilisateur = $pdo->prepare('INSERT INTO Utilisateur (email, mdp, pseudo) VALUES(:email, :mdp, :pseudo)');
-
 
 ?>
 <section class="registerhtml">
@@ -24,6 +19,7 @@ $pdoInsertionUtilisateur = $pdo->prepare('INSERT INTO Utilisateur (email, mdp, p
             INSCRIPTION
         </div>
         <div class="inscription">
+
             <?php if ($_POST == NULL) : ?>
 
                 <form method="post" style="width: 100%;">
@@ -86,6 +82,7 @@ $pdoInsertionUtilisateur = $pdo->prepare('INSERT INTO Utilisateur (email, mdp, p
                         <?php if ($_POST['mdp'] != $_POST['mdp_confirme']) : ?>
                             <p style="font-size: 2vmin; color:red">Les mots de passe ne correspondent pas</p>
                         <?php endif; ?>
+
 
                         <input type="submit" value="Inscription" class="inscription_bouton">
                     </form>
