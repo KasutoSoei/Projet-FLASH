@@ -17,14 +17,14 @@ $score_table = getScoreTable($pdo, $_GET['recherche_pseudo']);
 <section class="scoreshtml">
 
     <body>
-        <div class="scores_titre">
+        <div class="scoresTitre">
             SCORES
         </div>
         <div class="scores">
             <form method="get" style="width: 100%;">
                 <span class="scores_recherche">
                     <img src="<?= PROJECT_FOLDER ?>assets/images/recherche.png">
-                    <input type="text" name="recherche_pseudo" placeholder="Recherche" class="scores_recherche_entree">
+                    <input type="text" name="recherche_pseudo" placeholder="Recherche" id="scores_rechercheEntree">
                 </span>
             </form>
             <table class="styled-table">

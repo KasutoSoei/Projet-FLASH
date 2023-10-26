@@ -10,7 +10,7 @@ require_once SITE_ROOT . 'chat.php';
 <section class="memoryhtml">
 
     <body>
-        <div class="game_titre">
+        <div class="gameTitre">
             JEU
         </div>
 

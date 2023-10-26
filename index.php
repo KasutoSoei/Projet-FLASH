@@ -21,12 +21,12 @@ $nbPartiesJouees = getNbPartiesJouees($pdo);
             <span style="color: rgb(200, 200, 200); font-size: 2.8vmin;">Venez challenger les cerveaux les plus agiles !</span>
             <a href="<?= PROJECT_FOLDER ?>games/memory/memory.php" id="play"> <strong>JOUER !</strong></a>
         </div>
-        <div class="present">
-            <img src="https://www.ass-security.fr/blog/wp-content/uploads/2021/08/console-theme.jpg" class="present_img">
-            <img src="https://previews.123rf.com/images/rastudio/rastudio1702/rastudio170204329/72501883-jeune-homme-d-affaires-africain-sur-un-trottinette-homme-d-affaires-avec-mallette-d-équitation-pour.jpg" class="present_img">
-            <img src="https://png.pngtree.com/background/20211215/original/pngtree-casino-vertical-poker-poster-picture-image_1492215.jpg" class="present_img">
+        <div id="present">
+            <img src="https://www.ass-security.fr/blog/wp-content/uploads/2021/08/console-theme.jpg" class="presentImg">
+            <img src="https://previews.123rf.com/images/rastudio/rastudio1702/rastudio170204329/72501883-jeune-homme-d-affaires-africain-sur-un-trottinette-homme-d-affaires-avec-mallette-d-équitation-pour.jpg" class="presentImg">
+            <img src="https://png.pngtree.com/background/20211215/original/pngtree-casino-vertical-poker-poster-picture-image_1492215.jpg" class="presentImg">
         </div>
-        <div class="present_texte">
+        <div id="presentTexte">
             <div class="box">
                 <span>
                     <strong class="nb">01</strong>
@@ -62,30 +62,30 @@ $nbPartiesJouees = getNbPartiesJouees($pdo);
             </div>
         </div>
         <div class="stats">
-            <img src="https://staticctf.ubisoft.com/J3yJr34U2pZ2Ieem48Dwy9uqj5PNUQTn/3ynMy93xlHyh1KG0U3NEmZ/4be66477587b930e7f06d65d85e43ec8/wd2-ubicom-game_info-connect_with_friends-v1.jpg" class="stats_img">
-            <div class="stats_grand_carre">
-                <div class="stats_ligne">
-                    <span class="stats_petit_carre" style="background-color: rgb(52, 37, 154); font-size: 2vmin;">
+            <img src="https://staticctf.ubisoft.com/J3yJr34U2pZ2Ieem48Dwy9uqj5PNUQTn/3ynMy93xlHyh1KG0U3NEmZ/4be66477587b930e7f06d65d85e43ec8/wd2-ubicom-game_info-connect_with_friends-v1.jpg" id="statsImg">
+            <div id="statsGrandCarre">
+                <div class="statsLigne">
+                    <span class="statsPetitCarre" style="background-color: rgb(52, 37, 154); font-size: 2vmin;">
                         <p>
                             <strong style="font-size: 5vmin;"> <?php echo $nbPartiesJouees ?> </strong> <br><br>
                             Parties Jouées
                         </p>
                     </span>
-                    <span class="stats_petit_carre" style="background-color: rgb(75, 159, 101); font-size: 2vmin;">
+                    <span class="statsPetitCarre" style="background-color: rgb(75, 159, 101); font-size: 2vmin;">
                         <p>
                             <strong style="font-size: 5vmin;">1020</strong> <br><br>
                             Joueurs Connectés
                         </p>
                     </span>
                 </div>
-                <div class="stats_ligne">
-                    <span class="stats_petit_carre" style="background-color: rgb(170, 46, 163); font-size: 2vmin;">
+                <div class="statsLigne">
+                    <span class="statsPetitCarre" style="background-color: rgb(170, 46, 163); font-size: 2vmin;">
                         <p>
                             <strong style="font-size: 5vmin;"><?php echo $meilleurScore ?></strong> <br><br>
                             Temps Record
                         </p>
                     </span>
-                    <span class="stats_petit_carre" style="background-color: rgb(218, 145, 61); font-size: 2vmin;">
+                    <span class="statsPetitCarre" style="background-color: rgb(218, 145, 61); font-size: 2vmin;">
                         <p>
                             <strong style="font-size: 5vmin;"><?php echo $nbJoueursInscrits ?></strong> <br><br>
                             Joueurs Inscrits
