@@ -1,43 +1,65 @@
 <!DOCTYPE html>
 <html lang="fr">
-<?php require 'partials/head.php'; ?>
+<?php
+require_once 'utils/common.php';
+require_once SITE_ROOT . 'partials/head.php';
+require_once SITE_ROOT . 'partials/header.php';
+require_once SITE_ROOT . 'utils/database.php';
+
+$messages = obtenirMessagesChat($pdo, $_SESSION['userId']);
+?>
 
 <body>
-    <div class="chatContainer">
-        <div id="chatHeader">
-            Chat général
-        </div>
-        <div id="chatMessages">
-            <div class="message">
-                <div class="messageSender info">Moi</div>
-                <div class="test">
-                    <div class="messageContent">Salut la team</div>
-                </div>
-                <div class="date info">Aujourd'hui à 15h22</div>
-            </div>
-            <div class="message2">
-                <div class="messageSender2 info">Joueur 1</div>
-                <div class="messageContent2">Lorem ipsum dolor sit amet</div>
-                <div class="date2 info">Aujourhui à 15h22</div>
-            </div>
-            <div class="message2">
-                <div class="messageSender2 info">Joueur 1</div>
-                <div class="messageContent2">tsais le mec qui parle en latin</div>
-                <div class="date2 info">Aujourd'hui à 15h22</div>
-            </div>
-            <div class="message">
-                <div class="messageSender info">Moi</div>
-                <div class="test">
-                    <div class="messageContent">t'es trop une galere</div>
-                </div>
-                <div class="date info">Aujourd'hui à 15h22</div>
-            </div>
-        </div>
-        <div id="chatInput">
-            <input type="text" id="messageInput" placeholder="Votre message...">
-            <button id="sendBouton">Envoyer</button>
-        </div>
+    <div class="titre">
+        CHAT
     </div>
-</body>
 
-</html>
+    <section class="chathtml">
+
+        <div class="chat">
+            <?php foreach ($messages as $message) : ?>
+
+                <?php if ($message->isSender) : ?>
+                    <div class="chatMessageBoxEnvoyeur">
+                        <div class="chatMessageEnvoye">
+                            <img src="<?= PROJECT_FOLDER ?>/userFiles/<?= $message->UtilisateurId ?>/profile.png" class="chatPP">
+
+                            <div class="chatInfosMessage" style="  align-items: end;">
+                                <p style="color: yellow;">
+                                    <?php echo $message->pseudo ?>
+                                </p>
+                                <p style=" overflow-wrap: break-word; text-align: right">
+                                    <?php echo $message->messageChat ?>
+                                </p>
+                            </div>
+                        </div>
+                        <p class="chatMessageHeure">
+                            Aujourd'hui, à <?php echo $message->heure ?>
+                        </p>
+                    </div>
+
+                <?php else : ?>
+                    <div class="chatMessageBoxReceveur">
+                        <div class="chatMessageRecu">
+                            <img src="<?= PROJECT_FOLDER ?>/userFiles/<?= $message->UtilisateurId ?>/profile.png" class="chatPP">
+
+                            <div class="chatInfosMessage" style="  align-items: start;">
+                                <p style="color: green;">
+                                    <?php echo $message->pseudo ?>
+                                </p>
+                                <p style=" overflow-wrap: break-word;">
+                                    <?php echo $message->messageChat ?>
+                                </p>
+                            </div>
+                        </div>
+                        <p class="chatMessageHeure">
+                            Aujourd'hui, à <?php echo $message->heure ?>
+                        </p>
+                    </div>
+
+                <?php endif; ?>
+            <?php endforeach; ?>
+        </div>
+    </section>
+</body>
+<?php require_once SITE_ROOT . 'partials/footer.php'; ?>

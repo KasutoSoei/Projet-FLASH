@@ -39,13 +39,13 @@
 }
 
 .headerLogo {
-  border-radius: 100%;
+  border-radius: 50%;
   width: 6vmin;
   height: auto;
 }
 
 .headerLogoConnected {
-  border-radius: 100%;
+  border-radius: 50%;
   width: 4vmin;
   height: auto;
 }
@@ -63,6 +63,7 @@
 .headerPseudo {
   text-decoration: none;
   color: white;
+  font-size: 2vmin;
 }
 .headerPseudo:hover {
   text-decoration: underline;

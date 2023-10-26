@@ -4,14 +4,14 @@
 require_once '../../utils/common.php';
 require_once SITE_ROOT . 'partials/head.php';
 require_once SITE_ROOT . 'partials/header.php';
-require_once SITE_ROOT . 'chat.php';
 ?>
-<section class="memoryhtml">
 
-    <body>
-        <div class="gameTitre">
-            JEU
-        </div>
+<body>
+    <div class="titre">
+        JEU
+    </div>
+
+    <section class="memoryhtml">
 
         <div class="game_theme">
             <span>
@@ -1291,6 +1291,6 @@ require_once SITE_ROOT . 'chat.php';
                 </tr>
             </table>
         </div>
-        <?php require_once SITE_ROOT . 'partials/footer.php'; ?>
-    </body>
-</section>
+    </section>
+</body>
+<?php require_once SITE_ROOT . 'partials/footer.php'; ?>

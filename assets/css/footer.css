@@ -1,11 +1,11 @@
 * {
     padding: 0;
     margin: 0;
-    box-sizing: border-box;
 }
 
 footer {
     font-family: Arial;
+    font-size: 2vmin;
     position: relative;
     width: 100vw;
     height: 60vh;
@@ -23,7 +23,6 @@ footer .main {
 }
 
 footer .info {
-    position: relative;
     display: flex;
     flex-direction: column;
     row-gap: 8%;
@@ -31,7 +30,6 @@ footer .info {
 }
 
 footer .POM {
-    position: relative;
     display: flex;
     flex-direction: column;
     row-gap: 8%;
@@ -45,25 +43,11 @@ footer .POM a:hover{
     color: rgb(220, 147, 63);
 }
 footer .copyright {
-    position: relative;
     display: flex;
     align-self: flex-end;
     height: 2vh;
     margin-bottom: 2vh;
     margin-left: 12vw;
-}
-
-footer h3 {
-    color: white;
-}
-
-footer p {
-    font-size: 2vmin;
-    
-}
-
-footer h3 {
-    font-size: 2.5vmin;
 }
 
 footer .orange {
@@ -72,7 +56,6 @@ footer .orange {
 }
 
 footer .logo {
-    position: relative;
     display: flex;
     justify-content: flex-start;
     margin-top: 0.4vh;

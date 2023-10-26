@@ -4,27 +4,29 @@
 require_once '../../utils/common.php';
 require_once SITE_ROOT . 'partials/head.php';
 require_once SITE_ROOT . 'partials/header.php';
-require_once SITE_ROOT . 'chat.php';
 require_once SITE_ROOT . 'utils/database.php';
 
-if (!isset($_GET['recherche_pseudo'])){
-    $_GET['recherche_pseudo'] = '';
+if (!isset($_GET['recherchePseudo'])) {
+    $_GET['recherchePseudo'] = '';
 }
 
-$score_table = getScoreTable($pdo, $_GET['recherche_pseudo']);
+$score_table = obtenirScoreTable($pdo, $_GET['recherchePseudo']);
 ?>
 
-<section class="scoreshtml">
 
-    <body>
-        <div class="scoresTitre">
-            SCORES
-        </div>
+
+<body>
+    <div class="titre">
+        SCORES
+    </div>
+
+    <section class="scoreshtml">
+
         <div class="scores">
             <form method="get" style="width: 100%;">
                 <span class="scores_recherche">
                     <img src="<?= PROJECT_FOLDER ?>assets/images/recherche.png">
-                    <input type="text" name="recherche_pseudo" placeholder="Recherche" id="scores_rechercheEntree">
+                    <input type="text" name="recherchePseudo" placeholder="Recherche" id="scores_rechercheEntree">
                 </span>
             </form>
             <table class="styled-table">
@@ -38,19 +40,17 @@ $score_table = getScoreTable($pdo, $_GET['recherche_pseudo']);
                         <th>Date et Heure de la partie</th>
                     </tr>
                 </thead>
-                <?php for ($i = 0; $i < sizeof($score_table); $i++) { ?>
-                    <tr <?php if ($score_table[$i]->pseudo == "ChouKri") : ?>class="active-row" <?php endif; ?>>
+                <?php for ($i = 0; $i < sizeof($score_table); $i++) : ?>
+                    <tr <?php if ($score_table[$i]->id == $_SESSION['userId']) : ?>class="active-row" <?php endif; ?>>
                         <td><?php echo $score_table[$i]->nomJeu ?> </td>
                         <td><?php echo $score_table[$i]->pseudo ?> </td>
                         <td><?php echo $score_table[$i]->difficulte ?> </td>
                         <td><?php echo $score_table[$i]->score ?> </td>
                         <td><?php echo $score_table[$i]->dateHeureScore ?> </td>
                     </tr>
-                <?php
-                }
-                ?>
+                <?php endfor; ?>
             </table>
         </div>
-        <?php require_once SITE_ROOT . 'partials/footer.php'; ?>
-    </body>
-</section>
+    </section>
+</body>
+<?php require_once SITE_ROOT . 'partials/footer.php'; ?>

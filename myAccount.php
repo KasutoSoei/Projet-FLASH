@@ -4,29 +4,34 @@
 require_once 'utils/common.php';
 require_once SITE_ROOT . 'partials/head.php';
 require_once SITE_ROOT . 'partials/header.php';
-require_once SITE_ROOT . 'chat.php';
 require_once SITE_ROOT . 'utils/database.php';
 ?>
-<form method="POST" enctype="multipart/form-data">
-     <input type="file" name="avatar" accept="image/png">
-     <input type="submit" name="envoyer" value="Envoyer le fichier">
-</form>
-<?php
-if(isset($_FILES['avatar'])):
-    move_uploaded_file($_FILES['avatar']['tmp_name'], SITE_ROOT . 'userFiles/' . $_SESSION['userId'] . '/profile.png');
-endif;
-?>
-<section class="myaccounthtml">
 
-    <body>
+<body>
 
-        <div class="myAccountTitre">
-            MON ESPACE
-        </div>
+    <div class="titre">
+        MON ESPACE
+    </div>
+
+    <section class="myaccounthtml">
 
         <div class="myAccount">
-            <span>
-                <img src="<?= PROJECT_FOLDER ?>userFiles/<?= $_SESSION['userId'] ?>/profile.png" style="border-radius: 100%; width: 15vmin; height: auto;"></a>
+            <span style="margin-left: 3vh;">
+                <form method="POST" enctype="multipart/form-data">
+                    <input type="file" id="files" name="avatar" style="display:none;" accept="image/png">
+                    <label for="files">
+                        <img src="<?= PROJECT_FOLDER ?>userFiles/<?= $_SESSION['userId'] ?>/profile.png" style="border-radius: 10%; height: 15vmin; width: auto;">
+                    </label>
+                    <input type="submit" id="changerPP" style="display: none;">
+                    <label for="changerPP">
+                        <img src="<?= PROJECT_FOLDER ?>assets/images/send.png" class="myAccountChangerPP">
+                    </label>
+                </form>
+                <?php
+                if (isset($_FILES['avatar'])) :
+                    move_uploaded_file($_FILES['avatar']['tmp_name'], SITE_ROOT . 'userFiles/' . $_SESSION['userId'] . '/profile.png');
+                endif;
+                ?>
             </span>
             <span style="font-size: 5vmin;">
                 <!--<?php if ($_POST == NULL) : ?>
@@ -159,6 +164,6 @@ endif;
             <a href="login.php" class="myAccountGestionBouton" style="text-decoration: none;">Changer de compte</a>
             <input type="button" onclick="supprimerCompte($pdo, $_SESSION['userId']); $_SESSION['userId'] = 0;" value="Supprimer le compte" class="myAccountGestionBouton">
         </div>
-        <?php require_once SITE_ROOT . 'partials/footer.php'; ?>
-    </body>
-</section>
+    </section>
+</body>
+<?php require_once SITE_ROOT . 'partials/footer.php'; ?>

@@ -19,31 +19,31 @@ function connectToDbAndGetPdo(): PDO
 }
 $pdo = connectToDbAndGetPdo();
 
-function getMeilleurScore($pdo): int
+function obtenirMeilleurScore($pdo): int
 {
     $pdoScores = $pdo->prepare('SELECT score FROM Scores ORDER BY score ASC LIMIT 1');
     $pdoScores->execute();
     return $pdoScores->fetch()->score;
 }
 
-function getNbJoueursInscrits($pdo): int
+function obtenirNbJoueursInscrits($pdo): int
 {
     $pdoInscrits = $pdo->prepare('SELECT COUNT(*) AS inscrits FROM Utilisateur');
     $pdoInscrits->execute();
     return $pdoInscrits->fetch()->inscrits;
 }
 
-function getNbPartiesJouees($pdo): int
+function obtenirNbPartiesJouees($pdo): int
 {
     $pdoParties = $pdo->prepare('SELECT COUNT(*) AS nombre FROM Scores');
     $pdoParties->execute();
     return $pdoParties->fetch()->nombre;
 }
 
-function getScoreTable($pdo, $recherche_pseudo): array
+function obtenirScoreTable($pdo, $recherchePseudo): array
 {
     $pdoTablo = $pdo->prepare(
-        'SELECT Jeu.nomJeu, pseudo, difficulte, score , dateHeureScore
+        'SELECT Jeu.nomJeu, Utilisateur.id, pseudo, difficulte, score , dateHeureScore
         FROM Scores
         INNER JOIN Jeu ON Scores.idJeu=Jeu.id
         INNER JOIN Utilisateur ON Scores.idJoueur=Utilisateur.id
@@ -53,9 +53,10 @@ function getScoreTable($pdo, $recherche_pseudo): array
             WHEN difficulte="easy" THEN 1
             WHEN difficulte="medium" THEN 2
             WHEN difficulte="hard" THEN 3 END,
-        score ASC;');
+        score ASC;'
+    );
 
-    $pdoTablo->execute([':pseudo' => $recherche_pseudo]);
+    $pdoTablo->execute([':pseudo' => $recherchePseudo]);
     return $pdoTablo->fetchAll();
 }
 
@@ -89,15 +90,14 @@ function compteExiste($pdo, $email, $mdp): bool
     return $pdoCompte->fetch()->mailMdpCorrespondent;
 }
 
-function getId($pdo, $email, $mdp): int
+function obtenirId($pdo, $email, $mdp): int
 {
-    $pdoId= $pdo->prepare('SELECT id FROM Utilisateur WHERE email = :email AND mdp = :mdp;');
+    $pdoId = $pdo->prepare('SELECT id FROM Utilisateur WHERE email = :email AND mdp = :mdp;');
     $pdoId->execute([':email' => $email, ':mdp' => hash('sha256', $mdp)]);
-    var_dump($pdoId->fetch()->id);
     return $pdoId->fetch()->id;
 }
 
-function getPseudo($pdo, $id): string
+function obtenirPseudo($pdo, $id): string
 {
     $pdoPseudo = $pdo->prepare('SELECT pseudo FROM Utilisateur WHERE id = :id;');
     $pdoPseudo->execute([':id' => $id]);
@@ -111,10 +111,10 @@ function estBonMdp($pdo, $mdpEntre, $idUtilisateur): bool
     return $pdoMdpExistant->fetch()->mdp == hash('sha256', $mdpEntre);
 }
 
-function changeMdp($pdo, $newMdp, $idUtilisateur): void 
+function changeMdp($pdo, $newMdp, $idUtilisateur): void
 {
-    $pdoNewMdp = $pdo -> prepare('UPDATE Utilisateur SET mdp = :mdp WHERE id = :id');
-    $pdoNewMdp->execute([':mdp' => $newMdp,':id' => $idUtilisateur]); 
+    $pdoNewMdp = $pdo->prepare('UPDATE Utilisateur SET mdp = :mdp WHERE id = :id');
+    $pdoNewMdp->execute([':mdp' => $newMdp, ':id' => $idUtilisateur]);
 }
 
 function estBonEmail($pdo, $emailEntre, $idUtilisateur): bool
@@ -124,14 +124,26 @@ function estBonEmail($pdo, $emailEntre, $idUtilisateur): bool
     return  $pdoEmailExistant->fetch()->email == $emailEntre;
 }
 
-function changeEmail($pdo, $newEmail, $idUtilisateur): void 
+function changeEmail($pdo, $newEmail, $idUtilisateur): void
 {
-    $pdoNewEmail = $pdo -> prepare('UPDATE Utilisateur SET email = :email WHERE id = :id');
-    $pdoNewEmail->execute([':email' => $newEmail,':id' => $idUtilisateur]); 
+    $pdoNewEmail = $pdo->prepare('UPDATE Utilisateur SET email = :email WHERE id = :id');
+    $pdoNewEmail->execute([':email' => $newEmail, ':id' => $idUtilisateur]);
 }
 
 function supprimerCompte($pdo, $id): void
 {
-    $pdoSupprime = $pdo -> prepare('DELETE FROM Utilisateur WHERE id = :id');
+    $pdoSupprime = $pdo->prepare('DELETE FROM Utilisateur WHERE id = :id');
     $pdoSupprime->execute([':id' => $id]);
+}
+
+function obtenirMessagesChat($pdo, $id): array
+{
+    $pdoMessagesChat = $pdo->prepare(
+        'SELECT messageChat, CAST(dateHeureMessage AS time) AS heure, pseudo, Utilisateur.id AS UtilisateurId, Utilisateur.id = :id AS isSender
+        FROM Chat
+        INNER JOIN Utilisateur ON Chat.idExpediteur = Utilisateur.id
+        WHERE dateHeureMessage < CURRENT_TIMESTAMP'
+    );
+    $pdoMessagesChat->execute([':id' => $id]);
+    return $pdoMessagesChat->fetchAll();
 }

@@ -4,14 +4,14 @@
 require_once '../../utils/common.php';
 require_once SITE_ROOT . 'partials/head.php';
 require_once SITE_ROOT . 'partials/header.php';
-require_once SITE_ROOT . 'chat.php';
 ?>
-<section class="memoryhtml">
 
-    <body>
-        <div class="gameTitre">
-            JEU
-        </div>
+<body>
+    <div class="titre">
+        JEU
+    </div>
+
+    <section class="memoryhtml">
 
         <div class="game_theme">
             <span>
@@ -43,7 +43,7 @@ require_once SITE_ROOT . 'chat.php';
             </span>
         </div>
 
-        <div style="margin-top: 7vh; color: white; font-size: 2vmin;">
+        <div style="margin-top: 7vh; text-align:center; font-size: 2vmin;">
             Bienvenue sur la page du jeu ! La grille s'affichera lorsque vous aurez choisi une difficulté. Si vous voulez les règles, les voici : <br>
         </div>
 
@@ -99,6 +99,6 @@ require_once SITE_ROOT . 'chat.php';
                 Voilà, vous savez tout. Maintenant, faites place à votre mémoire !
             <?php endif; ?>
         </div>
-        <?php require_once SITE_ROOT . 'partials/footer.php'; ?>
-    </body>
-</section>
+    </section>
+</body>
+<?php require_once SITE_ROOT . 'partials/footer.php'; ?>
