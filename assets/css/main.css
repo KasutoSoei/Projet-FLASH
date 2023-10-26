@@ -1,8 +1,21 @@
+.titre {
+  margin-top: 1vh;
+  background-image: url("../images/background.jpg");
+  background-position: center;
+  background-size: 100%;
+  font-size: 5vmin;
+  text-align: center;
+  height: 20vh;
+  line-height: 20vh;
+}
+
 body {
   font-family: arial;
+  font-size: 2vmin;
   background-color: rgb(16, 14, 44);
   color: white;
 }
+
 
 /*---------------------------INDEX.php--------------------------*/
 .indexhtml .accueil {
@@ -124,7 +137,6 @@ body {
 .indexhtml #carre p {
   font-weight: bold;
   font-family: Arial;
-  color: white;
   font-size: 1em;
 }
 
@@ -188,7 +200,6 @@ body {
 
 .indexhtml section.container span {
   padding: 5px;
-  color: white;
   font-family: Arial;
   font-size: 1em;
   font-weight: bold;
@@ -247,158 +258,76 @@ body {
 /*---------------------------INDEX.php--------------------------*/
 
 /*---------------------------CHAT--------------------------*/
-.chatContainer {
-  margin-bottom: -47vh;
-  font-size: 2vmin;
-  bottom: 0;
-  width: 20%;
-  transition: 0.5s;
 
-  right: 2vw;
-  position: fixed;
-  background-color: #fff;
-
-  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
-}
-
-.chatContainer:hover {
-  transform: translateY(-95%);
-}
-
-.chatContainer #chatHeader {
-  background-color: #007bff;
-  color: #fff;
-  padding: 1vw;
-  text-align: left;
-  padding-left: 3vw;
-  font-weight: bold;
-}
-
-.chatContainer #chatMessages {
-  padding: 1vmin;
-  max-height: 40vh;
-  overflow-y: scroll;
-}
-
-.chatContainer .message {
-  color: black;
-  margin-bottom: 1vh;
-}
-
-.chatContainer .message2 {
-  color: black;
-  margin-bottom: 1vh;
-}
-
-.chatContainer .test {
-  display: flex;
-  justify-content: flex-end;
-}
-
-.chatContainer .messageSender {
-  margin-top: 1vh;
-  text-align: right;
-  color: rgb(161, 158, 158);
-}
-
-.chatContainer .messageSender2 {
+.chathtml .chat {
+  margin-top: 5vh;
+  margin-bottom: 5vh;
+  margin-left: 5vw;
+  padding-top: 1vh;
+  padding-bottom: 1vh;
   padding-left: 1vw;
-  max-width: 50%;
-  margin-top: 1vh;
-  text-align: left;
-  color: rgb(161, 158, 158);
-}
-
-.chatContainer .date {
-  margin-bottom: 1vh;
-  text-align: right;
-  font-size: small;
-  color: rgb(161, 158, 158);
-}
-
-.chatContainer .date2 {
-  padding-left: 1vw;
-  width: 50%;
-  margin-bottom: 1vh;
-  text-align: left;
-  font-size: small;
-  color: rgb(161, 158, 158);
-}
-
-.chatContainer #chatInput {
-  padding: 1vmin;
+  padding-right: 1vw;
+  box-sizing: border-box;
+  border: 1px solid darkgray;
   display: flex;
-  justify-content: space-between;
-  background-color: white;
-  max-width: 20%;
+  flex-direction: column;
+  width: 90vw;
+  min-height: 80vh;
 }
 
-.chatContainer .messageContent {
-  max-width: 50%;
-  width: fit-content;
-  border-radius: 10px;
-  padding: 1vmin;
-  color: white;
-  background-color: #007bff;
+.chathtml .chatMessageBoxEnvoyeur {
+  margin-top: 3vh;
+  margin-left: 50vw;
+  display: flex;
+  flex-direction: column;
+  align-items: end;
+}
+
+.chathtml .chatMessageBoxReceveur {
+  margin-top: 3vh;
+  margin-right: 50vw;
+  display: flex;
+  flex-direction: column;
+}
+
+.chathtml .chatMessageEnvoye {
+  display: flex;
+  flex-direction: row-reverse;
+}
+
+.chathtml .chatMessageRecu {
+  display: flex;
+  flex-direction: row;
+}
+
+.chathtml .chatInfosMessage {
+  padding-left: 1vw;
+  padding-right: 1vw;;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.chathtml .chatPP {
+  border-radius: 50%;
+  height: 6vmin;
+  width: auto;
+}
+
+.chathtml .chatMessageHeure {
   margin-top: 1vh;
-  margin-bottom: 1vh;
-}
-
-.chatContainer .messageContent2 {
-  max-width: 50%;
-  width: fit-content;
-  border-radius: 10px;
-  padding: 1vmin;
-  background-color: rgb(212, 212, 212);
-  text-align: left;
-  color: black;
-  margin-top: 1vh;
-  margin-bottom: 1vh;
-}
-
-.chatContainer #messageInput {
-  flex: 1;
-  padding: 1vmin;
-  border: 1px solid #ccc;
-  border-radius: 3px;
-  font-size: 1dvw;
-}
-
-.chatContainer #sendBouton {
-  background-color: white;
-  color: black;
-  border: none;
-  border-radius: 3px;
-  padding: 0.5vmin 1vmin;
-  cursor: pointer;
-  font-size: 1dvw;
-}
-
-.chatContainer .info {
-  font-size: 1.5vmin;
+  font-size: 1vmin;
+  color: lightgray;
 }
 
 /*---------------------------CHAT--------------------------*/
 
 /*---------------------------CONTACT.php--------------------------*/
-.contacthtml .contactTitre {
-  margin-top: 1vh;
-  background-image: url("../images/background.jpg");
-  background-position: center;
-  background-size: 100%;
-  color: white;
-  font-size: 5vmin;
-  text-align: center;
-  height: 20vh;
-  line-height: 20vh;
-}
-
 .contacthtml .contact {
   margin-top: 15vh;
   margin-bottom: 5vh;
   margin-left: 10vw;
   margin-right: 10vw;
-  color: white;
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -467,18 +396,6 @@ body {
 /*---------------------------CONTACT.php--------------------------*/
 
 /*---------------------------MEMORY.php--------------------------*/
-.memoryhtml .gameTitre {
-  margin-top: 1vh;
-  background-image: url("../images/background.jpg");
-  background-position: center;
-  background-size: 100%;
-  color: white;
-  font-size: 5vmin;
-  text-align: center;
-  height: 20vh;
-  line-height: 20vh;
-}
-
 .memoryhtml .game_theme {
   margin-top: 5vh;
   border: 1px solid darkblue;
@@ -551,7 +468,6 @@ body {
   border: 1px dotted violet;
   border-radius: 1vmin;
   background-color: rgb(2, 0, 30);
-  color: white;
   font-size: 2vmin;
   text-align: left;
 }
@@ -594,18 +510,6 @@ body {
 /*---------------------------MEMORY.php--------------------------*/
 
 /*---------------------------MYACCOUNT.php--------------------------*/
-.myaccounthtml .myAccountTitre {
-  margin-top: 1vh;
-  background-image: url("../images/background.jpg");
-  background-position: center;
-  background-size: 100%;
-  color: white;
-  font-size: 5vmin;
-  text-align: center;
-  height: 20vh;
-  line-height: 20vh;
-}
-
 .myaccounthtml .myAccount {
   margin-top: 5vh;
   margin-left: 7vw;
@@ -617,6 +521,14 @@ body {
   align-items: center;
   justify-content: space-around;
   height: 50vh;
+}
+
+.myaccounthtml .myAccountChangerPP {
+  border-radius: 10%;
+  border: 1px solid gray;
+  color: white;
+  height: 3vh;
+  width: auto;
 }
 
 .myaccounthtml .myAccountStats {
@@ -712,18 +624,6 @@ body {
 /*---------------------------MYACCOUNT.php--------------------------*/
 
 /*---------------------------REGISTER.php--------------------------*/
-.registerhtml .registerTitre {
-  margin-top: 1vh;
-  background-image: url("../images/background.jpg");
-  background-position: center;
-  background-size: 100%;
-  color: white;
-  font-size: 5vmin;
-  text-align: center;
-  height: 15vh;
-  line-height: 15vh;
-}
-
 .registerhtml .inscription {
   margin-top: 5vh;
   margin-left: 33vw;
@@ -772,18 +672,6 @@ body {
 /*---------------------------REGISTER.php--------------------------*/
 
 /*---------------------------LOGIN.php--------------------------*/
-.loginhtml .loginTitre {
-  margin-top: 1vh;
-  background-image: url("../images/background.jpg");
-  background-position: center;
-  background-size: 100%;
-  color: white;
-  font-size: 5vmin;
-  text-align: center;
-  height: 20vh;
-  line-height: 20vh;
-}
-
 .loginhtml .connexion {
   margin-top: 5vh;
   margin-left: 33vw;
@@ -831,18 +719,6 @@ body {
 /*---------------------------LOGIN.php--------------------------*/
 
 /*---------------------------SCORES.php--------------------------*/
-.scoreshtml .scoresTitre {
-  margin-top: 1vh;
-  background-image: url("../images/background.jpg");
-  background-size: 100%;
-  background-position: center;
-  color: white;
-  font-size: 5vmin;
-  text-align: center;
-  height: 20vh;
-  line-height: 20vh;
-}
-
 .scoreshtml .scores {
   margin-top: 8vh;
   margin-left: 15vw;
@@ -881,7 +757,6 @@ body {
 
 .scoreshtml .styled-table thead tr {
   background-color: rgb(52, 37, 154);
-  color: white;
   text-align: left;
 }
 
@@ -900,7 +775,6 @@ body {
 
 .scoreshtml .styled-table tbody tr.active-row {
   font-weight: bold;
-  color: white;
   background-color: rgba(52, 37, 154, 0.2);
   text-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
 }

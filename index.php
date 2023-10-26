@@ -4,13 +4,12 @@
 require_once 'utils/common.php';
 require_once SITE_ROOT . 'partials/head.php';
 require_once SITE_ROOT . 'partials/header.php';
-require_once SITE_ROOT . 'chat.php';
 require_once SITE_ROOT . 'utils/database.php';
 
 
-$meilleurScore = getMeilleurScore($pdo);
-$nbJoueursInscrits = getNbJoueursInscrits($pdo);
-$nbPartiesJouees = getNbPartiesJouees($pdo);
+$meilleurScore = obtenirMeilleurScore($pdo);
+$nbJoueursInscrits = obtenirNbJoueursInscrits($pdo);
+$nbPartiesJouees = obtenirNbPartiesJouees($pdo);
 ?>
 <section class="indexhtml">
 
@@ -137,5 +136,5 @@ $nbPartiesJouees = getNbPartiesJouees($pdo);
             </section>
         </div>
     </body>
-    <?php require SITE_ROOT . 'partials/footer.php'; ?>
 </section>
+<?php require SITE_ROOT . 'partials/footer.php'; ?>
