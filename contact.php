@@ -10,21 +10,21 @@ require_once SITE_ROOT . 'chat.php';
 
     <body>
 
-        <div class="contact_titre">
+        <div class="contactTitre">
             NOUS CONTACTER
         </div>
 
         <div class="contact">
             <span class="contact_coordonnees">
-                <img src="<?= PROJECT_FOLDER ?>assets/images/phone.png" class="contact_logo">
+                <img src="<?= PROJECT_FOLDER ?>assets/images/phone.png" class="contactLogo">
                 06 07 08 09 10
             </span>
             <span class="contact_coordonnees">
-                <img src="<?= PROJECT_FOLDER ?>assets/images/mail.png" class="contact_logo">
+                <img src="<?= PROJECT_FOLDER ?>assets/images/mail.png" class="contactLogo">
                 support@powerofmemory.com
             </span>
             <span class="contact_coordonnees">
-                <img src="<?= PROJECT_FOLDER ?>assets/images/location.png" class="contact_logo">
+                <img src="<?= PROJECT_FOLDER ?>assets/images/location.png" class="contactLogo">
                 Cergy
             </span>
         </div>
@@ -32,12 +32,12 @@ require_once SITE_ROOT . 'chat.php';
         <form action="memory.php">
             <div class="mail">
                 <div class="mail_identite">
-                    <input type="text" placeholder="Nom" required="required" class="mail_entree" style="width: 49%;">
-                    <input type="email" placeholder="Email" required="required" class="mail_entree" style="width: 49%;">
+                    <input type="text" placeholder="Nom" required="required" class="mailEntree" style="width: 49%;">
+                    <input type="email" placeholder="Email" required="required" class="mailEntree" style="width: 49%;">
                 </div>
-                <input type="text" placeholder="Sujet" required="required" class="mail_entree">
-                <input type="text" placeholder="Message" required="required" class="mail_entree" style="height: 32vh;">
-                <input type="submit" value="Envoyer" class="mail_bouton">
+                <input type="text" placeholder="Sujet" required="required" class="mailEntree">
+                <input type="text" placeholder="Message" required="required" class="mailEntree" style="height: 32vh;">
+                <input type="submit" value="Envoyer" class="mailBouton">
             </div>
         </form>
         <?php require SITE_ROOT . 'partials/footer.php'; ?>

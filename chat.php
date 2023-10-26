@@ -3,39 +3,39 @@
 <?php require 'partials/head.php'; ?>
 
 <body>
-    <div class="chat-container">
-        <div class="chat-header">
+    <div class="chatContainer">
+        <div id="chatHeader">
             Chat général
         </div>
-        <div class="chat-messages">
+        <div id="chatMessages">
             <div class="message">
-                <div class="message-sender info">Moi</div>
+                <div class="messageSender info">Moi</div>
                 <div class="test">
-                    <div class="message-content">Salut la team</div>
+                    <div class="messageContent">Salut la team</div>
                 </div>
                 <div class="date info">Aujourd'hui à 15h22</div>
             </div>
             <div class="message2">
-                <div class="message-sender2 info">Joueur 1</div>
-                <div class="message-content2">Lorem ipsum dolor sit amet</div>
+                <div class="messageSender2 info">Joueur 1</div>
+                <div class="messageContent2">Lorem ipsum dolor sit amet</div>
                 <div class="date2 info">Aujourhui à 15h22</div>
             </div>
             <div class="message2">
-                <div class="message-sender2 info">Joueur 1</div>
-                <div class="message-content2">tsais le mec qui parle en latin</div>
+                <div class="messageSender2 info">Joueur 1</div>
+                <div class="messageContent2">tsais le mec qui parle en latin</div>
                 <div class="date2 info">Aujourd'hui à 15h22</div>
             </div>
             <div class="message">
-                <div class="message-sender info">Moi</div>
+                <div class="messageSender info">Moi</div>
                 <div class="test">
-                    <div class="message-content">t'es trop une galere</div>
+                    <div class="messageContent">t'es trop une galere</div>
                 </div>
                 <div class="date info">Aujourd'hui à 15h22</div>
             </div>
         </div>
-        <div class="chat-input">
-            <input type="text" id="message-input" placeholder="Votre message...">
-            <button id="send-button">Envoyer</button>
+        <div id="chatInput">
+            <input type="text" id="messageInput" placeholder="Votre message...">
+            <button id="sendBouton">Envoyer</button>
         </div>
     </div>
 </body>

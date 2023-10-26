@@ -6,80 +6,72 @@ require_once SITE_ROOT . 'partials/head.php';
 require_once SITE_ROOT . 'partials/header.php';
 require_once SITE_ROOT . 'chat.php';
 require_once SITE_ROOT . 'utils/database.php';
-
 ?>
 <section class="registerhtml">
 
     <body>
-        <div class="register_titre">
+        <div class="registerTitre">
             INSCRIPTION
         </div>
         <div class="inscription">
 
-            <?php if ($_POST == NULL) : ?>
-
+            <?php if ($_POST == null) : ?>
                 <form method="post" style="width: 100%;">
-                    <input type="email" name="email" placeholder="Email" required="required" class="inscription_entree">
-                    <input type="text" name="pseudo" placeholder="Pseudo" required="required" class="inscription_entree">
-                    <input type="password" name="mdp" placeholder="Mot de passe" required="required" class="inscription_entree">
-                    <input type="password" name="mdp_confirme" placeholder="Confirmez le mot de passe" required="required" class="inscription_entree">
-                    <input type="submit" value="Inscription" class="inscription_bouton">
+                    <input type="email" name="email" placeholder="Email" required="required" class="inscriptionEntree">
+                    <input type="text" name="pseudo" placeholder="Pseudo" required="required" class="inscriptionEntree">
+                    <input type="password" name="mdp" placeholder="Mot de passe" required="required" class="inscriptionEntree">
+                    <input type="password" name="mdpConfirme" placeholder="Confirmez le mot de passe" required="required" class="inscriptionEntree">
+                    <input type="submit" value="Inscription" class="inscriptionBouton">
                 </form>
                 <span style="font-size: 2vmin;">
-                    Vous avez déjà un compte ? <a href="login.php" class="register_link">Connectez-vous</a> !
+                    Vous avez déjà un compte ? <a href="login.php" class="registerLink">Connectez-vous</a> !
                 </span>
 
-                <?php else :
+            <?php elseif (
+                preg_match('/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*]).{8,}$/', $_POST['mdp'])
+                &&
+                preg_match('/^.{4,}$/', $_POST['pseudo'])
+                &&
+                ($_POST['mdp'] == $_POST['mdpConfirme'])
+                &&
+                (!estPseudoExistant($pdo, $_POST['pseudo']))
+                &&
+                (!estEmailExistant($pdo, $_POST['email']))
+            ) :
+                $_POST['mdp'] = hash('sha256', $_POST['mdp']);
+                $_SESSION['userId'] = insereUtilisateurEtRetourneId($pdo, $_POST['email'], $_POST['mdp'], $_POST['pseudo']);
+                header("Refresh: 0; url=" . PROJECT_FOLDER . "games/memory/memory.php"); ?>
 
-                if (
-                    preg_match('/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*]).{8,}$/', $_POST['mdp'])
-                    &&
-                    preg_match('/^.{4,}$/', $_POST['pseudo'])
-                    &&
-                    ($_POST['mdp'] == $_POST['mdp_confirme'])
-                    &&
-                    (!estPseudoExistant($pdo, $_POST['pseudo']))
-                    &&
-                    (!estEmailExistant($pdo, $_POST['email']))
-                ) :
-                    $_POST['mdp'] = hash('sha256', $_POST['mdp']);
-                    InsertionUtilisateur($pdo, $_POST['email'], $_POST['mdp'], $_POST['pseudo']);
-                ?>
-                    <p style="font-size: 2vmin;">Vous êtes bien inscrit!</p>
+            <?php else : ?>
+                <form method="post" style="width: 100%;">
+                    <input type="email" value="<?= $_POST['email'] ?>" name="email" placeholder="Email" required="required" class="inscriptionEntree">
+                    <?php if (estEmailExistant($pdo, $_POST['email'])) : ?>
+                        <p style="font-size: 2vmin; color:red">Email déjà utilisé</p>
+                    <?php endif; ?>
+                    <input type="text" value="<?= $_POST['pseudo'] ?>" name="pseudo" placeholder="Pseudo" required="required" class="inscriptionEntree">
 
+                    <?php if (!preg_match('/^.{4,}$/', $_POST['pseudo']) || (estPseudoExistant($pdo, $_POST['pseudo']))) : ?>
+                        <p style="font-size: 2vmin; color:red">Pseudo trop court ou déjà utilisé</p>
+                    <?php endif; ?>
 
-                <?php else : ?>
+                    <input type="password" name="mdp" placeholder="Mot de passe" required="required" class="inscriptionEntree">
 
-                    <form method="post" style="width: 100%;">
-                        <input type="email" value="<?= $_POST['email'] ?>" name="email" placeholder="Email" required="required" class="inscription_entree">
-                        <?php if ($emailExistant != NULL) : ?>
-                            <p style="font-size: 2vmin; color:red">Email déjà utilisé</p>
-                        <?php endif; ?>
-                        <input type="text" value="<?= $_POST['pseudo'] ?>" name="pseudo" placeholder="Pseudo" required="required" class="inscription_entree">
+                    <?php if (!preg_match('/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*]).{8,}$/', $_POST['mdp'])) : ?>
+                        <p style="font-size: 2vmin; color:red">Format de mot de passe invalide</p>
+                    <?php endif; ?>
 
-                        <?php if (!preg_match('/^.{4,}$/', $_POST['pseudo']) || ($pseudoExistant != NULL)) : ?>
-                            <p style="font-size: 2vmin; color:red">Pseudo trop court ou déjà utilisé</p>
-                        <?php endif; ?>
+                    <input type="password" name="mdpConfirme" placeholder="Confirmez le mot de passe" required="required" class="inscriptionEntree">
 
-                        <input type="password" name="mdp" placeholder="Mot de passe" required="required" class="inscription_entree">
-
-                        <?php if (!preg_match('/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*]).{8,}$/', $_POST['mdp'])) : ?>
-                            <p style="font-size: 2vmin; color:red">Format de mot de passe invalide</p>
-                        <?php endif; ?>
-
-                        <input type="password" name="mdp_confirme" placeholder="Confirmez le mot de passe" required="required" class="inscription_entree">
-
-                        <?php if ($_POST['mdp'] != $_POST['mdp_confirme']) : ?>
-                            <p style="font-size: 2vmin; color:red">Les mots de passe ne correspondent pas</p>
-                        <?php endif; ?>
+                    <?php if ($_POST['mdp'] != $_POST['mdpConfirme']) : ?>
+                        <p style="font-size: 2vmin; color:red">Les mots de passe ne correspondent pas</p>
+                    <?php endif; ?>
 
 
-                        <input type="submit" value="Inscription" class="inscription_bouton">
-                    </form>
-                    <span style="font-size: 2vmin;">
-                        Vous avez déjà un compte ? <a href="login.php" class="register_link">Connectez-vous</a> !
-                    </span>
-                <?php endif; ?>
+                    <input type="submit" value="Inscription" class="inscriptionBouton">
+                </form>
+                <span style="font-size: 2vmin;">
+                    Vous avez déjà un compte ? <a href="login.php" class="registerLink">Connectez-vous</a> !
+                </span>
 
             <?php endif; ?>
         </div>

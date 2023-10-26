@@ -23,29 +23,27 @@ function getMeilleurScore($pdo): int
 {
     $pdoScores = $pdo->prepare('SELECT score FROM Scores ORDER BY score ASC LIMIT 1');
     $pdoScores->execute();
-    $meilleurScore = $pdoScores->fetch();
-    return $meilleurScore->score;
+    return $pdoScores->fetch()->score;
 }
 
 function getNbJoueursInscrits($pdo): int
 {
-    $pdoInscrits = $pdo->prepare('SELECT COUNT(*) AS nombre FROM Utilisateur');
+    $pdoInscrits = $pdo->prepare('SELECT COUNT(*) AS inscrits FROM Utilisateur');
     $pdoInscrits->execute();
-    $nbJoueursInscrits = $pdoInscrits->fetch();
-    return $nbJoueursInscrits->nombre;
+    return $pdoInscrits->fetch()->inscrits;
 }
 
 function getNbPartiesJouees($pdo): int
 {
     $pdoParties = $pdo->prepare('SELECT COUNT(*) AS nombre FROM Scores');
     $pdoParties->execute();
-    $nbPartiesJouees = $pdoParties->fetch();
-    return $nbPartiesJouees->nombre;
+    return $pdoParties->fetch()->nombre;
 }
 
 function getScoreTable($pdo, $recherche_pseudo): array
 {
-    $pdoTablo = $pdo->prepare('SELECT Jeu.nomJeu, pseudo, difficulte, score , dateHeureScore
+    $pdoTablo = $pdo->prepare(
+        'SELECT Jeu.nomJeu, pseudo, difficulte, score , dateHeureScore
         FROM Scores
         INNER JOIN Jeu ON Scores.idJeu=Jeu.id
         INNER JOIN Utilisateur ON Scores.idJoueur=Utilisateur.id
@@ -58,28 +56,82 @@ function getScoreTable($pdo, $recherche_pseudo): array
         score ASC;');
 
     $pdoTablo->execute([':pseudo' => $recherche_pseudo]);
-    $scoreTablo = $pdoTablo->fetchAll();
-    return $scoreTablo;
+    return $pdoTablo->fetchAll();
 }
 
 function estPseudoExistant($pdo, $pseudo): bool
 {
-    $pdoPseudoExistant = $pdo->prepare('SELECT pseudo FROM Utilisateur WHERE pseudo = :pseudo;');
-    $pdoPseudoExistant->execute([':pseudo' => $_POST['pseudo']]);
-    $pseudoExistant = $pdoPseudoExistant->fetch();
-    return $pseudoExistant != NULL;
+    $pdoPseudoExistant = $pdo->prepare('SELECT COUNT(*) AS pseudoExistant FROM Utilisateur WHERE pseudo = :pseudo;');
+    $pdoPseudoExistant->execute([':pseudo' => $pseudo]);
+    return $pdoPseudoExistant->fetch()->pseudoExistant;
 }
 
 function estEmailExistant($pdo, $email): bool
 {
-    $pdoEmailExistant = $pdo->prepare('SELECT email FROM Utilisateur WHERE email = :email;');
-    $pdoEmailExistant->execute([':email' => $_POST['email']]);
-    $emailExistant = $pdoEmailExistant->fetch();
-    return $emailExistant != NULL;
+    $pdoEmailExistant = $pdo->prepare('SELECT COUNT(*) AS emailExistant FROM Utilisateur WHERE email = :email;');
+    $pdoEmailExistant->execute([':email' => $email]);
+    return $pdoEmailExistant->fetch()->emailExistant;
 }
 
-function InsertionUtilisateur($pdo, $email, $mdp, $pseudo): void
+function insereUtilisateurEtRetourneId($pdo, $email, $mdp, $pseudo): int
 {
     $pdoInsertionUtilisateur = $pdo->prepare('INSERT INTO Utilisateur (email, mdp, pseudo) VALUES(:email, :mdp, :pseudo)');
     $pdoInsertionUtilisateur->execute([':email' => $email, ':mdp' => $mdp, ':pseudo' => $pseudo]);
+    $pdoIdUtilisateur = $pdo->prepare('SELECT id FROM Utilisateur WHERE pseudo = :pseudo');
+    $pdoIdUtilisateur->execute([':pseudo' => $pseudo]);
+    return $pdoIdUtilisateur->fetch()->id;
+}
+
+function compteExiste($pdo, $email, $mdp): bool
+{
+    $pdoCompte = $pdo->prepare('SELECT COUNT(*) AS mailMdpCorrespondent FROM Utilisateur WHERE email = :email AND mdp = :mdp;');
+    $pdoCompte->execute([':email' => $email, ':mdp' => hash('sha256', $mdp)]);
+    return $pdoCompte->fetch()->mailMdpCorrespondent;
+}
+
+function getId($pdo, $email, $mdp): int
+{
+    $pdoId= $pdo->prepare('SELECT id FROM Utilisateur WHERE email = :email AND mdp = :mdp;');
+    $pdoId->execute([':email' => $email, ':mdp' => hash('sha256', $mdp)]);
+    var_dump($pdoId->fetch()->id);
+    return $pdoId->fetch()->id;
+}
+
+function getPseudo($pdo, $id): string
+{
+    $pdoPseudo = $pdo->prepare('SELECT pseudo FROM Utilisateur WHERE id = :id;');
+    $pdoPseudo->execute([':id' => $id]);
+    return $pdoPseudo->fetch()->pseudo;
+}
+
+function estBonMdp($pdo, $mdpEntre, $idUtilisateur): bool
+{
+    $pdoMdpExistant = $pdo->prepare('SELECT mdp FROM Utilisateur WHERE id = :id');
+    $pdoMdpExistant->execute([':id' => $idUtilisateur]);
+    return $pdoMdpExistant->fetch()->mdp == hash('sha256', $mdpEntre);
+}
+
+function changeMdp($pdo, $newMdp, $idUtilisateur): void 
+{
+    $pdoNewMdp = $pdo -> prepare('UPDATE Utilisateur SET mdp = :mdp WHERE id = :id');
+    $pdoNewMdp->execute([':mdp' => $newMdp,':id' => $idUtilisateur]); 
+}
+
+function estBonEmail($pdo, $emailEntre, $idUtilisateur): bool
+{
+    $pdoEmailExistant = $pdo->prepare('SELECT email FROM Utilisateur WHERE id = :id');
+    $pdoEmailExistant->execute([':id' => $idUtilisateur]);
+    return  $pdoEmailExistant->fetch()->email == $emailEntre;
+}
+
+function changeEmail($pdo, $newEmail, $idUtilisateur): void 
+{
+    $pdoNewEmail = $pdo -> prepare('UPDATE Utilisateur SET email = :email WHERE id = :id');
+    $pdoNewEmail->execute([':email' => $newEmail,':id' => $idUtilisateur]); 
+}
+
+function supprimerCompte($pdo, $id): void
+{
+    $pdoSupprime = $pdo -> prepare('DELETE FROM Utilisateur WHERE id = :id');
+    $pdoSupprime->execute([':id' => $id]);
 }

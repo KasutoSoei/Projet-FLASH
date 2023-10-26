@@ -9,7 +9,7 @@ require_once SITE_ROOT . 'chat.php';
 <section class="memoryhtml">
 
     <body>
-        <div class="game_titre">
+        <div class="gameTitre">
             JEU
         </div>
 
@@ -48,12 +48,13 @@ require_once SITE_ROOT . 'chat.php';
         </div>
 
         <div class="regles">
-            <p>
-                <strong style="text-decoration: underline;">Grille</strong> :
+            <strong style="text-decoration: underline;">Grille</strong> :
 
             <p style="margin-left: 3vw;">
-                La grille possède 5x5 cases, 10x10 cases ou 20x20 cases pour respectivement les difficultés Facile, Moyen, Difficile.
+                La grille possède 5x5 cases, 10x10 cases ou 20x20 cases pour respectivement les difficultés Facile, Moyen ou Difficile.
             </p>
+
+            <br>
 
             <strong style="text-decoration: underline;">Comment jouer</strong> ?
 
@@ -72,12 +73,16 @@ require_once SITE_ROOT . 'chat.php';
             </ul>
             </p>
 
+            <br>
+
             <strong style="text-decoration: underline;">But</strong> :
 
             <p style="margin-left: 3vw;">
                 Le but est de retouner toutes les cases de la grille. <br>
                 Vous pouvez ensuite comparer votre temps à celui des meilleurs dans le <a href="<?= PROJECT_FOLDER ?>games/memory/scores.php" class="regles_lien">classement</a>
             </p>
+
+            <br>
 
             <strong style="text-decoration: underline;">Difficultés</strong> :
 
@@ -86,8 +91,13 @@ require_once SITE_ROOT . 'chat.php';
                 En difficulté Moyen il y a 2 paires par image avec un total de 25 images différentes. <br>
                 En Difficile, il y a également 2 paires par image mais pour 50 images différentes. <br>
             </p>
-            </p>
-            Voilà, vous savez tout. <a href="<?= PROJECT_FOLDER ?>login.php" class="regles_lien">Connectez-vous</a> et faites place à votre mémoire !
+
+            <br>
+            <?php if ($_SESSION['userId'] == 0) : ?>
+                Voilà, vous savez tout. <a href="<?= PROJECT_FOLDER ?>login.php" class="regles_lien">Connectez-vous</a> et faites place à votre mémoire !
+            <?php else : ?>
+                Voilà, vous savez tout. Maintenant, faites place à votre mémoire !
+            <?php endif; ?>
         </div>
         <?php require_once SITE_ROOT . 'partials/footer.php'; ?>
     </body>
