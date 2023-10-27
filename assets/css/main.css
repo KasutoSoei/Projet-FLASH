@@ -510,6 +510,27 @@ body {
 /*---------------------------MEMORY.php--------------------------*/
 
 /*---------------------------MYACCOUNT.php--------------------------*/
+.myaccounthtml .myAccountTitre {
+  margin-top: 1vh;
+  background-image: url("../images/background.jpg");
+  background-position: center;
+  background-size: 100%;
+  color: white;
+  font-size: 5vmin;
+  text-align: center;
+  height: 20vh;
+  line-height: 20vh;
+}
+
+.myaccounthtml .myAccountChangerPP {
+  border-radius: 10%;
+  border: 1px solid gray;
+  color: white;
+  height: 3vh;
+  width: auto;
+}
+
+
 .myaccounthtml .myAccount {
   margin-top: 5vh;
   margin-left: 7vw;
@@ -588,6 +609,20 @@ body {
   width: 100%;
 }
 
+.myaccounthtml .myAccountChangeNom {
+  margin-top: 3vh;
+  box-sizing: border-box;
+  padding-left: 1vmin;
+  border-radius: 1vmin;
+  background-color: rgb(40, 40, 70);
+  border: none;
+  color: white;
+  font-size: 2vmin;
+  height: 8vh;
+  line-height: 8vh;
+  width: 100%;
+}
+
 .myaccounthtml .myAccountBouton {
   margin-top: 5vh;
   border-radius: 1vmin;
@@ -619,7 +654,11 @@ body {
   height: 8vh;
   line-height: 8vh;
   text-align: center;
-  width: 20%;
+  width: fit-content;
+  padding-left: 1vmin;
+  padding-right: 1vmin;
+  margin-right: 20vmin;
+  margin-left: 20vmin;
 }
 /*---------------------------MYACCOUNT.php--------------------------*/
 

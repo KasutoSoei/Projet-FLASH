@@ -26,7 +26,15 @@ function obtenirMeilleurScore($pdo): int
     return $pdoScores->fetch()->score;
 }
 
+function getMeilleurScoreUtilisateur($pdo, $idUtilisateur): int
+{
+    $pdoScoresUtilisateur = $pdo->prepare("SELECT score FROM Scores WHERE idJoueur = ':id' ORDER BY score ASC LIMIT 1");
+    $pdoScoresUtilisateur->execute([':id' => $idUtilisateur]);
+    return $pdoScoresUtilisateur->fetch()->score;
+}
+
 function obtenirNbJoueursInscrits($pdo): int
+
 {
     $pdoInscrits = $pdo->prepare('SELECT COUNT(*) AS inscrits FROM Utilisateur');
     $pdoInscrits->execute();
@@ -103,7 +111,6 @@ function obtenirPseudo($pdo, $id): string
     $pdoPseudo->execute([':id' => $id]);
     return $pdoPseudo->fetch()->pseudo;
 }
-
 function estBonMdp($pdo, $mdpEntre, $idUtilisateur): bool
 {
     $pdoMdpExistant = $pdo->prepare('SELECT mdp FROM Utilisateur WHERE id = :id');
@@ -115,6 +122,11 @@ function changeMdp($pdo, $newMdp, $idUtilisateur): void
 {
     $pdoNewMdp = $pdo->prepare('UPDATE Utilisateur SET mdp = :mdp WHERE id = :id');
     $pdoNewMdp->execute([':mdp' => $newMdp, ':id' => $idUtilisateur]);
+}
+function changePseudo($pdo, $newPseudo, $idUtilisateur): void 
+{
+    $pdoNewMdp = $pdo -> prepare('UPDATE Utilisateur SET pseudo = :pseudo WHERE id = :id');
+    $pdoNewMdp->execute([':pseudo' => $newPseudo,':id' => $idUtilisateur]); 
 }
 
 function estBonEmail($pdo, $emailEntre, $idUtilisateur): bool

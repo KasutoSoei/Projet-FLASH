@@ -6,6 +6,22 @@ require_once SITE_ROOT . 'partials/head.php';
 require_once SITE_ROOT . 'partials/header.php';
 require_once SITE_ROOT . 'utils/database.php';
 ?>
+<?php
+if (isset($_POST['deconnexion'])) {
+    session_destroy();
+    header('refresh:0; url=' . PROJECT_FOLDER . 'login.php');
+}
+
+if (isset($_POST['suppression'])) {
+    supprimerCompte($pdo, $_SESSION['userId']);
+    $_SESSION['userId'] = 0;
+    header('refresh:0; url=' . PROJECT_FOLDER . 'register.php');
+}
+if (isset($_POST['changePseudo']) && (estPseudoExistant($pdo, $_POST['changePseudo'])) == 0) {
+    header('refresh:2');
+}
+?>
+<section class="myaccounthtml">
 
 <body>
 
@@ -16,7 +32,8 @@ require_once SITE_ROOT . 'utils/database.php';
     <section class="myaccounthtml">
 
         <div class="myAccount">
-            <span style="margin-left: 3vh;">
+        <span style="margin-left: 3vh;">
+
                 <form method="POST" enctype="multipart/form-data">
                     <input type="file" id="files" name="avatar" style="display:none;" accept="image/png">
                     <label for="files">
@@ -34,17 +51,22 @@ require_once SITE_ROOT . 'utils/database.php';
                 ?>
             </span>
             <span style="font-size: 5vmin;">
-                <!--<?php if ($_POST == NULL) : ?>
-                    <form method="post">
-                        <input type="text" name="pseudo" value="Player" class="myAccount_changenom">
-                    </form>
-                <?php else : ?>
-                    <form method="post">
-                        <input type="text" name="pseudo" value="<?= $_POST['pseudo'] ?>" class="myAccount_changenom">
-                    </form>
-                <?php endif; ?>
-                <img src="<?= PROJECT_FOLDER ?>assets/images/rewrite.png" style="height: 6vh"> -->
+                <form method="POST" form='changePseudo'>
+                    <input type="text" name="changePseudo" value="<?= getPseudo($pdo, $_SESSION['userId']) ?>" class="myAccountChangeNom" minlength="4">
+                    <?php $change = false;
+                    if (isset($_POST['changePseudo'])) :
+
+                        if (estPseudoExistant($pdo, $_POST['changePseudo']) == 1) : 
+                        ?>
+                            <p style="font-size: 2vmin; color:red;">Pseudo trop court ou déja utilisé</p>
+                        <?php else : changePseudo($pdo, $_POST['changePseudo'], $_SESSION['userId']);?>
+
+                            <p style="font-size: 2vmin;">Votre pseudo a bien été changé</p>
+                    <?php endif;
+                    endif; ?>
+                </form>
             </span>
+
             <span>
                 <div class="myAccountStats">
                     <span class="myAccountStatsCase">
@@ -57,7 +79,7 @@ require_once SITE_ROOT . 'utils/database.php';
                     </span>
                     <span class="myAccountStatsCase">
                         Meilleur temps <br>
-                        <strong style="font-size: 7vmin; color: indigo; -webkit-text-stroke: 1px darkgray;">01:09</strong>
+                        <strong style="font-size: 7vmin; color: indigo; -webkit-text-stroke: 1px darkgray;"><?php echo getMeilleurScore($pdo) ?></strong>
                     </span>
                 </div>
             </span>
@@ -160,9 +182,11 @@ require_once SITE_ROOT . 'utils/database.php';
             </div>
         </div>
         <div class="myAccountGestion">
-            <input type="button" onclick="session_destroy()" value="Déconnexion" class="myAccountGestionBouton">
-            <a href="login.php" class="myAccountGestionBouton" style="text-decoration: none;">Changer de compte</a>
-            <input type="button" onclick="supprimerCompte($pdo, $_SESSION['userId']); $_SESSION['userId'] = 0;" value="Supprimer le compte" class="myAccountGestionBouton">
+            <form method="post">
+                <input type="submit" class="myAccountGestionBouton" name="deconnexion" value="Déconnexion" >
+
+                <input type="submit" class="myAccountGestionBouton" name="suppression" value="Supprimer le compte" >
+            </form>
         </div>
     </section>
 </body>
