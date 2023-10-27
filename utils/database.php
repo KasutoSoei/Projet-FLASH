@@ -26,6 +26,13 @@ function getMeilleurScore($pdo): int
     return $pdoScores->fetch()->score;
 }
 
+function getMeilleurScoreUtilisateur($pdo, $idUtilisateur): int
+{
+    $pdoScoresUtilisateur = $pdo->prepare("SELECT score FROM Scores WHERE idJoueur = ':id' ORDER BY score ASC LIMIT 1");
+    $pdoScoresUtilisateur->execute([':id' => $idUtilisateur]);
+    return $pdoScoresUtilisateur->fetch()->score;
+}
+
 function getNbJoueursInscrits($pdo): int
 {
     $pdoInscrits = $pdo->prepare('SELECT COUNT(*) AS inscrits FROM Utilisateur');
@@ -102,7 +109,6 @@ function getPseudo($pdo, $id): string
     $pdoPseudo->execute([':id' => $id]);
     return $pdoPseudo->fetch()->pseudo;
 }
-
 function estBonMdp($pdo, $mdpEntre, $idUtilisateur): bool
 {
     $pdoMdpExistant = $pdo->prepare('SELECT mdp FROM Utilisateur WHERE id = :id');

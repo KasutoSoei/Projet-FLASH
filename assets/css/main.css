@@ -606,6 +606,14 @@ body {
   line-height: 20vh;
 }
 
+.myaccounthtml .myAccountChangerPP {
+  border-radius: 10%;
+  border: 1px solid gray;
+  color: white;
+  height: 3vh;
+  width: auto;
+}
+
 .myaccounthtml .myAccount {
   margin-top: 5vh;
   margin-left: 7vw;
@@ -721,7 +729,11 @@ body {
   height: 8vh;
   line-height: 8vh;
   text-align: center;
-  width: 20%;
+  width: fit-content;
+  padding-left: 1vmin;
+  padding-right: 1vmin;
+  margin-right: 20vmin;
+  margin-left: 20vmin;
 }
 /*---------------------------MYACCOUNT.php--------------------------*/
 
