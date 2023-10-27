@@ -25,10 +25,10 @@ function obtenirMeilleurScore($pdo): int
     $pdoScores->execute();
     return $pdoScores->fetch()->score;
 }
-function obtenirMeilleurScoreUtilisateur($pdo)
+function obtenirMeilleurScoreUtilisateur($pdo, $id)
 {
     $pdoScoresUtilisateur = $pdo->prepare("SELECT score FROM Scores WHERE idJoueur = :id ORDER BY score ASC LIMIT 1");
-    $pdoScoresUtilisateur->execute([':id' => $_SESSION['userId']]);
+    $pdoScoresUtilisateur->execute([':id' => $id]);
     $meilleurScore = $pdoScoresUtilisateur->fetch();
     if ($meilleurScore == null)
     {

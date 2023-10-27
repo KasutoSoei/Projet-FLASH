@@ -13,11 +13,13 @@ if (isset($_POST['deconnexion'])) {
 }
 
 if (isset($_POST['suppression'])) {
+    unlink(SITE_ROOT . "userFiles/" . $_SESSION['userId'] . '/profile.png');
+    rmdir(SITE_ROOT . "userFiles/" . $_SESSION['userId']); //supprime le dossier
     supprimerCompte($pdo, $_SESSION['userId']);
     $_SESSION['userId'] = 0;
     header('refresh:0; url=' . PROJECT_FOLDER . 'register.php');
 }
-if (isset($_POST['changePseudo']) && (estPseudoExistant($pdo, $_POST['changePseudo'])) == 0) {
+if (isset($_POST['changePseudo']) && !estPseudoExistant($pdo, $_POST['changePseudo'])) {
     header('refresh:2');
 }
 ?>
@@ -84,7 +86,7 @@ if (isset($_POST['changePseudo']) && (estPseudoExistant($pdo, $_POST['changePseu
                         <span class="myAccountStatsCase">
                             Meilleur temps <br>
                             <strong style="font-size: 7vmin; color: indigo; -webkit-text-stroke: 1px darkgray;">
-                                <?php echo obtenirMeilleurScoreUtilisateur($pdo); ?>
+                                <?php echo obtenirMeilleurScoreUtilisateur($pdo, $_SESSION['userId']); ?>
                             </strong>
                         </span>
                     </div>
