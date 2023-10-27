@@ -189,13 +189,12 @@ if (isset($_POST['changePseudo']) && !estPseudoExistant($pdo, $_POST['changePseu
                     <?php endif; ?>
                 </div>
             </div>
-            <div class="myAccountGestion">
-                <form method="post">
-                    <input type="submit" class="myAccountGestionBouton" name="deconnexion" value="Déconnexion">
+            <form method="post" class="myAccountGestion">
+                <input type="submit" class="myAccountGestionBouton" name="deconnexion" value="Déconnexion">
 
-                    <input type="submit" class="myAccountGestionBouton" name="suppression" value="Supprimer le compte">
-                </form>
-            </div>
+                <input type="submit" class="myAccountGestionBouton" name="suppression" value="Supprimer le compte">
+            </form>
+
         </section>
     </body>
     <?php require_once SITE_ROOT . 'partials/footer.php'; ?>
