@@ -54,7 +54,7 @@ if (isset($_POST['changePseudo']) && !estPseudoExistant($pdo, $_POST['changePseu
                 </span>
                 <span style="font-size: 5vmin;">
                     <form method="POST" form='changePseudo'>
-                        <input type="text" name="changePseudo" value="<?= obtenirPseudo($pdo, $_SESSION['userId']) ?>" class="myAccountChangeNom" minlength="4">
+                        <input type="text" name="changePseudo" value="<?= obtenirPseudo($pdo, $_SESSION['userId']) ?>" class="myAccountChangeNom" minlength="4" maxlength='20'>
                         <?php $change = false;
                         if (isset($_POST['changePseudo'])) :
 

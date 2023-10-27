@@ -13,38 +13,41 @@ require_once SITE_ROOT . 'partials/header.php';
 
     <section class="memoryhtml">
 
-        <div class="gameTheme">
-            <span>
-                Theme :
-            </span>
-            <span>
-                <a href="EasyCartes.php" class="gameThemeBouton">Cartes</a>
-            </span>
-            <span>
-                <a href="EasyVoitures.php" class="gameThemeBouton">Voitures</a>
-            </span>
-            <span>
-                <a href="EasyWaifus.php" class="gameThemeBouton">Waifus</a>
-            </span>
-        </div>
+        <?php if ($_SESSION['userId'] != 0) : ?>
 
-        <div class="gameDifficulte">
-            <span>
-                Difficulté :
-            </span>
-            <span>
-                <a href="EasyCartes.php" class="gameDifficulteFacile">Facile</a>
-            </span>
-            <span>
-                <a href="MediumCartes.php" class="gameDifficulteMoyen">Moyen</a>
-            </span>
-            <span>
-                <a href="HardCartes.php" class="gameDifficulteDifficile">Difficile</a>
-            </span>
-        </div>
+            <div class="gameTheme">
+                <span>
+                    Theme :
+                </span>
+                <span>
+                    <a href="EasyCartes.php" class="gameThemeBouton">Cartes</a>
+                </span>
+                <span>
+                    <a href="EasyVoitures.php" class="gameThemeBouton">Voitures</a>
+                </span>
+                <span>
+                    <a href="EasyWaifus.php" class="gameThemeBouton">Waifus</a>
+                </span>
+            </div>
+
+            <div class="gameDifficulte">
+                <span>
+                    Difficulté :
+                </span>
+                <span>
+                    <a href="EasyCartes.php" class="gameDifficulteFacile">Facile</a>
+                </span>
+                <span>
+                    <a href="MediumCartes.php" class="gameDifficulteMoyen">Moyen</a>
+                </span>
+                <span>
+                    <a href="HardCartes.php" class="gameDifficulteDifficile">Difficile</a>
+                </span>
+            </div>
+        <?php endif; ?>
 
         <div style="margin-top: 7vh; text-align:center; font-size: 2vmin;">
-            Bienvenue sur la page du jeu ! La grille s'affichera lorsque vous aurez choisi une difficulté. Si vous voulez les règles, les voici : <br>
+            Bienvenue sur la page du jeu ! La grille s'affichera lorsque vous serez connecté et que vous aurez choisi une difficulté. Si vous voulez les règles, les voici : <br>
         </div>
 
         <div class="regles">
