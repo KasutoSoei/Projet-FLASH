@@ -93,7 +93,6 @@ function getId($pdo, $email, $mdp): int
 {
     $pdoId= $pdo->prepare('SELECT id FROM Utilisateur WHERE email = :email AND mdp = :mdp;');
     $pdoId->execute([':email' => $email, ':mdp' => hash('sha256', $mdp)]);
-    var_dump($pdoId->fetch()->id);
     return $pdoId->fetch()->id;
 }
 
@@ -115,6 +114,11 @@ function changeMdp($pdo, $newMdp, $idUtilisateur): void
 {
     $pdoNewMdp = $pdo -> prepare('UPDATE Utilisateur SET mdp = :mdp WHERE id = :id');
     $pdoNewMdp->execute([':mdp' => $newMdp,':id' => $idUtilisateur]); 
+}
+function changePseudo($pdo, $newPseudo, $idUtilisateur): void 
+{
+    $pdoNewMdp = $pdo -> prepare('UPDATE Utilisateur SET pseudo = :pseudo WHERE id = :id');
+    $pdoNewMdp->execute([':pseudo' => $newPseudo,':id' => $idUtilisateur]); 
 }
 
 function estBonEmail($pdo, $emailEntre, $idUtilisateur): bool

@@ -7,12 +7,26 @@ require_once SITE_ROOT . 'partials/header.php';
 require_once SITE_ROOT . 'chat.php';
 require_once SITE_ROOT . 'utils/database.php';
 ?>
-<form method="POST" enctype="multipart/form-data">
-     <input type="file" name="avatar" accept="image/png">
-     <input type="submit" name="envoyer" value="Envoyer le fichier">
+<form method="POST" enctype="multipart/form-data" id='changePhoto'>
+    <input type="file" name="avatar" accept="image/png">
+    <input type="submit" name="envoyer" value="Envoyer le fichier" form='changePhoto'>
 </form>
 <?php
-if(isset($_FILES['avatar'])):
+if (isset($_POST['deconnexion'])) {
+    session_destroy();
+    header('refresh:0; url=' . PROJECT_FOLDER . 'login.php');
+}
+
+if (isset($_POST['suppression'])) {
+    supprimerCompte($pdo, $_SESSION['userId']);
+    $_SESSION['userId'] = 0;
+    header('refresh:0; url=' . PROJECT_FOLDER . 'register.php');
+}
+if (isset($_POST['changePseudo']) && (estPseudoExistant($pdo, $_POST['changePseudo'])) == 0) {
+    header('refresh:2');
+}
+
+if (isset($_FILES['avatar'])) :
     move_uploaded_file($_FILES['avatar']['tmp_name'], SITE_ROOT . 'userFiles/' . $_SESSION['userId'] . '/profile.png');
 endif;
 ?>
@@ -29,17 +43,22 @@ endif;
                 <img src="<?= PROJECT_FOLDER ?>userFiles/<?= $_SESSION['userId'] ?>/profile.png" style="border-radius: 100%; width: 15vmin; height: auto;"></a>
             </span>
             <span style="font-size: 5vmin;">
-                <!--<?php if ($_POST == NULL) : ?>
-                    <form method="post">
-                        <input type="text" name="pseudo" value="Player" class="myAccount_changenom">
-                    </form>
-                <?php else : ?>
-                    <form method="post">
-                        <input type="text" name="pseudo" value="<?= $_POST['pseudo'] ?>" class="myAccount_changenom">
-                    </form>
-                <?php endif; ?>
-                <img src="<?= PROJECT_FOLDER ?>assets/images/rewrite.png" style="height: 6vh"> -->
+                <form method="POST" form='changePseudo'>
+                    <input type="text" name="changePseudo" value="<?= getPseudo($pdo, $_SESSION['userId']) ?>" class="myAccountChangeNom" minlength="4">
+                    <?php $change = false;
+                    if (isset($_POST['changePseudo'])) :
+
+                        if (estPseudoExistant($pdo, $_POST['changePseudo']) == 1) : 
+                        ?>
+                            <p style="font-size: 2vmin; color:red;">Pseudo trop court ou déja utilisé</p>
+                        <?php else : changePseudo($pdo, $_POST['changePseudo'], $_SESSION['userId']);?>
+
+                            <p style="font-size: 2vmin;">Votre pseudo a bien été changé</p>
+                    <?php endif;
+                    endif; ?>
+                </form>
             </span>
+
             <span>
                 <div class="myAccountStats">
                     <span class="myAccountStatsCase">
@@ -155,9 +174,11 @@ endif;
             </div>
         </div>
         <div class="myAccountGestion">
-            <input type="button" onclick="session_destroy()" value="Déconnexion" class="myAccountGestionBouton">
-            <a href="login.php" class="myAccountGestionBouton" style="text-decoration: none;">Changer de compte</a>
-            <input type="button" onclick="supprimerCompte($pdo, $_SESSION['userId']); $_SESSION['userId'] = 0;" value="Supprimer le compte" class="myAccountGestionBouton">
+            <form method="post">
+                <input type="submit" name="deconnexion" class="button" value="Déconnexion" class="myAccountGestionBouton">
+
+                <input type="submit" name="suppression" class="button" value="Supprimer le compte" class="myAccountGestionBouton">
+            </form>
         </div>
         <?php require_once SITE_ROOT . 'partials/footer.php'; ?>
     </body>

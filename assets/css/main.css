@@ -676,6 +676,20 @@ body {
   width: 100%;
 }
 
+.myaccounthtml .myAccountChangeNom {
+  margin-top: 3vh;
+  box-sizing: border-box;
+  padding-left: 1vmin;
+  border-radius: 1vmin;
+  background-color: rgb(40, 40, 70);
+  border: none;
+  color: white;
+  font-size: 2vmin;
+  height: 8vh;
+  line-height: 8vh;
+  width: 100%;
+}
+
 .myaccounthtml .myAccountBouton {
   margin-top: 5vh;
   border-radius: 1vmin;
