@@ -34,13 +34,12 @@ require_once SITE_ROOT . 'partials/header.php';
             header("Refresh: 0; url=" . PROJECT_FOLDER . "games/memory/memory.php"); //actualise la page et redirige vers la page de jeu 
         ?>
 
-        <?php else :
-            var_dump(compteExiste($pdo, $_POST['email'], $_POST['mdp'])) ?>
-            <p style="color: red; font-size: 2vmin;">Aucun compte n'a été trouvé</p>
+        <?php else : ?>
             <div class="connexion">
                 <form method="post" style="width: 100%;">
                     <input type="email" name="email" value="<?= $_POST['email'] ?>" placeholder="Email" required="required" class="loginEntree">
                     <input type="password" name="mdp" placeholder="Mot de passe" required="required" class="loginEntree">
+                    <p style="color: red; font-size: 2vmin;">Aucun compte n'a été trouvé</p>
                     <span style="display: flex; justify-content: space-between;">
                         <input type="submit" value="Connexion" class="loginBouton">
                         <a href="register.php" class="loginLink" style="margin-top: 2vh; margin-right: 1vw; font-size: 1.5vmin; height: 1.5vmin;">Mot de passe oublié ?</a>
