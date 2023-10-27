@@ -29,7 +29,7 @@ $score_table = obtenirScoreTable($pdo, $_GET['recherchePseudo']);
                     <label for="scoresRechercheBouton">
                     <img src="<?= PROJECT_FOLDER ?>assets/images/recherche.png" class="scoresRechercheImage">
                     </label>
-                    <input type="text" name="recherchePseudo" placeholder="Recherche" id="scoresRechercheEntree">
+                    <input type="text" name="recherchePseudo" placeholder="Recherche" id="scoresRechercheEntree" value="<?= $_GET['recherchePseudo'] ?>">
                 </span>
             </form>
             <table class="styledTable">

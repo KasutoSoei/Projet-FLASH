@@ -72,7 +72,7 @@ $nbPartiesJouees = obtenirNbPartiesJouees($pdo);
                     </span>
                     <span class="statsPetitCarre" style="background-color: rgb(75, 159, 101); font-size: 2vmin;">
                         <p>
-                            <strong style="font-size: 5vmin;">1020</strong> <br><br>
+                            <strong style="font-size: 5vmin;">1</strong> <br><br>
                             Joueurs Connectés
                         </p>
                     </span>
