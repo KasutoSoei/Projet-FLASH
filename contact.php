@@ -45,8 +45,11 @@ require_once SITE_ROOT . 'partials/header.php';
 
         <?php else :
             $header = "From: kristian.chou@edu.esiee-it.fr";
-            mail('kristian.chou.fr@gmail.com', $_POST['sujet'], $_POST['message'], $header);
-        endif; ?>
+            mail('kristian.chou.fr@gmail.com', $_POST['sujet'], $_POST['message'], $header); ?>
+            <p>
+                Le message a bien été envoyé.
+            </p>
+        <?php endif; ?>
         <?php require SITE_ROOT . 'partials/footer.php'; ?>
     </section>
 </body>
