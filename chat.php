@@ -6,10 +6,9 @@ require_once SITE_ROOT . 'partials/head.php';
 require_once SITE_ROOT . 'partials/header.php';
 require_once SITE_ROOT . 'utils/database.php';
 
-if (!empty($_GET['message']))
-{
+if (!empty($_GET['message'])) {
     envoiMessage($pdo, $_SESSION['userId'], $_GET['message']);
-    header('refresh: 0; url = '. PROJECT_FOLDER . 'chat.php');
+    header('refresh: 0; url = ' . PROJECT_FOLDER . 'chat.php');
 }
 
 $messages = obtenirMessagesChat($pdo, $_SESSION['userId']);
@@ -67,13 +66,15 @@ $messages = obtenirMessagesChat($pdo, $_SESSION['userId']);
             <?php endforeach; ?>
         </div>
 
-        <form method="get" class="chatEnvoi">
-            <input type="text" name="message" placeholder="Envoyer un message" class="chatMessageEntree">
-            <input type="submit" id="envoi" style="display: none;">
-            <label for="envoi" style="display: box;">
-                <img src="<?= PROJECT_FOLDER ?>assets/images/sendMessage.png" class="chatBoutonEnvoi">
-            </label>
-        </form>
+        <?php if ($_SESSION['userId'] != 0) : ?>
+            <form method="get" class="chatEnvoi">
+                <input type="text" name="message" placeholder="Envoyer un message" class="chatMessageEntree">
+                <input type="submit" id="envoi" style="display: none;">
+                <label for="envoi" style="display: box;">
+                    <img src="<?= PROJECT_FOLDER ?>assets/images/sendMessage.png" class="chatBoutonEnvoi">
+                </label>
+            </form>
+        <?php endif; ?>
 
     </section>
 </body>
