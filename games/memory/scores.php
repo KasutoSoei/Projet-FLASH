@@ -24,12 +24,15 @@ $score_table = obtenirScoreTable($pdo, $_GET['recherchePseudo']);
 
         <div class="scores">
             <form method="get" style="width: 100%;">
-                <span class="scores_recherche">
-                    <img src="<?= PROJECT_FOLDER ?>assets/images/recherche.png">
-                    <input type="text" name="recherchePseudo" placeholder="Recherche" id="scores_rechercheEntree">
+                <span class="scoresRecherche">
+                    <input type="submit" id="scoresRechercheBouton" style="display: none;">
+                    <label for="scoresRechercheBouton">
+                    <img src="<?= PROJECT_FOLDER ?>assets/images/recherche.png" class="scoresRechercheImage">
+                    </label>
+                    <input type="text" name="recherchePseudo" placeholder="Recherche" id="scoresRechercheEntree">
                 </span>
             </form>
-            <table class="styled-table">
+            <table class="styledTable">
 
                 <thead>
                     <tr>

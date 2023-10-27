@@ -166,11 +166,10 @@ function obtenirMessagesChat($pdo, $id): array
     return $pdoMessagesChat->fetchAll();
 }
 
-function envoiMessageEtVidePost($pdo, $id, $message): void
+function envoiMessage($pdo, $id, $message): void
 {
     $pdoEnvoiMessage = $pdo->prepare(
         'INSERT INTO Chat (idJeu, idExpediteur, messageChat, dateHeureMessage)
         VALUES (1, :id, :envoi, CURRENT_TIMESTAMP);');
     $pdoEnvoiMessage->execute([':id' => $id, ':envoi' => $message]);
-    $_POST['message'] = '';
 }

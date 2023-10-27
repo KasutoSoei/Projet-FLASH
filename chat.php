@@ -8,7 +8,7 @@ require_once SITE_ROOT . 'utils/database.php';
 
 if (!empty($_GET['message']))
 {
-    envoiMessageEtVidePost($pdo, $_SESSION['userId'], $_GET['message']);
+    envoiMessage($pdo, $_SESSION['userId'], $_GET['message']);
     header('refresh: 0; url = '. PROJECT_FOLDER . 'chat.php');
 }
 

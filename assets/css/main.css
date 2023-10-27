@@ -785,7 +785,7 @@ body {
   margin-right: 15vw;
 }
 
-.scoreshtml .scores_recherche {
+.scoreshtml .scoresRecherche {
   margin-right: 50vw;
   margin-top: 3vh;
   display: flex;
@@ -793,7 +793,12 @@ body {
   height: 6vh;
 }
 
-.scoreshtml #scores_rechercheEntree {
+.scoreshtml .scoresRechercheImage {
+  height: 6vh;
+  width: auto;
+}
+
+.scoreshtml #scoresRechercheEntree {
   margin-left: 1vw;
   box-sizing: border-box;
   padding-left: 1vmin;
@@ -806,7 +811,7 @@ body {
   width: 100%;
 }
 
-.scoreshtml .styled-table {
+.scoreshtml .styledTable {
   border-collapse: collapse;
   margin-top: 5vh;
   font-family: sans-serif;
@@ -815,25 +820,25 @@ body {
   font-size: 2vmin;
 }
 
-.scoreshtml .styled-table thead tr {
+.scoreshtml .styledTable thead tr {
   background-color: rgb(52, 37, 154);
   text-align: left;
 }
 
-.scoreshtml .styled-table th,
-.styled-table td {
+.scoreshtml .styledTable th,
+.styledTable td {
   padding: 1vw 1vh;
 }
 
-.scoreshtml .styled-table tbody tr {
+.scoreshtml .styledTable tbody tr {
   border-bottom: 1px solid rgb(52, 37, 154);
 }
 
-.scoreshtml .styled-table tbody tr:last-of-type {
+.scoreshtml .styledTable tbody tr:last-of-type {
   border-bottom: 2px solid rgb(52, 37, 154);
 }
 
-.scoreshtml .styled-table tbody tr.active-row {
+.scoreshtml .styledTable tbody tr.active-row {
   font-weight: bold;
   background-color: rgba(52, 37, 154, 0.2);
   text-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
