@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="fr">
 <?php
+$page = 'contact';
+
 require_once 'utils/common.php';
 require_once SITE_ROOT . 'partials/head.php';
 require_once SITE_ROOT . 'partials/header.php';
@@ -42,9 +44,12 @@ require_once SITE_ROOT . 'partials/header.php';
             </form>
 
         <?php else :
-            $header = 'De:' . $_POST['nom'] . "A partir de l'adresse" . $_POST['email'];
-            mail('kristian.chou.fr@gmail.com', $_POST['sujet'], $_POST['message'], $header);
-        endif; ?>
+            $header = "From: kristian.chou@edu.esiee-it.fr";
+            mail('kristian.chou.fr@gmail.com', $_POST['sujet'], $_POST['message'], $header); ?>
+            <p>
+                Le message a bien été envoyé.
+            </p>
+        <?php endif; ?>
         <?php require SITE_ROOT . 'partials/footer.php'; ?>
     </section>
 </body>

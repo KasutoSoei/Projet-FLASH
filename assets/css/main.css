@@ -260,15 +260,11 @@ body {
 /*---------------------------CHAT--------------------------*/
 
 .chathtml .chat {
+  overflow: hidden;
   margin-top: 5vh;
   margin-bottom: 5vh;
   margin-left: 5vw;
-  padding-top: 1vh;
-  padding-bottom: 1vh;
-  padding-left: 1vw;
-  padding-right: 1vw;
   box-sizing: border-box;
-  border: 1px solid darkgray;
   display: flex;
   flex-direction: column;
   width: 90vw;
@@ -276,7 +272,7 @@ body {
 }
 
 .chathtml .chatMessageBoxEnvoyeur {
-  margin-top: 3vh;
+  margin-bottom: 3vh;
   margin-left: 50vw;
   display: flex;
   flex-direction: column;
@@ -284,7 +280,7 @@ body {
 }
 
 .chathtml .chatMessageBoxReceveur {
-  margin-top: 3vh;
+  margin-bottom: 3vh;
   margin-right: 50vw;
   display: flex;
   flex-direction: column;
@@ -318,6 +314,32 @@ body {
   margin-top: 1vh;
   font-size: 1vmin;
   color: lightgray;
+}
+
+.chathtml .chatEnvoi {
+  margin-bottom: 5vh;
+  display: flex;
+  justify-content: center;
+  height: 5vh;
+}
+
+.chathtml .chatMessageEntree {
+  box-sizing: border-box;
+  padding-left: 1vmin;
+  border-radius: 1vmin;
+  background-color: rgb(40, 40, 70);
+  border: none;
+  color: rgb(130, 130, 130);
+  overflow-wrap: break-word;
+  font-size: 2vmin;
+  width: 90%;
+}
+
+.chathtml .chatBoutonEnvoi {
+  margin-left: 1vw;
+  border-radius: 10%;
+  height: 5vh;
+  width: 5vh;
 }
 
 /*---------------------------CHAT--------------------------*/
@@ -547,7 +569,6 @@ body {
 .myaccounthtml .myAccountChangerPP {
   border-radius: 10%;
   border: 1px solid gray;
-  color: white;
   height: 3vh;
   width: auto;
 }
