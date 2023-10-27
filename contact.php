@@ -18,15 +18,15 @@ require_once SITE_ROOT . 'partials/header.php';
     <section class="contacthtml">
 
         <div class="contact">
-            <span class="contact_coordonnees">
+            <span class="contactCoordonnees">
                 <img src="<?= PROJECT_FOLDER ?>assets/images/phone.png" class="contactLogo">
                 06 07 08 09 10
             </span>
-            <span class="contact_coordonnees">
+            <span class="contactCoordonnees">
                 <img src="<?= PROJECT_FOLDER ?>assets/images/mail.png" class="contactLogo">
                 support@powerofmemory.com
             </span>
-            <span class="contact_coordonnees">
+            <span class="contactCoordonnees">
                 <img src="<?= PROJECT_FOLDER ?>assets/images/location.png" class="contactLogo">
                 Cergy
             </span>
@@ -34,7 +34,7 @@ require_once SITE_ROOT . 'partials/header.php';
 
         <?php if ($_POST == null) : ?>
             <form method="post" class="mail">
-                <div class="mail_identite">
+                <div class="mailIdentite">
                     <input type="text" name='nom' placeholder="Nom" required="required" class="mailEntree" style="width: 49%;">
                     <input type="email" name='email' placeholder="Email" required="required" class="mailEntree" style="width: 49%;">
                 </div>

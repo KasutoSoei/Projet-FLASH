@@ -13,18 +13,18 @@ require_once SITE_ROOT . 'partials/header.php';
 
     <section class="memoryhtml">
 
-        <div class="game_theme">
+        <div class="gameTheme">
             <span>
                 Theme :
             </span>
             <span>
-                <a href="EasyCartes.php" class="game_theme_button">Cartes</a>
+                <a href="EasyCartes.php" class="gameThemeBouton">Cartes</a>
             </span>
             <span>
-                <a href="EasyVoitures.php" class="game_theme_button">Voitures</a>
+                <a href="EasyVoitures.php" class="gameThemeBouton">Voitures</a>
             </span>
             <span>
-                <a href="EasyWaifus.php" class="game_theme_button">Waifus</a>
+                <a href="EasyWaifus.php" class="gameThemeBouton">Waifus</a>
             </span>
         </div>
 

@@ -357,7 +357,7 @@ body {
   height: 20vh;
 }
 
-.contacthtml .contact_coordonnees {
+.contacthtml .contactCoordonnees {
   box-sizing: border-box;
   padding: 2vmin;
   background-color: rgb(14, 11, 38);
@@ -385,7 +385,7 @@ body {
   width: 38vw;
 }
 
-.contacthtml .mail_identite {
+.contacthtml .mailIdentite {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -418,7 +418,7 @@ body {
 /*---------------------------CONTACT.php--------------------------*/
 
 /*---------------------------MEMORY.php--------------------------*/
-.memoryhtml .game_theme {
+.memoryhtml .gameTheme {
   margin-top: 5vh;
   border: 1px solid darkblue;
   border-radius: 1vmin;
@@ -431,12 +431,12 @@ body {
   line-height: 10vh;
 }
 
-.memoryhtml .game_theme_button {
+.memoryhtml .gameThemeBouton {
   color: white;
   text-decoration: none;
 }
 
-.memoryhtml .game_theme_button:hover {
+.memoryhtml .gameThemeBouton:hover {
   color: lightslategray;
   text-decoration: underline;
 }
@@ -510,7 +510,7 @@ body {
   align-items: center;
 }
 
-.memoryhtml .game_grille {
+.memoryhtml .gameGrille {
   margin-right: 20vw;
   border-collapse: collapse;
   font-size: 0;
@@ -519,7 +519,7 @@ body {
   height: 95vmin;
 }
 
-.memoryhtml .game_score {
+.memoryhtml .gameScore {
   display: flex;
   flex-direction: column;
   align-items: center;

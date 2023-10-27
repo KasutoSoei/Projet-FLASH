@@ -13,18 +13,18 @@ require_once SITE_ROOT . 'partials/header.php';
 
     <section class="memoryhtml">
 
-        <div class="game_theme">
+        <div class="gameTheme">
             <span>
                 Theme :
             </span>
             <span>
-                <a href="EasyCartes.php" class="game_theme_button">Cartes</a>
+                <a href="EasyCartes.php" class="gameThemeBouton">Cartes</a>
             </span>
             <span>
-                <a href="EasyVoitures.php" class="game_theme_button">Voitures</a>
+                <a href="EasyVoitures.php" class="gameThemeBouton">Voitures</a>
             </span>
             <span>
-                <a href="EasyWaifus.php" class="game_theme_button">Waifus</a>
+                <a href="EasyWaifus.php" class="gameThemeBouton">Waifus</a>
             </span>
         </div>
 
@@ -44,11 +44,11 @@ require_once SITE_ROOT . 'partials/header.php';
         </div>
 
         <div class="game">
-            <span class="game_score">
+            <span class="gameScore">
                 <p>Score : 30</p>
                 <p>Temps : 00:05</p>
             </span>
-            <table class="game_grille">
+            <table class="gameGrille">
                 <tr>
                     <td>
                         <img src="<?= PROJECT_FOLDER ?>assets/images/ThemeWaifus/CardBack.jpeg" style="height: 19vmin;">
