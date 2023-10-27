@@ -6,6 +6,12 @@ require_once SITE_ROOT . 'partials/head.php';
 require_once SITE_ROOT . 'partials/header.php';
 require_once SITE_ROOT . 'utils/database.php';
 
+if (!empty($_GET['message']))
+{
+    envoiMessageEtVidePost($pdo, $_SESSION['userId'], $_GET['message']);
+    header('refresh: 0; url = '. PROJECT_FOLDER . 'chat.php');
+}
+
 $messages = obtenirMessagesChat($pdo, $_SESSION['userId']);
 ?>
 
@@ -28,7 +34,7 @@ $messages = obtenirMessagesChat($pdo, $_SESSION['userId']);
                                 <p style="color: yellow;">
                                     <?php echo $message->pseudo ?>
                                 </p>
-                                <p style=" overflow-wrap: break-word; text-align: right">
+                                <p style="overflow-wrap: break-word; text-align: right; max-width: 40vw">
                                     <?php echo $message->messageChat ?>
                                 </p>
                             </div>
@@ -47,7 +53,7 @@ $messages = obtenirMessagesChat($pdo, $_SESSION['userId']);
                                 <p style="color: green;">
                                     <?php echo $message->pseudo ?>
                                 </p>
-                                <p style=" overflow-wrap: break-word;">
+                                <p style="overflow-wrap: break-word; max-width: 40vw">
                                     <?php echo $message->messageChat ?>
                                 </p>
                             </div>
@@ -60,6 +66,15 @@ $messages = obtenirMessagesChat($pdo, $_SESSION['userId']);
                 <?php endif; ?>
             <?php endforeach; ?>
         </div>
+
+        <form method="get" class="chatEnvoi">
+            <input type="text" name="message" placeholder="Envoyer un message" class="chatMessageEntree">
+            <input type="submit" id="envoi" style="display: none;">
+            <label for="envoi" style="display: box;">
+                <img src="<?= PROJECT_FOLDER ?>assets/images/sendMessage.png" class="chatBoutonEnvoi">
+            </label>
+        </form>
+
     </section>
 </body>
 <?php require_once SITE_ROOT . 'partials/footer.php'; ?>

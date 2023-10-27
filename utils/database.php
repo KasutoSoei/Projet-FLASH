@@ -142,8 +142,18 @@ function obtenirMessagesChat($pdo, $id): array
         'SELECT messageChat, CAST(dateHeureMessage AS time) AS heure, pseudo, Utilisateur.id AS UtilisateurId, Utilisateur.id = :id AS isSender
         FROM Chat
         INNER JOIN Utilisateur ON Chat.idExpediteur = Utilisateur.id
-        WHERE dateHeureMessage < CURRENT_TIMESTAMP'
+        WHERE dateHeureMessage > CURRENT_TIMESTAMP - INTERVAL 1 DAY
+        ORDER BY dateHeureMessage ASC'
     );
     $pdoMessagesChat->execute([':id' => $id]);
     return $pdoMessagesChat->fetchAll();
+}
+
+function envoiMessageEtVidePost($pdo, $id, $message): void
+{
+    $pdoEnvoiMessage = $pdo->prepare(
+        'INSERT INTO Chat (idJeu, idExpediteur, messageChat, dateHeureMessage)
+        VALUES (1, :id, :envoi, CURRENT_TIMESTAMP);');
+    $pdoEnvoiMessage->execute([':id' => $id, ':envoi' => $message]);
+    $_POST['message'] = '';
 }
