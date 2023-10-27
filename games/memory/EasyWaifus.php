@@ -28,18 +28,18 @@ require_once SITE_ROOT . 'partials/header.php';
             </span>
         </div>
 
-        <div class="game_difficulte">
+        <div class="gameDifficulte">
             <span>
                 Difficulté :
             </span>
             <span>
-                <a href="EasyWaifus.php" class="game_difficulte_facile">Facile</a>
+                <a href="EasyWaifus.php" class="gameDifficulteFacile">Facile</a>
             </span>
             <span>
-                <a href="MediumWaifus.php" class="game_difficulte_moyen">Moyen</a>
+                <a href="MediumWaifus.php" class="gameDifficulteMoyen">Moyen</a>
             </span>
             <span>
-                <a href="HardWaifus.php" class="game_difficulte_difficile">Difficile</a>
+                <a href="HardWaifus.php" class="gameDifficulteDifficile">Difficile</a>
             </span>
         </div>
 

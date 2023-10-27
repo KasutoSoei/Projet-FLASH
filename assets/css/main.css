@@ -441,7 +441,7 @@ body {
   text-decoration: underline;
 }
 
-.memoryhtml .game_difficulte {
+.memoryhtml .gameDifficulte {
   margin-top: 1vh;
   border: 1px solid darkblue;
   border-radius: 1vmin;
@@ -454,30 +454,30 @@ body {
   line-height: 10vh;
 }
 
-.memoryhtml .game_difficulte_facile {
+.memoryhtml .gameDifficulteFacile {
   color: green;
   text-decoration: none;
 }
 
-.memoryhtml .game_difficulte_moyen {
+.memoryhtml .gameDifficulteMoyen {
   color: gold;
   text-decoration: none;
 }
 
-.memoryhtml .game_difficulte_difficile {
+.memoryhtml .gameDifficulteDifficile {
   color: red;
   text-decoration: none;
 }
 
-.memoryhtml .game_difficulte_facile:hover {
+.memoryhtml .gameDifficulteFacile:hover {
   text-decoration: underline;
 }
 
-.memoryhtml .game_difficulte_moyen:hover {
+.memoryhtml .gameDifficulteMoyen:hover {
   text-decoration: underline;
 }
 
-.memoryhtml .game_difficulte_difficile:hover {
+.memoryhtml .gameDifficulteDifficile:hover {
   text-decoration: underline;
 }
 
@@ -494,11 +494,11 @@ body {
   text-align: left;
 }
 
-.memoryhtml .regles_lien {
+.memoryhtml .reglesLien {
   color: yellow;
 }
 
-.memoryhtml .regles_lien:hover {
+.memoryhtml .reglesLien:hover {
   color: rgb(255, 200, 0);
 }
 

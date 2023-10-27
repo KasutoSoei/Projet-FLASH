@@ -28,18 +28,18 @@ require_once SITE_ROOT . 'partials/header.php';
             </span>
         </div>
 
-        <div class="game_difficulte">
+        <div class="gameDifficulte">
             <span>
                 Difficulté :
             </span>
             <span>
-                <a href="EasyCartes.php" class="game_difficulte_facile">Facile</a>
+                <a href="EasyCartes.php" class="gameDifficulteFacile">Facile</a>
             </span>
             <span>
-                <a href="MediumCartes.php" class="game_difficulte_moyen">Moyen</a>
+                <a href="MediumCartes.php" class="gameDifficulteMoyen">Moyen</a>
             </span>
             <span>
-                <a href="HardCartes.php" class="game_difficulte_difficile">Difficile</a>
+                <a href="HardCartes.php" class="gameDifficulteDifficile">Difficile</a>
             </span>
         </div>
 
@@ -79,7 +79,7 @@ require_once SITE_ROOT . 'partials/header.php';
 
             <p style="margin-left: 3vw;">
                 Le but est de retouner toutes les cases de la grille. <br>
-                Vous pouvez ensuite comparer votre temps à celui des meilleurs dans le <a href="<?= PROJECT_FOLDER ?>games/memory/scores.php" class="regles_lien">classement</a>
+                Vous pouvez ensuite comparer votre temps à celui des meilleurs dans le <a href="<?= PROJECT_FOLDER ?>games/memory/scores.php" class="reglesLien">classement</a>
             </p>
 
             <br>
@@ -94,7 +94,7 @@ require_once SITE_ROOT . 'partials/header.php';
 
             <br>
             <?php if ($_SESSION['userId'] == 0) : ?>
-                Voilà, vous savez tout. <a href="<?= PROJECT_FOLDER ?>login.php" class="regles_lien">Connectez-vous</a> et faites place à votre mémoire !
+                Voilà, vous savez tout. <a href="<?= PROJECT_FOLDER ?>login.php" class="reglesLien">Connectez-vous</a> et faites place à votre mémoire !
             <?php else : ?>
                 Voilà, vous savez tout. Maintenant, faites place à votre mémoire !
             <?php endif; ?>
