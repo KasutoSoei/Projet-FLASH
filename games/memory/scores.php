@@ -44,7 +44,7 @@ $score_table = obtenirScoreTable($pdo, $_GET['recherchePseudo']);
                     </tr>
                 </thead>
                 <?php for ($i = 0; $i < sizeof($score_table); $i++) : ?>
-                    <tr <?php if ($score_table[$i]->id == $_SESSION['userId']) : ?>class="active-row" <?php endif; ?>>
+                    <tr <?php if ($score_table[$i]->id == $_SESSION['userId']) : ?>class="activeRow" <?php endif; ?>>
                         <td><?php echo $score_table[$i]->nomJeu ?> </td>
                         <td><?php echo $score_table[$i]->pseudo ?> </td>
                         <td><?php echo $score_table[$i]->difficulte ?> </td>

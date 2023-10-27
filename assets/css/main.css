@@ -838,7 +838,7 @@ body {
   border-bottom: 2px solid rgb(52, 37, 154);
 }
 
-.scoreshtml .styledTable tbody tr.active-row {
+.scoreshtml .styledTable tbody tr.activeRow {
   font-weight: bold;
   background-color: rgba(52, 37, 154, 0.2);
   text-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
