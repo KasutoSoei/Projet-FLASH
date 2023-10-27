@@ -25,16 +25,14 @@ function obtenirMeilleurScore($pdo): int
     $pdoScores->execute();
     return $pdoScores->fetch()->score;
 }
-
-function getMeilleurScoreUtilisateur($pdo, $idUtilisateur): int
+function obtenirMeilleurScoreUtilisateur($pdo): int
 {
-    $pdoScoresUtilisateur = $pdo->prepare("SELECT score FROM Scores WHERE idJoueur = ':id' ORDER BY score ASC LIMIT 1");
-    $pdoScoresUtilisateur->execute([':id' => $idUtilisateur]);
+    $pdoScoresUtilisateur = $pdo->prepare("SELECT score FROM Scores WHERE idJoueur = :id ORDER BY score ASC LIMIT 1");
+    $pdoScoresUtilisateur->execute([':id' => $_SESSION['userId']]);
     return $pdoScoresUtilisateur->fetch()->score;
 }
 
 function obtenirNbJoueursInscrits($pdo): int
-
 {
     $pdoInscrits = $pdo->prepare('SELECT COUNT(*) AS inscrits FROM Utilisateur');
     $pdoInscrits->execute();
@@ -45,6 +43,13 @@ function obtenirNbPartiesJouees($pdo): int
 {
     $pdoParties = $pdo->prepare('SELECT COUNT(*) AS nombre FROM Scores');
     $pdoParties->execute();
+    return $pdoParties->fetch()->nombre;
+}
+
+function obtenirNbPartiesJoueesUtilisateur($pdo): int
+{
+    $pdoParties = $pdo->prepare('SELECT COUNT(*) AS nombre FROM Scores WHERE idJoueur= :id ');
+    $pdoParties->execute([':id' => $_SESSION['userId']]);
     return $pdoParties->fetch()->nombre;
 }
 

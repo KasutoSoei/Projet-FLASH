@@ -52,7 +52,7 @@ if (isset($_POST['changePseudo']) && (estPseudoExistant($pdo, $_POST['changePseu
             </span>
             <span style="font-size: 5vmin;">
                 <form method="POST" form='changePseudo'>
-                    <input type="text" name="changePseudo" value="<?= getPseudo($pdo, $_SESSION['userId']) ?>" class="myAccountChangeNom" minlength="4">
+                    <input type="text" name="changePseudo" value="<?= obtenirPseudo($pdo, $_SESSION['userId']) ?>" class="myAccountChangeNom" minlength="4">
                     <?php $change = false;
                     if (isset($_POST['changePseudo'])) :
 
@@ -71,7 +71,7 @@ if (isset($_POST['changePseudo']) && (estPseudoExistant($pdo, $_POST['changePseu
                 <div class="myAccountStats">
                     <span class="myAccountStatsCase">
                         Parties jouées <br>
-                        <strong style="font-size: 7vmin; color: indigo; -webkit-text-stroke: 1px darkgray;">128</strong>
+                        <strong style="font-size: 7vmin; color: indigo; -webkit-text-stroke: 1px darkgray;"><?php echo obtenirNbPartiesJoueesUtilisateur($pdo) ?></strong>
                     </span>
                     <span class="myAccountStatsCase">
                         Temps de jeu total <br>
@@ -79,7 +79,7 @@ if (isset($_POST['changePseudo']) && (estPseudoExistant($pdo, $_POST['changePseu
                     </span>
                     <span class="myAccountStatsCase">
                         Meilleur temps <br>
-                        <strong style="font-size: 7vmin; color: indigo; -webkit-text-stroke: 1px darkgray;"><?php echo getMeilleurScore($pdo) ?></strong>
+                        <strong style="font-size: 7vmin; color: indigo; -webkit-text-stroke: 1px darkgray;"><?php echo obtenirMeilleurScoreUtilisateur($pdo) ?></strong>
                     </span>
                 </div>
             </span>
