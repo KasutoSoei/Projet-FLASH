@@ -4,15 +4,17 @@
 require_once 'utils/common.php';
 require_once SITE_ROOT . 'partials/head.php';
 require_once SITE_ROOT . 'partials/header.php';
-require_once SITE_ROOT . 'chat.php';
 require_once SITE_ROOT . 'utils/database.php';
 ?>
-<section class="registerhtml">
 
-    <body>
-        <div class="registerTitre">
-            INSCRIPTION
-        </div>
+<body>
+
+    <div class="titre">
+        INSCRIPTION
+    </div>
+
+    <section class="registerhtml">
+
         <div class="inscription">
 
             <?php if ($_POST == null) : ?>
@@ -40,7 +42,10 @@ require_once SITE_ROOT . 'utils/database.php';
             ) :
                 $_POST['mdp'] = hash('sha256', $_POST['mdp']);
                 $_SESSION['userId'] = insereUtilisateurEtRetourneId($pdo, $_POST['email'], $_POST['mdp'], $_POST['pseudo']);
-                header("Refresh: 0; url=" . PROJECT_FOLDER . "games/memory/memory.php"); ?>
+                mkdir(SITE_ROOT . "userFiles/" . $_SESSION['userId']); //creer le dossier
+                copy(SITE_ROOT . 'userFiles/0/profile.png', SITE_ROOT . 'userFiles/' . $_SESSION['userId'] . '/profile.png'); //ajoute une image de profil par defaut
+                header("Refresh: 0; url=" . PROJECT_FOLDER . "games/memory/memory.php"); //actualise la page et redirige vers la page de jeu
+            ?>
 
             <?php else : ?>
                 <form method="post" style="width: 100%;">
@@ -75,6 +80,6 @@ require_once SITE_ROOT . 'utils/database.php';
 
             <?php endif; ?>
         </div>
-        <?php require_once SITE_ROOT . 'partials/footer.php'; ?>
-    </body>
-</section>
+    </section>
+</body>
+<?php require_once SITE_ROOT . 'partials/footer.php'; ?>

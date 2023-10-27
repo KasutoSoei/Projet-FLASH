@@ -5,15 +5,15 @@ require_once 'utils/common.php';
 require_once SITE_ROOT . 'utils/database.php';
 require_once SITE_ROOT . 'partials/head.php';
 require_once SITE_ROOT . 'partials/header.php';
-require_once SITE_ROOT . 'chat.php';
-
 ?>
-<section class="loginhtml">
 
-    <body>
-        <div class="loginTitre">
-            CONNEXION
-        </div>
+<body>
+    <div class="titre">
+        CONNEXION
+    </div>
+
+    <section class="loginhtml">
+
         <?php if ($_POST == null) : ?>
             <div class="connexion">
                 <form method="post" style="width: 100%;">
@@ -30,8 +30,9 @@ require_once SITE_ROOT . 'chat.php';
             </div>
 
         <?php elseif (compteExiste($pdo, $_POST['email'], $_POST['mdp'])) :
-            $_SESSION['userId'] = getId($pdo, $_POST['email'], $_POST['mdp']);
-            header("Refresh: 0; url=" . PROJECT_FOLDER . "games/memory/memory.php"); ?>
+            $_SESSION['userId'] = obtenirId($pdo, $_POST['email'], $_POST['mdp']);
+            header("Refresh: 0; url=" . PROJECT_FOLDER . "games/memory/memory.php"); //actualise la page et redirige vers la page de jeu 
+        ?>
 
         <?php else :
             var_dump(compteExiste($pdo, $_POST['email'], $_POST['mdp'])) ?>
@@ -50,6 +51,6 @@ require_once SITE_ROOT . 'chat.php';
                 </span>
             </div>
         <?php endif; ?>
-        <?php require_once SITE_ROOT . 'partials/footer.php'; ?>
-    </body>
-</section>
+    </section>
+</body>
+<?php require_once SITE_ROOT . 'partials/footer.php'; ?>

@@ -23,14 +23,17 @@ if (isset($_POST['changePseudo']) && (estPseudoExistant($pdo, $_POST['changePseu
 ?>
 <section class="myaccounthtml">
 
-    <body>
+<body>
 
-        <div class="myAccountTitre">
-            MON ESPACE
-        </div>
+    <div class="titre">
+        MON ESPACE
+    </div>
+
+    <section class="myaccounthtml">
 
         <div class="myAccount">
         <span style="margin-left: 3vh;">
+
                 <form method="POST" enctype="multipart/form-data">
                     <input type="file" id="files" name="avatar" style="display:none;" accept="image/png">
                     <label for="files">
@@ -185,6 +188,6 @@ if (isset($_POST['changePseudo']) && (estPseudoExistant($pdo, $_POST['changePseu
                 <input type="submit" class="myAccountGestionBouton" name="suppression" value="Supprimer le compte" >
             </form>
         </div>
-        <?php require_once SITE_ROOT . 'partials/footer.php'; ?>
-    </body>
-</section>
+    </section>
+</body>
+<?php require_once SITE_ROOT . 'partials/footer.php'; ?>
