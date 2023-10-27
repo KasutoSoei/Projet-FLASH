@@ -25,11 +25,19 @@ function obtenirMeilleurScore($pdo): int
     $pdoScores->execute();
     return $pdoScores->fetch()->score;
 }
-function obtenirMeilleurScoreUtilisateur($pdo): int
+function obtenirMeilleurScoreUtilisateur($pdo)
 {
     $pdoScoresUtilisateur = $pdo->prepare("SELECT score FROM Scores WHERE idJoueur = :id ORDER BY score ASC LIMIT 1");
     $pdoScoresUtilisateur->execute([':id' => $_SESSION['userId']]);
-    return $pdoScoresUtilisateur->fetch()->score;
+    $meilleurScore = $pdoScoresUtilisateur->fetch();
+    if ($meilleurScore == null)
+    {
+        return "Aucun score";
+    }
+    else
+    {
+        return $meilleurScore->score;
+    }
 }
 
 function obtenirNbJoueursInscrits($pdo): int
