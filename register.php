@@ -6,6 +6,9 @@ require_once SITE_ROOT . 'partials/head.php';
 require_once SITE_ROOT . 'partials/header.php';
 require_once SITE_ROOT . 'utils/database.php';
 ?>
+<title>
+    TPOM - Inscription
+</title>
 
 <body>
 

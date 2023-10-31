@@ -20,6 +20,9 @@ if (!empty($_GET['message'])) {
 
 $messages = obtenirMessagesChat($pdo, $_SESSION['userId']);
 ?>
+<title>
+    TPOM - Chat
+</title>
 
 <body>
     <div class="titre">

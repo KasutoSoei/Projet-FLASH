@@ -5,49 +5,20 @@ require_once '../../utils/common.php';
 require_once SITE_ROOT . 'partials/head.php';
 require_once SITE_ROOT . 'partials/header.php';
 ?>
+<title>
+    TPOM - Jeu
+</title>
+<script src="../../assets/js/memory.js"></script>
 
 <body>
     <div class="titre">
         JEU
     </div>
 
-    <section class="memoryhtml">
+    <section class="memoryhtml" id="section">
 
-        <?php if ($_SESSION['userId'] != 0) : ?>
-
-            <div class="gameTheme">
-                <span>
-                    Theme :
-                </span>
-                <span>
-                    <a href="EasyCartes.php" class="gameThemeBouton">Cartes</a>
-                </span>
-                <span>
-                    <a href="EasyVoitures.php" class="gameThemeBouton">Voitures</a>
-                </span>
-                <span>
-                    <a href="EasyWaifus.php" class="gameThemeBouton">Waifus</a>
-                </span>
-            </div>
-
-            <div class="gameDifficulte">
-                <span>
-                    Difficulté :
-                </span>
-                <span>
-                    <a href="EasyCartes.php" class="gameDifficulteFacile">Facile</a>
-                </span>
-                <span>
-                    <a href="MediumCartes.php" class="gameDifficulteMoyen">Moyen</a>
-                </span>
-                <span>
-                    <a href="HardCartes.php" class="gameDifficulteDifficile">Difficile</a>
-                </span>
-            </div>
-        <?php endif; ?>
-
-        <div style="margin-top: 7vh; text-align:center; font-size: 2vmin;">
-            Bienvenue sur la page du jeu ! La grille s'affichera lorsque vous serez connecté et que vous aurez choisi une difficulté. Si vous voulez les règles, les voici : <br>
+        <div style="margin-top: 7vh; text-align: center; font-size: 2vmin;">
+            Bienvenue sur la page du jeu ! La grille s'affichera lorsque vous serez connecté et que vous aurez choisi une difficulté et un thème. Si vous voulez les règles, les voici : <br>
         </div>
 
         <div class="regles">
@@ -102,6 +73,47 @@ require_once SITE_ROOT . 'partials/header.php';
                 Voilà, vous savez tout. Maintenant, faites place à votre mémoire !
             <?php endif; ?>
         </div>
+
+        <?php if ($_SESSION['userId'] != 0) : ?>
+
+            <form>
+                <div id="gameOptions">
+                    <div style="display: flex; flex-direction: column">
+                        <select id="themes" class="gameOption">
+                            <option value="">
+                                Thème
+                            </option>
+                            <option value="ThemeCartes">
+                                Cartes
+                            </option>
+                            <option value="ThemeVoitures">
+                                Voitures
+                            </option>
+                            <option value="ThemeWaifus">
+                                Waifus
+                            </option>
+                        </select>
+                    </div>
+                    <div style="display: flex; flex-direction: column">
+                        <select id="difficultes" class="gameOption">
+                            <option value="">
+                                Difficulté
+                            </option>
+                            <option value="easy">
+                                Easy
+                            </option>
+                            <option value="medium">
+                                Medium
+                            </option>
+                            <option value="hard">
+                                Hard
+                            </option>
+                        </select>
+                    </div>
+                </div>
+                <input type="button" onclick="genererGrille()" value="Jouer" id="gameBouton">
+            </form>
+        <?php endif; ?>
     </section>
 </body>
 <?php require_once SITE_ROOT . 'partials/footer.php'; ?>

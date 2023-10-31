@@ -6,6 +6,9 @@ require_once SITE_ROOT . 'utils/database.php';
 require_once SITE_ROOT . 'partials/head.php';
 require_once SITE_ROOT . 'partials/header.php';
 ?>
+<title>
+    TPOM - Connexion
+</title>
 
 <body>
     <div class="titre">

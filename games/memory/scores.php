@@ -12,8 +12,9 @@ if (!isset($_GET['recherchePseudo'])) {
 
 $score_table = obtenirScoreTable($pdo, $_GET['recherchePseudo']);
 ?>
-
-
+<title>
+    TPOM - Scores
+</title>
 
 <body>
     <div class="titre">
@@ -27,7 +28,7 @@ $score_table = obtenirScoreTable($pdo, $_GET['recherchePseudo']);
                 <span class="scoresRecherche">
                     <input type="submit" id="scoresRechercheBouton" style="display: none;">
                     <label for="scoresRechercheBouton">
-                    <img src="<?= PROJECT_FOLDER ?>assets/images/recherche.png" class="scoresRechercheImage">
+                        <img src="<?= PROJECT_FOLDER ?>assets/images/recherche.png" class="scoresRechercheImage">
                     </label>
                     <input type="text" name="recherchePseudo" placeholder="Recherche" id="scoresRechercheEntree" value="<?= $_GET['recherchePseudo'] ?>">
                 </span>
