@@ -30,12 +30,9 @@ function obtenirMeilleurScoreUtilisateur($pdo, $id)
     $pdoScoresUtilisateur = $pdo->prepare("SELECT score FROM Scores WHERE idJoueur = :id ORDER BY score ASC LIMIT 1");
     $pdoScoresUtilisateur->execute([':id' => $id]);
     $meilleurScore = $pdoScoresUtilisateur->fetch();
-    if ($meilleurScore == null)
-    {
+    if ($meilleurScore == null) {
         return "Aucun score";
-    }
-    else
-    {
+    } else {
         return $meilleurScore->score;
     }
 }
@@ -136,10 +133,10 @@ function changeMdp($pdo, $newMdp, $idUtilisateur): void
     $pdoNewMdp = $pdo->prepare('UPDATE Utilisateur SET mdp = :mdp WHERE id = :id');
     $pdoNewMdp->execute([':mdp' => $newMdp, ':id' => $idUtilisateur]);
 }
-function changePseudo($pdo, $newPseudo, $idUtilisateur): void 
+function changePseudo($pdo, $newPseudo, $idUtilisateur): void
 {
-    $pdoNewMdp = $pdo -> prepare('UPDATE Utilisateur SET pseudo = :pseudo WHERE id = :id');
-    $pdoNewMdp->execute([':pseudo' => $newPseudo,':id' => $idUtilisateur]); 
+    $pdoNewMdp = $pdo->prepare('UPDATE Utilisateur SET pseudo = :pseudo WHERE id = :id');
+    $pdoNewMdp->execute([':pseudo' => $newPseudo, ':id' => $idUtilisateur]);
 }
 
 function estBonEmail($pdo, $emailEntre, $idUtilisateur): bool
@@ -164,7 +161,7 @@ function supprimerCompte($pdo, $id): void
 function obtenirMessagesChat($pdo, $id): array
 {
     $pdoMessagesChat = $pdo->prepare(
-        'SELECT messageChat, CAST(dateHeureMessage AS time) AS heure, pseudo, Utilisateur.id AS UtilisateurId, Utilisateur.id = :id AS isSender
+        'SELECT Chat.id AS id, messageChat, CAST(dateHeureMessage AS time) AS heure, pseudo, Utilisateur.id AS utilisateurId, Utilisateur.id = :id AS estEnvoyeur
         FROM Chat
         INNER JOIN Utilisateur ON Chat.idExpediteur = Utilisateur.id
         WHERE dateHeureMessage > CURRENT_TIMESTAMP - INTERVAL 1 DAY
@@ -178,6 +175,7 @@ function envoiMessage($pdo, $id, $message): void
 {
     $pdoEnvoiMessage = $pdo->prepare(
         'INSERT INTO Chat (idJeu, idExpediteur, messageChat, dateHeureMessage)
-        VALUES (1, :id, :envoi, CURRENT_TIMESTAMP);');
+        VALUES (1, :id, :envoi, CURRENT_TIMESTAMP);'
+    );
     $pdoEnvoiMessage->execute([':id' => $id, ':envoi' => $message]);
 }

@@ -38,24 +38,24 @@ function retirerErreur(elements, nombreErreurs) {
   }
 }
 
-function ajouterColonnes(ligne, numero, tailleCase, theme) {
+function ajouterColonnes(ligne, n, tailleCase, theme) {
   const colonne = document.createElement("td");
   const carte = document.createElement("img");
   carte.src = "../../assets/images/" + theme + "/back.png";
   carte.style.height = tailleCase;
   colonne.appendChild(carte);
   ligne.appendChild(colonne);
-  if (numero > 1) {
-    return ajouterColonnes(ligne, numero - 1, tailleCase, theme);
+  if (n > 1) {
+    return ajouterColonnes(ligne, n - 1, tailleCase, theme);
   }
 }
 
-function ajouterLignes(table, numero, tailleGrille, tailleCase, theme) {
+function ajouterLignes(table, n, tailleGrille, tailleCase, theme) {
   const ligne = document.createElement("tr");
   ajouterColonnes(ligne, tailleGrille, tailleCase, theme);
   table.appendChild(ligne);
-  if (numero > 1) {
-    return ajouterLignes(table, numero - 1, tailleGrille, tailleCase, theme);
+  if (n > 1) {
+    return ajouterLignes(table, n - 1, tailleGrille, tailleCase, theme);
   }
 }
 
@@ -67,19 +67,19 @@ function creerGrille(tailleGrille, tailleCase, theme) {
 
 function creerEndroitJeu(tailleGrille, tailleCase, theme) {
   const div = document.createElement("div");
-  div.setAttribute("id", "gameTime");
-  div.classList.add("game");
+  div.setAttribute("id", "gameTemps");
+  div.className = ("game");
 
   const minutes = document.createElement("span");
   const secondes = document.createElement("span");
   const millisecondes = document.createElement("span");
-  minutes.classList.add("timer");
-  secondes.classList.add("timer");
-  millisecondes.classList.add("timer");
+  minutes.className = ("timer");
+  secondes.className = ("timer");
+  millisecondes.className = ("timer");
 
   const table = creerGrille(tailleGrille, tailleCase, theme);
   table.setAttribute("id", "gameGrille");
-  table.classList.add("game");
+  table.className = ("game");
 
   const section = document.getElementById("section");
 

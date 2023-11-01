@@ -258,19 +258,21 @@ body {
 
 /*---------------------------CHAT--------------------------*/
 
-.chathtml .chat {
-  overflow: hidden;
+#chathtml #chat {
+  overflow: scroll;
   margin-top: 5vh;
   margin-bottom: 5vh;
-  margin-left: 5vw;
+  margin-left: 1vw;
+  margin-right: 1vw;
+  padding-left: 4vw;
+  padding-right: 4vw;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
-  width: 90vw;
-  min-height: 80vh;
+  height: 80vh;
 }
 
-.chathtml .chatMessageBoxEnvoyeur {
+#chathtml .chatMessageBoxEnvoyeur {
   margin-bottom: 3vh;
   margin-left: 50vw;
   display: flex;
@@ -278,24 +280,24 @@ body {
   align-items: end;
 }
 
-.chathtml .chatMessageBoxReceveur {
+#chathtml .chatMessageBoxReceveur {
   margin-bottom: 3vh;
   margin-right: 50vw;
   display: flex;
   flex-direction: column;
 }
 
-.chathtml .chatMessageEnvoye {
+#chathtml .chatMessageEnvoye {
   display: flex;
   flex-direction: row-reverse;
 }
 
-.chathtml .chatMessageRecu {
+#chathtml .chatMessageRecu {
   display: flex;
   flex-direction: row;
 }
 
-.chathtml .chatInfosMessage {
+#chathtml .chatInfosMessage {
   padding-left: 1vw;
   padding-right: 1vw;
   display: flex;
@@ -303,26 +305,26 @@ body {
   justify-content: space-around;
 }
 
-.chathtml .chatPP {
+#chathtml .chatPP {
   border-radius: 50%;
   height: 6vmin;
   width: auto;
 }
 
-.chathtml .chatMessageHeure {
+#chathtml .chatMessageHeure {
   margin-top: 1vh;
   font-size: 1vmin;
   color: lightgray;
 }
 
-.chathtml .chatEnvoi {
-  margin-bottom: 5vh;
+#chathtml #chatEnvoi {
+  margin-bottom: 2vh;
   display: flex;
   justify-content: center;
   height: 5vh;
 }
 
-.chathtml .chatMessageEntree {
+#chathtml #chatMessageEntree {
   box-sizing: border-box;
   padding-left: 1vmin;
   border-radius: 1vmin;
@@ -334,13 +336,17 @@ body {
   width: 90%;
 }
 
-.chathtml .chatBouton {
+#chathtml .chatBouton {
   margin-left: 1vw;
   border-radius: 10%;
   height: 5vh;
   width: 5vh;
 }
 
+#chathtml #chatErreur {
+  margin-left: 1vw;
+  color: red;
+}
 /*---------------------------CHAT--------------------------*/
 
 /*---------------------------CONTACT.php--------------------------*/
@@ -450,7 +456,7 @@ body {
 
 .memoryhtml .gameOptionsError {
   font-size: 2vmin;
-  color: red
+  color: red;
 }
 
 .memoryhtml .regles {
@@ -474,7 +480,7 @@ body {
   color: rgb(255, 200, 0);
 }
 
-.memoryhtml #gameTime {
+.memoryhtml #gameTemps {
   margin-top: 3vh;
   font-size: 3vmin;
   text-align: center;
