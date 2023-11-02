@@ -21,6 +21,21 @@ function acutaliserChrono() {
   timer[0].innerHTML = min;
   timer[1].innerHTML = sec;
   timer[2].innerHTML = ms;
+
+  
+}
+
+function insererScore(score){
+  clearInterval(chrono)
+  var score = min + ":" + sec + ":"+  ms;
+  const difficultes = document.getElementById("difficultes");
+  var difficulte = difficultes.value;
+  $.ajax({
+    type : 'POST',
+    url: "../../utils/insererScore.php",
+    data: { score: score, difficulte: difficulte },
+  });
+
 }
 
 function reinitialiserChrono() {
@@ -137,3 +152,4 @@ function genererGrille() {
     commencerChrono();
   }
 }
+

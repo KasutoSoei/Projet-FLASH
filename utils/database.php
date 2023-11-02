@@ -19,7 +19,7 @@ function connectToDbAndGetPdo(): PDO
 }
 $pdo = connectToDbAndGetPdo();
 
-function obtenirMeilleurScore($pdo): int
+function obtenirMeilleurScore($pdo): string
 {
     $pdoScores = $pdo->prepare('SELECT score FROM Scores ORDER BY score ASC LIMIT 1');
     $pdoScores->execute();

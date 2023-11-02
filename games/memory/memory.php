@@ -5,10 +5,13 @@ require_once '../../utils/common.php';
 require_once SITE_ROOT . 'partials/head.php';
 require_once SITE_ROOT . 'partials/header.php';
 ?>
+
 <title>
     TPOM - Jeu
 </title>
 <script src="../../assets/js/memory.js"></script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 
 <body>
     <div class="titre">
@@ -112,8 +115,11 @@ require_once SITE_ROOT . 'partials/header.php';
                     </div>
                 </div>
                 <input type="button" onclick="genererGrille()" value="Jouer" id="gameBouton">
-            </form>
+
+            <input type="button" value="Fin" onclick="insererScore()" id=gameBouton>
         <?php endif; ?>
     </section>
+
+
 </body>
 <?php require_once SITE_ROOT . 'partials/footer.php'; ?>
