@@ -1,5 +1,4 @@
 function ajouterMessage(chat, infos, n) {
-  console.log(infos[infos.length - n]);
   const chatMessageBox = document.createElement("div");
   const chatMessage = document.createElement("div");
 
@@ -53,7 +52,7 @@ function ajouterMessage(chat, infos, n) {
   }
 }
 
-function acutaliserChat() {
+setInterval(function () {
   $.ajax({
     url: "utils/obtenirMessages.php",
     dataType: "json",
@@ -68,7 +67,6 @@ function acutaliserChat() {
       }
     },
   });
-}
+});
 
 var nombreElements = 0;
-setInterval(acutaliserChat);

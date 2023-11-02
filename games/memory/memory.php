@@ -8,7 +8,6 @@ require_once SITE_ROOT . 'partials/header.php';
 <title>
     TPOM - Jeu
 </title>
-<script src="../../assets/js/memory.js"></script>
 
 <body>
     <div class="titre">
@@ -63,7 +62,7 @@ require_once SITE_ROOT . 'partials/header.php';
             <p style="margin-left: 3vw;">
                 En difficulté Facile, un joker est présent, il permet de retourner n'importe quelle paire. <br>
                 En difficulté Moyen il y a 2 paires par image avec un total de 25 images différentes. <br>
-                En Difficile, il y a également 2 paires par image mais pour 50 images différentes. <br>
+                En Difficile, il y a 4 paires par image mais pour 50 images différentes. <br>
             </p>
 
             <br>
@@ -114,6 +113,20 @@ require_once SITE_ROOT . 'partials/header.php';
                 <input type="button" onclick="genererGrille()" value="Jouer" id="gameBouton">
             </form>
         <?php endif; ?>
+        <div class="modal" id="modal">
+            <div class="modal-back"></div>
+            <div class="modal-container">
+                Bien joué !
+                <br>
+                Votre score de <span id="scoreIci"> </span> à bien été enregistré !
+                <br>
+                <br>
+                <a href="#" id="modal-close">REJOUER</a>
+            </div>
+        </div>
     </section>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="../../assets/js/memory.js"></script>
 </body>
 <?php require_once SITE_ROOT . 'partials/footer.php'; ?>

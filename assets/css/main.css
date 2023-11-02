@@ -493,6 +493,40 @@ body {
   width: 60vmin;
   height: 60vmin;
 }
+
+.memoryhtml .modal {
+  display: none;
+}
+
+.memoryhtml .modal-back {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba( 0, 0, 0, .25 )
+}
+
+.memoryhtml .modal-container {
+  position: fixed;
+  top: 40%;
+  left: 38%;
+  padding: 25px;
+  background: rgb(20, 0, 20);
+  border: 1px solid indigo;
+  color: lightgray;
+  border-radius: 1vmin;
+}
+
+.memoryhtml #modal-close{
+margin-top: 2vh;
+text-decoration: none;
+font-weight: bold;
+}
+
+.memoryhtml .modal #modal-close:hover {
+  color: rgb(220, 147, 63);
+}
 /*---------------------------MEMORY.php--------------------------*/
 
 /*---------------------------MYACCOUNT.php--------------------------*/

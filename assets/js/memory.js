@@ -5,22 +5,35 @@ var ms = 0,
   min = 0;
 
 function commencerChrono() {
-  chrono = setInterval(acutaliserChrono, 100);
+  chrono = setInterval(acutaliserChrono, 10);
 }
 
 function acutaliserChrono() {
   ms += 1;
-  if (ms == 10) {
-    ms = 1;
+  if (ms == 100) {
+    ms = 0;
     sec += 1;
   }
   if (sec == 60) {
     sec = 0;
     min += 1;
   }
-  timer[0].innerHTML = min;
-  timer[1].innerHTML = sec;
-  timer[2].innerHTML = ms;
+
+  if (min < 10) {
+    timer[0].innerHTML = "0" + min;
+  } else {
+    timer[0].innerHTML = min;
+  }
+  if (sec < 10) {
+    timer[1].innerHTML = "0" + sec;
+  } else {
+    timer[1].innerHTML = sec;
+  }
+  if (ms < 10) {
+    timer[2].innerHTML = "0" + ms;
+  } else {
+    timer[2].innerHTML = ms;
+  }
 }
 
 function reinitialiserChrono() {
@@ -38,48 +51,58 @@ function retirerErreur(elements, nombreErreurs) {
   }
 }
 
-function ajouterColonnes(ligne, n, tailleCase, theme) {
+function ajouterColonnes(ligne, n, tailleCase, theme, indexes) {
   const colonne = document.createElement("td");
   const carte = document.createElement("img");
   carte.src = "../../assets/images/" + theme + "/back.png";
   carte.style.height = tailleCase;
+  carte.classList.add("cartes");
+  carte.classList.add(indexes[0]);
+  indexes.splice(0, 1);
   colonne.appendChild(carte);
   ligne.appendChild(colonne);
   if (n > 1) {
-    return ajouterColonnes(ligne, n - 1, tailleCase, theme);
+    return ajouterColonnes(ligne, n - 1, tailleCase, theme, indexes);
   }
 }
 
-function ajouterLignes(table, n, tailleGrille, tailleCase, theme) {
+function ajouterLignes(table, n, tailleGrille, tailleCase, theme, indexes) {
   const ligne = document.createElement("tr");
-  ajouterColonnes(ligne, tailleGrille, tailleCase, theme);
+  ajouterColonnes(ligne, tailleGrille, tailleCase, theme, indexes);
   table.appendChild(ligne);
   if (n > 1) {
-    return ajouterLignes(table, n - 1, tailleGrille, tailleCase, theme);
+    return ajouterLignes(
+      table,
+      n - 1,
+      tailleGrille,
+      tailleCase,
+      theme,
+      indexes
+    );
   }
 }
 
-function creerGrille(tailleGrille, tailleCase, theme) {
+function creerGrille(tailleGrille, tailleCase, theme, indexes) {
   const table = document.createElement("table");
-  ajouterLignes(table, tailleGrille, tailleGrille, tailleCase, theme);
+  ajouterLignes(table, tailleGrille, tailleGrille, tailleCase, theme, indexes);
   return table;
 }
 
-function creerEndroitJeu(tailleGrille, tailleCase, theme) {
+function creerEndroitJeu(tailleGrille, tailleCase, theme, indexes) {
   const div = document.createElement("div");
   div.setAttribute("id", "gameTemps");
-  div.className = ("game");
+  div.className = "game";
 
   const minutes = document.createElement("span");
   const secondes = document.createElement("span");
   const millisecondes = document.createElement("span");
-  minutes.className = ("timer");
-  secondes.className = ("timer");
-  millisecondes.className = ("timer");
+  minutes.className = "timer";
+  secondes.className = "timer";
+  millisecondes.className = "timer";
 
-  const table = creerGrille(tailleGrille, tailleCase, theme);
+  const table = creerGrille(tailleGrille, tailleCase, theme, indexes);
   table.setAttribute("id", "gameGrille");
-  table.className = ("game");
+  table.className = "game";
 
   const section = document.getElementById("section");
 
@@ -90,6 +113,50 @@ function creerEndroitJeu(tailleGrille, tailleCase, theme) {
   div.appendChild(millisecondes);
   section.appendChild(div);
   section.appendChild(table);
+}
+
+function CreerListeIndexEtMelanger(tailleGrille) {
+  if (tailleGrille != 10) {
+    var liste = [0];
+  } else {
+    var liste = [];
+  }
+  for (let i = 1; i <= Math.floor(tailleGrille ** 2 / 2); i++) {
+    liste.push(i);
+    liste.push(i);
+  }
+  for (let i = 1; i < tailleGrille ** 2; i++) {
+    i1 = Math.floor(Math.random() * tailleGrille ** 2);
+    i2 = Math.floor(Math.random() * tailleGrille ** 2);
+    const n1 = liste[i1];
+    liste[i1] = liste[i2];
+    liste[i2] = n1;
+  }
+  return liste;
+}
+
+function insererScore() {
+  clearInterval(chrono);
+  var score = min + ":" + sec + ":" + ms;
+  const difficultes = document.getElementById("difficultes");
+  var difficulte = difficultes.value;
+  $.ajax({
+    type: "POST",
+    url: "../../utils/insererScore.php",
+    data: { score: score, difficulte: difficulte },
+  });
+  let modalDejaMontre = false;
+
+  if (!modalDejaMontre) {
+    document.getElementById("modal").style.display = "block";
+    document.getElementById("scoreIci").innerHTML = score;
+    modalDejaMontre = true;
+  }
+  document
+    .getElementById("modal-close")
+    .addEventListener("click", function (e) {
+      location.reload();
+    });
 }
 
 function genererGrille() {
@@ -108,11 +175,11 @@ function genererGrille() {
     var tailleGrille = 5;
     var tailleCase = "18vmin";
   } else if (difficultes.value == "medium") {
+    var tailleGrille = 7;
+    var tailleCase = "13vmin";
+  } else {
     var tailleGrille = 10;
     var tailleCase = "9vmin";
-  } else {
-    var tailleGrille = 20;
-    var tailleCase = "4.25vmin";
   }
 
   const themes = document.getElementById("themes");
@@ -133,7 +200,86 @@ function genererGrille() {
   }
 
   if (typeof tailleGrille != "undefined" && typeof theme != "undefined") {
-    creerEndroitJeu(tailleGrille, tailleCase, theme);
+    const indexes = CreerListeIndexEtMelanger(tailleGrille);
+    creerEndroitJeu(tailleGrille, tailleCase, theme, indexes);
+
+    var cartes = document.getElementsByClassName("cartes");
+    var imageRetournee = false;
+    var indexImage;
+    var images;
+    var nombreCartesRetournees = 0;
+    var peutRetournerCarte = true;
+
+    for (let i = 0; i < cartes.length; i++) {
+      cartes[i].addEventListener("click", function () {
+        if (peutRetournerCarte) {
+          if (cartes[i].src.includes("back")) {
+            nombreCartesRetournees++;
+            cartes[i].src =
+              "../../assets/images/" +
+              theme +
+              "/" +
+              cartes[i].className.slice(7) +
+              ".png";
+            if (imageRetournee) {
+              peutRetournerCarte = false;
+              if (indexImage == 0) {
+                nombreCartesRetournees++;
+                images = document.getElementsByClassName(
+                  cartes[i].className.slice(7)
+                );
+                console.log(cartes[i].className.slice(7))
+                for (let j = 0; j < 2; j++) {
+                  images[j].src =
+                    "../../assets/images/" +
+                    theme +
+                    "/" +
+                    cartes[i].className.slice(7) +
+                    ".png";
+                }
+                peutRetournerCarte = true;
+              } else if (cartes[i].className.slice(7) == 0) {
+                nombreCartesRetournees++;
+                images = document.getElementsByClassName(indexImage);
+                for (let j = 0; j < 2; j++) {
+                  images[j].src =
+                    "../../assets/images/" + theme + "/" + indexImage + ".png";
+                }
+                peutRetournerCarte = true;
+              } else if (indexImage != cartes[i].className.slice(7)) {
+                nombreCartesRetournees -= 2;
+                setTimeout(() => {
+                  images = document.getElementsByClassName(indexImage);
+                  for (let j = 0; j < 2; j++) {
+                    images[j].src =
+                      "../../assets/images/" + theme + "/back.png";
+                  }
+
+                  images = document.getElementsByClassName(
+                    cartes[i].className.slice(7)
+                  );
+                  for (let j = 0; j < 2; j++) {
+                    images[j].src =
+                      "../../assets/images/" + theme + "/back.png";
+                  }
+                  peutRetournerCarte = true;
+                }, 1000);
+              } else {
+                peutRetournerCarte = true;
+              }
+              imageRetournee = false;
+              if (nombreCartesRetournees == tailleGrille ** 2) {
+                insererScore();
+              }
+            } else {
+              indexImage = cartes[i].className.slice(7);
+              imageRetournee = true;
+            }
+          }
+        }
+      });
+    }
+    console.log(section);
     commencerChrono();
   }
 }
