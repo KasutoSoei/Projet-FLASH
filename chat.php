@@ -5,15 +5,6 @@ require_once 'utils/common.php';
 require_once SITE_ROOT . 'partials/head.php';
 require_once SITE_ROOT . 'partials/header.php';
 require_once SITE_ROOT . 'utils/database.php';
-
-if (isset($_GET['GIF'])) {
-    $gif = file_get_contents('https://api.thecatapi.com/v1/images/search?mime_types=gif');
-    $gif = json_decode($gif)[0]->url;
-    envoiMessage($pdo, $_SESSION['userId'], '<img src=' . $gif . '>');
-    header('refresh: 0; url = ' . PROJECT_FOLDER . 'chat.php');
-}
-
-$messages = obtenirMessagesChat($pdo, $_SESSION['userId']);
 ?>
 <title>
     TPOM - Chat
