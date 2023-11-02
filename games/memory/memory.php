@@ -113,7 +113,7 @@ require_once SITE_ROOT . 'partials/header.php';
                         </select>
                     </div>
                 </div>
-                <a href="#gameBouton"><input type="button" onclick="genererGrille()" value="Jouer" id="gameBouton"></a>
+                <input type="button" onclick="genererGrille()" value="Jouer" id="gameBouton">
         <?php endif; ?>
         <div class="modal" id="modal">
             <div class="modal-back"></div>
@@ -123,7 +123,7 @@ require_once SITE_ROOT . 'partials/header.php';
                 Votre score de <span id="scoreIci"> </span> à bien été enregistré !
                 <br>
                 <br>
-                <a href="#" id="modal-close">REJOUER</a>
+                <p id="modal-close">REJOUER</p>
             </div>
         </div>
     </section>

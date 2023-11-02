@@ -5,13 +5,13 @@ var ms = 0,
   min = 0;
 
 function commencerChrono() {
-  chrono = setInterval(acutaliserChrono, 10);
+  chrono = setInterval(acutaliserChrono, 1);
 }
 
 function acutaliserChrono() {
   ms += 1;
-  if (ms == 100) {
-    ms = 0;
+  if (ms >= 100) {
+    ms -= 100;
     sec += 1;
   }
   if (sec == 60) {
@@ -137,6 +137,15 @@ function CreerListeIndexEtMelanger(tailleGrille) {
 
 function insererScore() {
   clearInterval(chrono);
+  if (min < 10) {
+    min = "0" + min;
+  } 
+  if (sec < 10) {
+    sec = "0" + sec;
+  }
+  if (ms < 10) {
+    ms = "0" + ms;
+  }
   var score = min + ":" + sec + ":" + ms;
   const difficultes = document.getElementById("difficultes");
   var difficulte = difficultes.value;
@@ -154,7 +163,7 @@ function insererScore() {
   }
   document
     .getElementById("modal-close")
-    .addEventListener("click", function (e) {
+    .addEventListener("click", function() {
       location.reload();
     });
 }

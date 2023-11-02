@@ -5,8 +5,7 @@ require_once 'utils/common.php';
 require_once SITE_ROOT . 'partials/head.php';
 require_once SITE_ROOT . 'partials/header.php';
 require_once SITE_ROOT . 'utils/database.php';
-?>
-<?php
+ 
 if (isset($_POST['deconnexion'])) {
     session_destroy();
     header('refresh:0; url=' . PROJECT_FOLDER . 'login.php');
@@ -16,11 +15,11 @@ if (isset($_POST['suppression'])) {
     unlink(SITE_ROOT . "userFiles/" . $_SESSION['userId'] . '/profile.png');
     rmdir(SITE_ROOT . "userFiles/" . $_SESSION['userId']); //supprime le dossier
     supprimerCompte($pdo, $_SESSION['userId']);
-    $_SESSION['userId'] = 0;
+    session_destroy();
     header('refresh:0; url=' . PROJECT_FOLDER . 'register.php');
 }
-if (isset($_POST['changePseudo']) && !estPseudoExistant($pdo, $_POST['changePseudo'])) {
-    header('refresh:2');
+if (isset($_GET['changePseudo']) && !estPseudoExistant($pdo, $_GET['changePseudo'])) {
+    header('refresh:2; url=' . PROJECT_FOLDER . 'myAccount.php');
 }
 ?>
 <title>
@@ -38,14 +37,10 @@ if (isset($_POST['changePseudo']) && !estPseudoExistant($pdo, $_POST['changePseu
         <div class="myAccount">
             <span style="margin-left: 3vh;">
 
-                <form method="POST" enctype="multipart/form-data">
-                    <input type="file" id="files" name="avatar" style="display:none;" accept="image/png">
+                <form action="myAccount.php" method="POST" enctype="multipart/form-data">
+                    <input type="file" id="files" onchange="this.form.submit()" name="avatar" style="display:none;" accept="image/png">
                     <label for="files">
-                        <img src="<?= PROJECT_FOLDER ?>userFiles/<?= $_SESSION['userId'] ?>/profile.png" style="border-radius: 10%; height: 15vmin; width: auto;">
-                    </label>
-                    <input type="submit" id="changerPP" style="display: none;">
-                    <label for="changerPP">
-                        <img src="<?= PROJECT_FOLDER ?>assets/images/send.png" class="myAccountChangerPP">
+                        <img src="<?= PROJECT_FOLDER ?>userFiles/<?= $_SESSION['userId'] ?>/profile.png" id="myAccountPP">
                     </label>
                 </form>
                 <?php
@@ -55,15 +50,15 @@ if (isset($_POST['changePseudo']) && !estPseudoExistant($pdo, $_POST['changePseu
                 ?>
             </span>
             <span style="font-size: 5vmin;">
-                <form method="POST" form='changePseudo'>
+                <form method="get" form='changePseudo'>
                     <input type="text" name="changePseudo" value="<?= obtenirPseudo($pdo, $_SESSION['userId']) ?>" class="myAccountChangeNom" minlength="4" maxlength='20'>
                     <?php $change = false;
-                    if (isset($_POST['changePseudo'])) :
+                    if (isset($_GET['changePseudo'])) :
 
-                        if (estPseudoExistant($pdo, $_POST['changePseudo']) == 1) :
+                        if (estPseudoExistant($pdo, $_GET['changePseudo']) == 1) :
                     ?>
                             <p style="font-size: 2vmin; color:red;">Pseudo trop court ou déja utilisé</p>
-                        <?php else : changePseudo($pdo, $_POST['changePseudo'], $_SESSION['userId']); ?>
+                        <?php else : changePseudo($pdo, $_GET['changePseudo'], $_SESSION['userId']); ?>
 
                             <p style="font-size: 2vmin;">Votre pseudo a bien été changé</p>
                     <?php endif;
@@ -76,13 +71,13 @@ if (isset($_POST['changePseudo']) && !estPseudoExistant($pdo, $_POST['changePseu
                     <span class="myAccountStatsCase">
                         Parties jouées <br>
                         <strong style="font-size: 7vmin; color: indigo; -webkit-text-stroke: 1px darkgray;">
-                            <?php echo obtenirNbPartiesJoueesUtilisateur($pdo) ?>
+                            <?php echo obtenirNbPartiesJoueesUtilisateur($pdo, $_SESSION['userId']) ?>
                         </strong>
                     </span>
                     <span class="myAccountStatsCase">
                         Temps de jeu total <br>
                         <strong style="font-size: 7vmin; color: indigo; -webkit-text-stroke: 1px darkgray;">
-                            25:45:38
+                            <?php echo obtenirTempsJeuUtilisateur($pdo, $_SESSION['userId']) ?>
                         </strong>
                     </span>
                     <span class="myAccountStatsCase">

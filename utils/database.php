@@ -25,17 +25,6 @@ function obtenirMeilleurScore($pdo): string
     $pdoScores->execute();
     return $pdoScores->fetch()->score;
 }
-function obtenirMeilleurScoreUtilisateur($pdo, $id)
-{
-    $pdoScoresUtilisateur = $pdo->prepare("SELECT score FROM Scores WHERE idJoueur = :id ORDER BY score ASC LIMIT 1");
-    $pdoScoresUtilisateur->execute([':id' => $id]);
-    $meilleurScore = $pdoScoresUtilisateur->fetch();
-    if ($meilleurScore == null) {
-        return "Aucun score";
-    } else {
-        return $meilleurScore->score;
-    }
-}
 
 function obtenirNbJoueursInscrits($pdo): int
 {
@@ -51,11 +40,58 @@ function obtenirNbPartiesJouees($pdo): int
     return $pdoParties->fetch()->nombre;
 }
 
-function obtenirNbPartiesJoueesUtilisateur($pdo): int
+function obtenirNbPartiesJoueesUtilisateur($pdo, $id): int
 {
     $pdoParties = $pdo->prepare('SELECT COUNT(*) AS nombre FROM Scores WHERE idJoueur= :id ');
-    $pdoParties->execute([':id' => $_SESSION['userId']]);
+    $pdoParties->execute([':id' => $id]);
     return $pdoParties->fetch()->nombre;
+}
+
+function obtenirTempsJeuUtilisateur($pdo, $id): string
+{
+    $pdoTempsJeuUtilisateur = $pdo->prepare("SELECT score AS temps FROM Scores WHERE idJoueur = :id");
+    $pdoTempsJeuUtilisateur->execute([':id' => $id]);
+    $temps = $pdoTempsJeuUtilisateur->fetchAll();
+    $millisecondes = 0;
+    $secondes = 0;
+    $minutes = 0;
+    $heures = 0;
+    foreach ($temps as $score) {
+        $millisecondes += (int)(substr($score->temps, -2, 2));
+        $secondes += (int)(substr($score->temps, -5, 2));
+        $minutes += (int)(substr($score->temps, -8, 2));
+    }
+    $secondes += (string)(int)($millisecondes / 100);
+    $millisecondes %= 100;
+    $minutes += (string)(int)($secondes / 60);
+    $secondes %= 60;
+    $heures += (string)(int)($minutes / 60);
+    $minutes %= 60; 
+    if (strlen($heures) == 1) {
+        $heures = '0' . $heures;
+    }
+    if (strlen($minutes) == 1) {
+        $minutes = '0' . $minutes;
+    }
+    if (strlen($secondes) == 1) {
+        $secondes = '0' . $secondes;
+    }
+    if (strlen($millisecondes) == 1) {
+        $millisecondes = "0";
+    } 
+    return "$heures:$minutes:$secondes:$millisecondes";
+}
+
+function obtenirMeilleurScoreUtilisateur($pdo, $id): string
+{
+    $pdoScoresUtilisateur = $pdo->prepare("SELECT score FROM Scores WHERE idJoueur = :id ORDER BY score ASC LIMIT 1");
+    $pdoScoresUtilisateur->execute([':id' => $id]);
+    $meilleurScore = $pdoScoresUtilisateur->fetch();
+    if ($meilleurScore == null) {
+        return "Aucun score";
+    } else {
+        return $meilleurScore->score;
+    }
 }
 
 function obtenirScoreTable($pdo, $recherchePseudo): array

@@ -41,13 +41,15 @@
 .headerLogo {
   border-radius: 50%;
   width: 6vmin;
-  height: auto;
+  height: 6vmin;
 }
 
 .headerLogoConnected {
   border-radius: 50%;
   width: 4vmin;
-  height: auto;
+  height: 4vmin;
+  object-fit: cover;
+  object-position: 50% 50%;
 }
 
 .headerLogo:hover {

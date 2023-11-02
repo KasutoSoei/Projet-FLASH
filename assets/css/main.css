@@ -309,7 +309,9 @@ body {
 #chathtml .chatPP {
   border-radius: 50%;
   height: 6vmin;
-  width: auto;
+  width: 6vmin;
+  object-fit: cover;
+  object-position: 50% 50%;
 }
 
 #chathtml .chatMessageHeure {
@@ -551,6 +553,13 @@ font-weight: bold;
   align-items: center;
   justify-content: space-around;
   height: 50vh;
+}
+.myaccounthtml #myAccountPP{
+  border-radius: 10%;
+  height: 15vmin;
+  width: 15vmin;
+  object-fit: cover;
+  object-position: 50% 50%;
 }
 
 .myaccounthtml .myAccountChangerPP {
