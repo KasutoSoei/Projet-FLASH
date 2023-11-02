@@ -13,70 +13,24 @@ if (isset($_GET['GIF'])) {
     header('refresh: 0; url = ' . PROJECT_FOLDER . 'chat.php');
 }
 
-if (!empty($_GET['message'])) {
-    envoiMessage($pdo, $_SESSION['userId'], $_GET['message']);
-    header('refresh: 0; url = ' . PROJECT_FOLDER . 'chat.php');
-}
-
 $messages = obtenirMessagesChat($pdo, $_SESSION['userId']);
 ?>
+<title>
+    TPOM - Chat
+</title>
 
 <body>
     <div class="titre">
         CHAT
     </div>
 
-    <section class="chathtml">
-
-        <div class="chat">
-            <?php foreach ($messages as $message) : ?>
-
-                <?php if ($message->isSender) : ?>
-                    <div class="chatMessageBoxEnvoyeur">
-                        <div class="chatMessageEnvoye">
-                            <img src="<?= PROJECT_FOLDER ?>/userFiles/<?= $message->UtilisateurId ?>/profile.png" class="chatPP">
-
-                            <div class="chatInfosMessage" style="  align-items: end;">
-                                <p style="color: yellow;">
-                                    <?php echo $message->pseudo ?>
-                                </p>
-                                <p style="overflow-wrap: break-word; text-align: right; max-width: 40vw">
-                                    <?php echo $message->messageChat ?>
-                                </p>
-                            </div>
-                        </div>
-                        <p class="chatMessageHeure">
-                            Aujourd'hui, à <?php echo $message->heure ?>
-                        </p>
-                    </div>
-
-                <?php else : ?>
-                    <div class="chatMessageBoxReceveur">
-                        <div class="chatMessageRecu">
-                            <img src="<?= PROJECT_FOLDER ?>/userFiles/<?= $message->UtilisateurId ?>/profile.png" class="chatPP">
-
-                            <div class="chatInfosMessage" style="  align-items: start;">
-                                <p style="color: green;">
-                                    <?php echo $message->pseudo ?>
-                                </p>
-                                <p style="overflow-wrap: break-word; max-width: 40vw">
-                                    <?php echo $message->messageChat ?>
-                                </p>
-                            </div>
-                        </div>
-                        <p class="chatMessageHeure">
-                            Aujourd'hui, à <?php echo $message->heure ?>
-                        </p>
-                    </div>
-
-                <?php endif; ?>
-            <?php endforeach; ?>
-        </div>
+    <section id="chathtml">
+        <div id="chat"></div>
 
         <?php if ($_SESSION['userId'] != 0) : ?>
-            <form method="get" class="chatEnvoi">
-                <input type="text" name="message" placeholder="Envoyer un message" class="chatMessageEntree">
-                <input type="submit" id="GIF" name="GIF" style="display: none;">
+            <form id="chatEnvoi">
+                <input type="text" id="chatMessageEntree" placeholder="Envoyer un message">
+                <input type="button" id="GIF" style="display: none;">
                 <label for="GIF">
                     <img src="<?= PROJECT_FOLDER ?>assets/images/GIF.png" class="chatBouton">
                 </label>
@@ -86,7 +40,55 @@ $messages = obtenirMessagesChat($pdo, $_SESSION['userId']);
                 </label>
             </form>
         <?php endif; ?>
-
     </section>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="assets/js/chat.js"></script>
+    <script>
+        $('#chatEnvoi').on('submit', (e) => {
+            let message = document.getElementById('chatMessageEntree').value;
+            e.preventDefault();
+            if (document.getElementById('chatErreur')) {
+                document.getElementById('chatErreur').remove();
+            }
+            if (message.length >= 1 && !message.includes("<")) {
+                $.ajax({
+                    url: "utils/envoyerMessage.php",
+                    type: "post",
+                    data: {
+                        envoi: message,
+                    },
+                    success: function() {
+                        document.getElementById('chatMessageEntree').value = '';
+                    },
+                });
+            } else {
+                let chatErreur = document.createElement('p')
+                chatErreur.id = "chatErreur"
+                chatErreur.innerHTML = "Votre message doit contenir au moins 3 caractères et ne doit pas contenir de \"<\""
+                document.getElementById('chathtml').appendChild(chatErreur);
+            }
+        })
+
+        document.getElementById('GIF').addEventListener('click', function(e) {
+            $.ajax({
+                url: "https://api.thecatapi.com/v1/images/search?mime_types=gif",
+                success: function(json) {
+                    const message = json[0].url;
+                    e.preventDefault();
+                    if (document.getElementById('chatErreur')) {
+                        document.getElementById('chatErreur').remove();
+                    }
+                    $.ajax({
+                        url: "utils/envoyerMessage.php",
+                        type: "post",
+                        data: {
+                            envoi: '<img src = "' + message + '">',
+                        },
+                    });
+                }
+            });
+        })
+    </script>
 </body>
 <?php require_once SITE_ROOT . 'partials/footer.php'; ?>

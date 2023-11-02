@@ -6,11 +6,14 @@ require_once SITE_ROOT . 'partials/head.php';
 require_once SITE_ROOT . 'partials/header.php';
 require_once SITE_ROOT . 'utils/database.php';
 
-
 $meilleurScore = obtenirMeilleurScore($pdo);
 $nbJoueursInscrits = obtenirNbJoueursInscrits($pdo);
 $nbPartiesJouees = obtenirNbPartiesJouees($pdo);
 ?>
+<title>
+    TPOM - Accueil
+</title>
+
 <section class="indexhtml">
 
     <body>

@@ -21,6 +21,7 @@ function acutaliserChrono() {
   timer[0].innerHTML = min;
   timer[1].innerHTML = sec;
   timer[2].innerHTML = ms;
+
   
 }
 
@@ -36,12 +37,6 @@ function insererScore(score){
   });
 
 }
-
-function afficherPopup(score){
-
-}
-
-
 
 function reinitialiserChrono() {
   clearInterval(chrono);
@@ -113,11 +108,6 @@ function creerEndroitJeu(tailleGrille, tailleCase, theme) {
 }
 
 function genererGrille() {
-
-
-
-
-
   const erreurs = document.getElementsByClassName("gameOptionsError");
   if (erreurs.length > 0) {
     retirerErreur(erreurs, erreurs.length);

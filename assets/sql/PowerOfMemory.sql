@@ -177,9 +177,9 @@ VALUES (5, 1, 'difficile', 175, CURRENT_TIMESTAMP);
 INSERT INTO Chat (idJeu, idExpediteur, messageChat, dateHeureMessage)
 VALUES (1, 3, "BlablablaBis", "2023-10-16 12:00:00");
 
---Story 11, afficher la table chat avec une colonne 'isSender' si le message est assez récent
+--Story 11, afficher la table chat avec une colonne 'estEnvoyeur' si le message est assez récent
 
-SELECT messageChat, pseudo, dateHeureMessage, Utilisateur.id=3 as isSender
+SELECT messageChat, pseudo, dateHeureMessage, Utilisateur.id=3 as estEnvoyeur
 FROM Chat
 INNER JOIN Utilisateur ON Chat.idExpediteur=Utilisateur.id
 WHERE dateHeureMessage> "2023-10-16 12:09:00";

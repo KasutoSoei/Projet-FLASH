@@ -16,7 +16,6 @@ body {
   color: white;
 }
 
-
 /*---------------------------INDEX.php--------------------------*/
 .indexhtml .accueil {
   padding-top: 10vh;
@@ -260,19 +259,21 @@ body {
 
 /*---------------------------CHAT--------------------------*/
 
-.chathtml .chat {
-  overflow: hidden;
+#chathtml #chat {
+  overflow: scroll;
   margin-top: 5vh;
   margin-bottom: 5vh;
-  margin-left: 5vw;
+  margin-left: 1vw;
+  margin-right: 1vw;
+  padding-left: 4vw;
+  padding-right: 4vw;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
-  width: 90vw;
-  min-height: 80vh;
+  height: 80vh;
 }
 
-.chathtml .chatMessageBoxEnvoyeur {
+#chathtml .chatMessageBoxEnvoyeur {
   margin-bottom: 3vh;
   margin-left: 50vw;
   display: flex;
@@ -280,51 +281,51 @@ body {
   align-items: end;
 }
 
-.chathtml .chatMessageBoxReceveur {
+#chathtml .chatMessageBoxReceveur {
   margin-bottom: 3vh;
   margin-right: 50vw;
   display: flex;
   flex-direction: column;
 }
 
-.chathtml .chatMessageEnvoye {
+#chathtml .chatMessageEnvoye {
   display: flex;
   flex-direction: row-reverse;
 }
 
-.chathtml .chatMessageRecu {
+#chathtml .chatMessageRecu {
   display: flex;
   flex-direction: row;
 }
 
-.chathtml .chatInfosMessage {
+#chathtml .chatInfosMessage {
   padding-left: 1vw;
-  padding-right: 1vw;;
+  padding-right: 1vw;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
 }
 
-.chathtml .chatPP {
+#chathtml .chatPP {
   border-radius: 50%;
   height: 6vmin;
   width: auto;
 }
 
-.chathtml .chatMessageHeure {
+#chathtml .chatMessageHeure {
   margin-top: 1vh;
   font-size: 1vmin;
   color: lightgray;
 }
 
-.chathtml .chatEnvoi {
-  margin-bottom: 5vh;
+#chathtml #chatEnvoi {
+  margin-bottom: 2vh;
   display: flex;
   justify-content: center;
   height: 5vh;
 }
 
-.chathtml .chatMessageEntree {
+#chathtml #chatMessageEntree {
   box-sizing: border-box;
   padding-left: 1vmin;
   border-radius: 1vmin;
@@ -336,13 +337,17 @@ body {
   width: 90%;
 }
 
-.chathtml .chatBouton {
+#chathtml .chatBouton {
   margin-left: 1vw;
   border-radius: 10%;
   height: 5vh;
   width: 5vh;
 }
 
+#chathtml #chatErreur {
+  margin-left: 1vw;
+  color: red;
+}
 /*---------------------------CHAT--------------------------*/
 
 /*---------------------------CONTACT.php--------------------------*/
@@ -419,67 +424,40 @@ body {
 /*---------------------------CONTACT.php--------------------------*/
 
 /*---------------------------MEMORY.php--------------------------*/
-.memoryhtml .gameTheme {
+.memoryhtml #gameOptions {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.memoryhtml .gameOption {
   margin-top: 5vh;
-  border: 1px solid darkblue;
+  border: 1px solid indigo;
   border-radius: 1vmin;
-  background-color: rgb(0, 0, 69);
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  font-size: 3vmin;
+  background-color: rgb(20, 0, 20);
+  color: lightgray;
+  text-align: center;
+  font-size: 4vmin;
   height: 10vh;
-  line-height: 10vh;
+  width: 40vw;
 }
 
-.memoryhtml .gameThemeBouton {
-  color: white;
-  text-decoration: none;
-}
-
-.memoryhtml .gameThemeBouton:hover {
-  color: lightslategray;
-  text-decoration: underline;
-}
-
-.memoryhtml .gameDifficulte {
-  margin-top: 1vh;
-  border: 1px solid darkblue;
+.memoryhtml #gameBouton {
+  margin-top: 5vh;
+  margin-left: 30vw;
+  border: 1px solid indigo;
   border-radius: 1vmin;
-  background-color: rgb(0, 0, 69);
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  font-size: 3vmin;
+  background-color: rgb(20, 0, 20);
+  color: lightgray;
+  text-align: center;
+  font-size: 4vmin;
   height: 10vh;
-  line-height: 10vh;
+  width: 40vw;
 }
 
-.memoryhtml .gameDifficulteFacile {
-  color: green;
-  text-decoration: none;
-}
-
-.memoryhtml .gameDifficulteMoyen {
-  color: gold;
-  text-decoration: none;
-}
-
-.memoryhtml .gameDifficulteDifficile {
+.memoryhtml .gameOptionsError {
+  font-size: 2vmin;
   color: red;
-  text-decoration: none;
-}
-
-.memoryhtml .gameDifficulteFacile:hover {
-  text-decoration: underline;
-}
-
-.memoryhtml .gameDifficulteMoyen:hover {
-  text-decoration: underline;
-}
-
-.memoryhtml .gameDifficulteDifficile:hover {
-  text-decoration: underline;
 }
 
 .memoryhtml .regles {
@@ -503,32 +481,18 @@ body {
   color: rgb(255, 200, 0);
 }
 
-.memoryhtml .game {
+.memoryhtml #gameTemps {
   margin-top: 3vh;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-}
-
-.memoryhtml .gameGrille {
-  margin-right: 20vw;
-  border-collapse: collapse;
-  font-size: 0;
-  text-align: center;
-  width: 95vmin;
-  height: 95vmin;
-}
-
-.memoryhtml .gameScore {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-evenly;
-  width: 20vw;
-  height: 95vmin;
   font-size: 3vmin;
   text-align: center;
+}
+
+.memoryhtml #gameGrille {
+  margin: auto;
+  font-size: 0;
+  text-align: center;
+  width: 60vmin;
+  height: 60vmin;
 }
 
 .memoryhtml .modal {
@@ -563,17 +527,6 @@ body {
 /*---------------------------MEMORY.php--------------------------*/
 
 /*---------------------------MYACCOUNT.php--------------------------*/
-.myaccounthtml .myAccountTitre {
-  margin-top: 1vh;
-  background-image: url("../images/background.jpg");
-  background-position: center;
-  background-size: 100%;
-  color: white;
-  font-size: 5vmin;
-  text-align: center;
-  height: 20vh;
-  line-height: 20vh;
-}
 
 .myaccounthtml .myAccountChangerPP {
   border-radius: 10%;
@@ -582,7 +535,6 @@ body {
   height: 3vh;
   width: auto;
 }
-
 
 .myaccounthtml .myAccount {
   margin-top: 5vh;
