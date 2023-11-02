@@ -460,7 +460,7 @@ body {
   color: red;
 }
 
-.memoryhtml .regles {
+.memoryhtml #regles {
   margin-top: 3vh;
   padding-left: 1vw;
   padding-right: 1vw;

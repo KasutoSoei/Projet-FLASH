@@ -19,11 +19,11 @@ require_once SITE_ROOT . 'partials/header.php';
 
     <section class="memoryhtml" id="section">
 
-        <div style="margin-top: 7vh; text-align: center; font-size: 2vmin;">
+        <div id="introRegles" style="margin-top: 7vh; text-align: center; font-size: 2vmin;">
             Bienvenue sur la page du jeu ! La grille s'affichera lorsque vous serez connecté et que vous aurez choisi une difficulté et un thème. Si vous voulez les règles, les voici : <br>
         </div>
 
-        <div class="regles">
+        <div id="regles">
             <strong style="text-decoration: underline;">Grille</strong> :
 
             <p style="margin-left: 3vw;">
@@ -113,9 +113,7 @@ require_once SITE_ROOT . 'partials/header.php';
                         </select>
                     </div>
                 </div>
-                <input type="button" onclick="genererGrille()" value="Jouer" id="gameBouton">
-
-            <input type="button" value="Fin" onclick="insererScore()" id=gameBouton>
+                <a href="#gameBouton"><input type="button" onclick="genererGrille()" value="Jouer" id="gameBouton"></a>
         <?php endif; ?>
         <div class="modal" id="modal">
             <div class="modal-back"></div>

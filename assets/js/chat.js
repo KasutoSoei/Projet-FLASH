@@ -52,6 +52,7 @@ function ajouterMessage(chat, infos, n) {
   }
 }
 
+var nombreElements = 0;
 setInterval(function () {
   $.ajax({
     url: "utils/obtenirMessages.php",
@@ -68,5 +69,3 @@ setInterval(function () {
     },
   });
 });
-
-var nombreElements = 0;
