@@ -5,7 +5,15 @@ require_once '../../utils/common.php';
 require_once SITE_ROOT . 'partials/head.php';
 require_once SITE_ROOT . 'partials/header.php';
 ?>
+<<<<<<< Updated upstream
 
+=======
+<title>
+    TPOM - Jeu
+</title>
+<script src="../../assets/js/memory.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+>>>>>>> Stashed changes
 <body>
     <div class="titre">
         JEU
@@ -102,6 +110,53 @@ require_once SITE_ROOT . 'partials/header.php';
                 Voilà, vous savez tout. Maintenant, faites place à votre mémoire !
             <?php endif; ?>
         </div>
+<<<<<<< Updated upstream
+=======
+
+        <?php if ($_SESSION['userId'] != 0) : ?>
+
+            <form id='choixParametres'>
+                <div id="gameOptions">
+                    <div style="display: flex; flex-direction: column">
+                        <select id="themes" class="gameOption">
+                            <option value="">
+                                Thème
+                            </option>
+                            <option value="ThemeCartes">
+                                Cartes
+                            </option>
+                            <option value="ThemeVoitures">
+                                Voitures
+                            </option>
+                            <option value="ThemeWaifus">
+                                Waifus
+                            </option>
+                        </select>
+                    </div>
+                    <div style="display: flex; flex-direction: column">
+                        <select id="difficultes" class="gameOption">
+                            <option value="">
+                                Difficulté
+                            </option>
+                            <option value="easy">
+                                Easy
+                            </option>
+                            <option value="medium">
+                                Medium
+                            </option>
+                            <option value="hard">
+                                Hard
+                            </option>
+                        </select>
+                    </div>
+                </div>
+                <input type="button" onclick="genererGrille()" value="Jouer" id="gameBouton">
+            </form>
+            <input type="button" value="Fin" onclick="insererScore()" id=gameBouton>
+        <?php endif; ?>
+>>>>>>> Stashed changes
     </section>
+
+
 </body>
 <?php require_once SITE_ROOT . 'partials/footer.php'; ?>

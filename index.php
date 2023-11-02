@@ -114,7 +114,7 @@ $nbPartiesJouees = obtenirNbPartiesJouees($pdo);
 
                 <div class="item">
                     <img class="pp" src="<?= PROJECT_FOLDER ?>assets/images/Rizz.JPG">
-                    <p><span>ELWAN DECRYPTE</span></p>
+                    <p><span>ELWAN</span></p>
                     <p class="text">Game Developer</p>
                     <div class="reseaux">
                         <a href="https://facebook.com" target="_blank"><img src="<?= PROJECT_FOLDER ?>assets/Images/fb.png"></a>
