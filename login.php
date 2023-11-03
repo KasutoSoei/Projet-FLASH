@@ -24,7 +24,6 @@ require_once SITE_ROOT . 'partials/header.php';
                     <input type="password" name="mdp" placeholder="Mot de passe" required="required" class="loginEntree">
                     <span style="display: flex; justify-content: space-between;">
                         <input type="submit" value="Connexion" class="loginBouton">
-                        <a href="register.php" class="loginLink" style="margin-top: 2vh; margin-right: 1vw; font-size: 1.5vmin; height: 1.5vmin;">Mot de passe oublié ?</a>
                     </span>
                 </form>
                 <span style="font-size: 2vmin;">
@@ -45,7 +44,6 @@ require_once SITE_ROOT . 'partials/header.php';
                     <p style="color: red; font-size: 2vmin;">Aucun compte n'a été trouvé</p>
                     <span style="display: flex; justify-content: space-between;">
                         <input type="submit" value="Connexion" class="loginBouton">
-                        <a href="register.php" class="loginLink" style="margin-top: 2vh; margin-right: 1vw; font-size: 1.5vmin; height: 1.5vmin;">Mot de passe oublié ?</a>
                     </span>
                 </form>
                 <span style="font-size: 2vmin;">

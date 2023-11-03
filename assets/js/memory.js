@@ -161,6 +161,14 @@ function insererScore() {
     document.getElementById("scoreIci").innerHTML = score;
     popupDejaMontre = true;
   }
+<<<<<<< Updated upstream
+=======
+  document
+    .getElementById("popupRejouer")
+    .addEventListener("click", function () {
+      location.reload();
+    });
+>>>>>>> Stashed changes
   document
     .getElementById("modal-close")
     .addEventListener("click", function() {

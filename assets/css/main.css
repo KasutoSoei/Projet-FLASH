@@ -18,8 +18,8 @@ body {
 
 /*---------------------------INDEX.php--------------------------*/
 .indexhtml .accueil {
-  padding-top: 10vh;
-  padding-bottom: 10vh;
+  padding-top: 25vh;
+  padding-bottom: 25vh;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
@@ -29,7 +29,7 @@ body {
   background-image: url("https://www.economymagazine.it/wp-content/uploads/2023/05/AdobeStock_425602403-1536x1022.jpeg");
   background-size: 100%;
   width: 100vw;
-  height: 50vh;
+  height: 100vh;
 }
 
 .indexhtml #play {
