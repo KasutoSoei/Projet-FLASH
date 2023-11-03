@@ -19,7 +19,7 @@ if (isset($_POST['suppression'])) {
     header('refresh:0; url=' . PROJECT_FOLDER . 'register.php');
 }
 if (isset($_GET['changePseudo']) && !estPseudoExistant($pdo, $_GET['changePseudo'])) {
-    header('refresh:2; url=' . PROJECT_FOLDER . 'myAccount.php');
+    header('refresh:1; url=' . PROJECT_FOLDER . 'myAccount.php');
 }
 ?>
 <title>
@@ -43,7 +43,7 @@ if (isset($_GET['changePseudo']) && !estPseudoExistant($pdo, $_GET['changePseudo
                         <img src="<?= PROJECT_FOLDER ?>userFiles/<?= $_SESSION['userId'] ?>/profile.png" id="myAccountPP">
                     </label>
                 </form>
-                <?php
+                <?php 
                 if (isset($_FILES['avatar'])) :
                     move_uploaded_file($_FILES['avatar']['tmp_name'], SITE_ROOT . 'userFiles/' . $_SESSION['userId'] . '/profile.png');
                 endif;
