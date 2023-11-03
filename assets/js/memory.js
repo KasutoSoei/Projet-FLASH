@@ -139,7 +139,7 @@ function insererScore() {
   clearInterval(chrono);
   if (min < 10) {
     min = "0" + min;
-  } 
+  }
   if (sec < 10) {
     sec = "0" + sec;
   }
@@ -157,14 +157,17 @@ function insererScore() {
   let popupDejaMontre = false;
 
   if (!popupDejaMontre) {
-    document.getElementById("modal").style.display = "block";
+    document.getElementById("popup").style.display = "block";
     document.getElementById("scoreIci").innerHTML = score;
     popupDejaMontre = true;
   }
+  document.getElementById("popupRejouer").addEventListener("click", function () {
+    location.reload();
+  });
   document
-    .getElementById("modal-close")
-    .addEventListener("click", function() {
-      location.reload();
+    .getElementById("popupQuitter")
+    .addEventListener("click", function () {
+      location.href = "../../index.php";
     });
 }
 

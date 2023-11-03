@@ -115,15 +115,15 @@ require_once SITE_ROOT . 'partials/header.php';
                 </div>
                 <input type="button" onclick="genererGrille()" value="Jouer" id="gameBouton">
         <?php endif; ?>
-        <div class="modal" id="modal">
-            <div class="modal-back"></div>
-            <div class="modal-container">
+        <div class="popup" id="popup">
+            <div class="popupFond"></div>
+            <div class="popupContainer">
                 Bien joué !
                 <br>
                 Votre score de <span id="scoreIci"> </span> à bien été enregistré !
                 <br>
                 <br>
-                <p id="modal-close">REJOUER</p>
+                <p id="popupQuitter">QUITTER</p><p id="popupRejouer">REJOUER</p>
             </div>
         </div>
     </section>
