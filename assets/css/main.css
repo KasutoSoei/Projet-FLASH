@@ -841,3 +841,49 @@ font-weight: bold;
 }
 
 /*---------------------------SCORES.php--------------------------*/
+
+
+#mdpPuissance {
+  width: 100%;
+  height: 5px;
+  margin: 5px 0;
+  display: none;
+}
+#mdpPuissance span {
+  position: relative;
+  height: 100%;
+  width: 100%;
+  background: lightgrey;
+
+}
+#mdpPuissance span.active:before {
+  position: absolute;
+  content: "";
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+
+}
+#mdpPuissance span#faible:before {
+  background-color: #ff4757;
+}
+#mdpPuissance span#moyen:before {
+  background-color: orange;
+}
+#mdpPuissance span#fort:before {
+  background-color: #23ad5c;
+}
+#mdpInfo {
+  font-weight: bold;
+  font-size: 15px;
+}
+#mdpInfo #faible {
+  color: red;
+}
+#mdpInfo #moyen {
+  color: orange;
+}
+#mdpInfo #fort {
+  color: green;
+}

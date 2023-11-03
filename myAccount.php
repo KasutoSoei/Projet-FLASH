@@ -5,7 +5,7 @@ require_once 'utils/common.php';
 require_once SITE_ROOT . 'partials/head.php';
 require_once SITE_ROOT . 'partials/header.php';
 require_once SITE_ROOT . 'utils/database.php';
- 
+
 if (isset($_POST['deconnexion'])) {
     session_destroy();
     header('refresh:0; url=' . PROJECT_FOLDER . 'login.php');
@@ -143,7 +143,15 @@ if (isset($_GET['changePseudo']) && !estPseudoExistant($pdo, $_GET['changePseudo
                 <?php if (empty($_POST['ancienMdp']) && empty($_POST['mdp']) && empty($_POST['mdpConfirme'])) : ?>
                     <form method="post" id="changeMdp">
                         <input type="password" name='ancienMdp' placeholder="Ancien mot de passe" required="required" class="myAccountEntree">
-                        <input type="password" name='mdp' placeholder="Nouveau mot de passe" required="required" class="myAccountEntree">
+                        <div id="mdpInput">
+                            <input type="password" name="mdp" placeholder="Nouveau mot de passe" required="required" class="myAccountEntree">
+                        </div>
+                        <div id="mdpPuissance">
+                            <span id="faible"></span>
+                            <span id="moyen"></span>
+                            <span id="fort"></span>
+                        </div>
+                        <div id="mdpInfo"></div>
                         <input type="password" name='mdpConfirme' placeholder="Confirmez le nouveau mot de passe" required="required" class="myAccountEntree">
                         <input type="submit" value="Confirmer" class="myAccountBouton" form="changeMdp">
                     </form>
@@ -195,4 +203,5 @@ if (isset($_GET['changePseudo']) && !estPseudoExistant($pdo, $_GET['changePseudo
         </form>
     </section>
 </body>
+<script src="assets/js/mdpPuissance.js"></script>
 <?php require_once SITE_ROOT . 'partials/footer.php'; ?>
