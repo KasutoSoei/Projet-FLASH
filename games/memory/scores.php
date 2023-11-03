@@ -40,7 +40,7 @@ $score_table = obtenirScoreTable($pdo, $_GET['recherchePseudo']);
                         <th>Nom du jeu</th>
                         <th>Pseudo du joueur</th>
                         <th>Niveau de difficulté</th>
-                        <th>Score (en sec)</th>
+                        <th>Score</th>
                         <th>Date et Heure de la partie</th>
                     </tr>
                 </thead>

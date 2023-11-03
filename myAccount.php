@@ -19,7 +19,7 @@ if (isset($_POST['suppression'])) {
     header('refresh:0; url=' . PROJECT_FOLDER . 'register.php');
 }
 if (isset($_GET['changePseudo']) && !estPseudoExistant($pdo, $_GET['changePseudo'])) {
-    header('refresh:2; url=' . PROJECT_FOLDER . 'myAccount.php');
+    header('refresh:1; url=' . PROJECT_FOLDER . 'myAccount.php');
 }
 ?>
 <title>
@@ -38,7 +38,7 @@ if (isset($_GET['changePseudo']) && !estPseudoExistant($pdo, $_GET['changePseudo
             <span style="margin-left: 3vh;">
 
                 <form action="myAccount.php" method="POST" enctype="multipart/form-data">
-                    <input type="file" id="files" onchange="this.form.submit()" name="avatar" style="display:none;" accept="image/png">
+                    <input type="file" id="files" onchange="this.form.submit()" name="avatar" style="display:none;" accept="image/*">
                     <label for="files">
                         <img src="<?= PROJECT_FOLDER ?>userFiles/<?= $_SESSION['userId'] ?>/profile.png" id="myAccountPP">
                     </label>

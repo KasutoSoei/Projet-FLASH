@@ -5,12 +5,12 @@ var ms = 0,
   min = 0;
 
 function commencerChrono() {
-  chrono = setInterval(acutaliserChrono, 1);
+  chrono = setInterval(acutaliserChrono, 10);
 }
 
 function acutaliserChrono() {
   ms += 1;
-  if (ms >= 100) {
+  if (ms >=100) {
     ms -= 100;
     sec += 1;
   }
@@ -55,9 +55,11 @@ function ajouterColonnes(ligne, n, tailleCase, theme, indexes) {
   const colonne = document.createElement("td");
   const carte = document.createElement("img");
   carte.src = "../../assets/images/" + theme + "/back.png";
-  carte.style.height = tailleCase;
   carte.classList.add("cartes");
   carte.classList.add(indexes[0]);
+  carte.style.height = tailleCase;
+  carte.style.transform = "rotateY(180deg)";
+  carte.style.transition = "0.2s";
   indexes.splice(0, 1);
   colonne.appendChild(carte);
   ligne.appendChild(colonne);
@@ -139,7 +141,7 @@ function insererScore() {
   clearInterval(chrono);
   if (min < 10) {
     min = "0" + min;
-  } 
+  }
   if (sec < 10) {
     sec = "0" + sec;
   }
@@ -157,22 +159,17 @@ function insererScore() {
   let popupDejaMontre = false;
 
   if (!popupDejaMontre) {
-    document.getElementById("modal").style.display = "block";
+    document.getElementById("popup").style.display = "block";
     document.getElementById("scoreIci").innerHTML = score;
     popupDejaMontre = true;
   }
-<<<<<<< Updated upstream
-=======
+  document.getElementById("popupRejouer").addEventListener("click", function () {
+    location.reload();
+  });
   document
-    .getElementById("popupRejouer")
+    .getElementById("popupQuitter")
     .addEventListener("click", function () {
-      location.reload();
-    });
->>>>>>> Stashed changes
-  document
-    .getElementById("modal-close")
-    .addEventListener("click", function() {
-      location.reload();
+      location.href = "../../index.php";
     });
 }
 
@@ -238,75 +235,109 @@ function genererGrille() {
         cartes[i].addEventListener("click", function () {
           if (peutRetournerCarte) {
             if (cartes[i].src.includes("back")) {
+              peutRetournerCarte = false;
               nombreCartesRetournees++;
-              cartes[i].src =
-                "../../assets/images/" +
-                theme +
-                "/" +
-                cartes[i].className.slice(7) +
-                ".png";
-              if (imageRetournee) {
-                peutRetournerCarte = false;
-                if (indexImage == 0) {
-                  nombreCartesRetournees++;
-                  images = document.getElementsByClassName(
-                    cartes[i].className.slice(7)
-                  );
-                  for (let j = 0; j < 2; j++) {
-                    images[j].src =
-                      "../../assets/images/" +
-                      theme +
-                      "/" +
-                      cartes[i].className.slice(7) +
-                      ".png";
-                  }
-                  peutRetournerCarte = true;
-                } else if (cartes[i].className.slice(7) == 0) {
-                  nombreCartesRetournees++;
-                  images = document.getElementsByClassName(indexImage);
-                  for (let j = 0; j < 2; j++) {
-                    images[j].src =
-                      "../../assets/images/" +
-                      theme +
-                      "/" +
-                      indexImage +
-                      ".png";
-                  }
-                  peutRetournerCarte = true;
-                } else if (indexImage != cartes[i].className.slice(7)) {
-                  nombreCartesRetournees -= 2;
-                  setTimeout(() => {
-                    images = document.getElementsByClassName(indexImage);
-                    for (let j = 0; j < 2; j++) {
-                      images[j].src =
-                        "../../assets/images/" + theme + "/back.png";
-                    }
 
-                    images = document.getElementsByClassName(
-                      cartes[i].className.slice(7)
-                    );
-                    for (let j = 0; j < 2; j++) {
-                      images[j].src =
-                        "../../assets/images/" + theme + "/back.png";
+              cartes[i].style.transform = "rotateY(90deg)";
+              setTimeout(() => {
+                cartes[i].src =
+                  "../../assets/images/" +
+                  theme +
+                  "/" +
+                  cartes[i].className.slice(7) +
+                  ".png";
+                cartes[i].style.transform = "rotateY(0deg)";
+
+                setTimeout(() => {
+                  if (imageRetournee) {
+                    if (indexImage == 0) {
+                      nombreCartesRetournees++;
+                      images = document.getElementsByClassName(
+                        cartes[i].className.slice(7)
+                      );
+
+                      for (let j = 0; j < 2; j++) {
+                        if (images[j].style.transform == "rotateY(180deg)") {
+                          images[j].style.transform = "rotateY(90deg)";
+                          setTimeout(() => {
+                            images[j].src =
+                              "../../assets/images/" +
+                              theme +
+                              "/" +
+                              cartes[i].className.slice(7) +
+                              ".png";
+                            images[j].style.transform = "rotateY(0deg)";
+                          }, 200);
+                        }
+                      }
+                      peutRetournerCarte = true;
+                    } else if (cartes[i].className.slice(7) == 0) {
+                      nombreCartesRetournees++;
+                      images = document.getElementsByClassName(indexImage);
+                      for (let j = 0; j < 2; j++) {
+                        if (images[j].style.transform == "rotateY(180deg)") {
+                          images[j].style.transform = "rotateY(90deg)";
+                          setTimeout(() => {
+                            images[j].src =
+                              "../../assets/images/" +
+                              theme +
+                              "/" +
+                              indexImage +
+                              ".png";
+                            images[j].style.transform = "rotateY(0deg)";
+                          }, 200);
+                        }
+                      }
+                      peutRetournerCarte = true;
+                    } else if (indexImage != cartes[i].className.slice(7)) {
+                      nombreCartesRetournees -= 2;
+                      setTimeout(() => {
+                        images1 = document.getElementsByClassName(indexImage);
+                        for (let j = 0; j < 2; j++) {
+                          if (images1[j].style.transform == "rotateY(0deg)") {
+                            images1[j].style.transform = "rotateY(90deg)";
+                            setTimeout(() => {
+                              images1[j].src =
+                                "../../assets/images/" + theme + "/back.png";
+                              images1[j].style.transform = "rotateY(180deg)";
+                            }, 200);
+                          }
+                        }
+
+                        images2 = document.getElementsByClassName(
+                          cartes[i].className.slice(7)
+                        );
+                        for (let j = 0; j < 2; j++) {
+                          if (images2[j].style.transform == "rotateY(0deg)") {
+                            images2[j].style.transform = "rotateY(90deg)";
+                            setTimeout(() => {
+                              images2[j].src =
+                                "../../assets/images/" + theme + "/back.png";
+                              images2[j].style.transform = "rotateY(180deg)";
+                            }, 200);
+                          }
+                        }
+                        peutRetournerCarte = true;
+                      }, 1000);
+                    } else {
+                      peutRetournerCarte = true;
                     }
+                    imageRetournee = false;
+                    if (nombreCartesRetournees == tailleGrille ** 2) {
+                      insererScore();
+                    }
+                  } else {
                     peutRetournerCarte = true;
-                  }, 1000);
-                } else {
-                  peutRetournerCarte = true;
-                }
-                imageRetournee = false;
-                if (nombreCartesRetournees == tailleGrille ** 2) {
-                  insererScore();
-                }
-              } else {
-                indexImage = cartes[i].className.slice(7);
-                imageRetournee = true;
-              }
+                    indexImage = cartes[i].className.slice(7);
+                    imageRetournee = true;
+                  }
+                }, 200);
+              }, 200);
             }
           }
         });
       }
       commencerChrono();
-    }, 3000);
+    }, 1000);
   }
 }
