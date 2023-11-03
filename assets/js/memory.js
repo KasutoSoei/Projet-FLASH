@@ -154,12 +154,12 @@ function insererScore() {
     url: "../../utils/insererScore.php",
     data: { score: score, difficulte: difficulte },
   });
-  let modalDejaMontre = false;
+  let popupDejaMontre = false;
 
-  if (!modalDejaMontre) {
+  if (!popupDejaMontre) {
     document.getElementById("modal").style.display = "block";
     document.getElementById("scoreIci").innerHTML = score;
-    modalDejaMontre = true;
+    popupDejaMontre = true;
   }
   document
     .getElementById("modal-close")

@@ -24,7 +24,15 @@ require_once SITE_ROOT . 'utils/database.php';
                 <form method="post" style="width: 100%;">
                     <input type="email" name="email" placeholder="Email" required="required" class="inscriptionEntree">
                     <input type="text" name="pseudo" placeholder="Pseudo" required="required" class="inscriptionEntree">
-                    <input type="password" name="mdp" placeholder="Mot de passe" required="required" class="inscriptionEntree">
+                    <div id="mdpInput">
+                        <input type="password" name="mdp" placeholder="Mot de passe" required="required" class="inscriptionEntree">
+                    </div>
+                    <div id="mdpPuissance">
+                        <span id="faible"></span>
+                        <span id="moyen"></span>
+                        <span id="fort"></span>
+                    </div>
+                    <div id="mdpInfo"></div>
                     <input type="password" name="mdpConfirme" placeholder="Confirmez le mot de passe" required="required" class="inscriptionEntree">
                     <input type="submit" value="Inscription" class="inscriptionBouton">
                 </form>
@@ -62,7 +70,15 @@ require_once SITE_ROOT . 'utils/database.php';
                         <p style="font-size: 2vmin; color:red">Pseudo trop court ou déjà utilisé</p>
                     <?php endif; ?>
 
-                    <input type="password" name="mdp" placeholder="Mot de passe" required="required" class="inscriptionEntree">
+                    <div id="mdpInput">
+                        <input type="password" name="mdp" placeholder="Mot de passe" required="required" class="inscriptionEntree">
+                    </div>
+                    <div id="mdpPuissance">
+                        <span id="faible"></span>
+                        <span id="moyen"></span>
+                        <span id="fort"></span>
+                    </div>
+                    <div id="mdpInfo"></div>
 
                     <?php if (!preg_match('/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*]).{8,}$/', $_POST['mdp'])) : ?>
                         <p style="font-size: 2vmin; color:red">Format de mot de passe invalide</p>
@@ -85,4 +101,5 @@ require_once SITE_ROOT . 'utils/database.php';
         </div>
     </section>
 </body>
+<script src="assets/js/mdpPuissance.js"></script>
 <?php require_once SITE_ROOT . 'partials/footer.php'; ?>
