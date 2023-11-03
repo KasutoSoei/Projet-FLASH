@@ -12,8 +12,6 @@ let mdpInput = document.querySelector('#mdpInput input[type="password"]');
         mdpInput.oninput= function(){
        
              let passwordValue= mdpInput.value;
-             let passwordLength= passwordValue.length;
-    
              let faiblePassword= passwordValue.match(faibleRegExp);
              let moyenPassword= passwordValue.match(moyenRegExp);
              let fortPassword= passwordValue.match(fortRegExp);

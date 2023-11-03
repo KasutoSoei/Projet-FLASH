@@ -163,7 +163,6 @@ function insererScore() {
     document.getElementById("scoreIci").innerHTML = score;
     popupDejaMontre = true;
   }
-
   document.getElementById("popupRejouer").addEventListener("click", function () {
     location.reload();
   });
