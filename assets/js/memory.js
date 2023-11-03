@@ -5,12 +5,12 @@ var ms = 0,
   min = 0;
 
 function commencerChrono() {
-  chrono = setInterval(acutaliserChrono, 1);
+  chrono = setInterval(acutaliserChrono, 10);
 }
 
 function acutaliserChrono() {
   ms += 1;
-  if (ms >= 100) {
+  if (ms >=100) {
     ms -= 100;
     sec += 1;
   }
@@ -302,6 +302,6 @@ function genererGrille() {
         });
       }
       commencerChrono();
-    }, 3000);
+    }, 1000);
   }
 }
