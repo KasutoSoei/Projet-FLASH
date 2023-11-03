@@ -497,11 +497,11 @@ body {
   height: 60vmin;
 }
 
-.memoryhtml .popup {
+.popup {
   display: none;
 }
 
-.memoryhtml .popupFond {
+.popupFond {
   position: fixed;
   top: 0;
   left: 0;
@@ -510,7 +510,7 @@ body {
   background: rgba( 0, 0, 0, .25 )
 }
 
-.memoryhtml .popupContainer {
+.popupContainer {
   position: fixed;
   top: 40%;
   left: 38%;
@@ -521,13 +521,13 @@ body {
   border-radius: 1vmin;
 }
 
-.memoryhtml #popupQuitter, #popupRejouer{
+#popupQuitter, #popupRejouer{
 margin-top: 2vh;
 text-decoration: none;
 font-weight: bold;
 }
 
-.memoryhtml .popup #popupQuitter:hover, #popupRejouer:hover {
+.popup #popupQuitter:hover, #popupRejouer:hover {
   color: rgb(220, 147, 63);
 }
 /*---------------------------MEMORY.php--------------------------*/

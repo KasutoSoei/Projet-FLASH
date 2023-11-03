@@ -38,12 +38,12 @@ if (isset($_GET['changePseudo']) && !estPseudoExistant($pdo, $_GET['changePseudo
             <span style="margin-left: 3vh;">
 
                 <form action="myAccount.php" method="POST" enctype="multipart/form-data">
-                    <input type="file" id="files" onchange="this.form.submit()" name="avatar" style="display:none;" accept="image/png">
+                    <input type="file" id="files" onchange="this.form.submit()" name="avatar" style="display:none;" accept="image/*">
                     <label for="files">
                         <img src="<?= PROJECT_FOLDER ?>userFiles/<?= $_SESSION['userId'] ?>/profile.png" id="myAccountPP">
                     </label>
                 </form>
-                <?php 
+                <?php
                 if (isset($_FILES['avatar'])) :
                     move_uploaded_file($_FILES['avatar']['tmp_name'], SITE_ROOT . 'userFiles/' . $_SESSION['userId'] . '/profile.png');
                 endif;

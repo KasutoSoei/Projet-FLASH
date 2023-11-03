@@ -22,10 +22,7 @@ require_once SITE_ROOT . 'partials/header.php';
                 <form method="post" style="width: 100%;">
                     <input type="email" name="email" placeholder="Email" required="required" class="loginEntree">
                     <input type="password" name="mdp" placeholder="Mot de passe" required="required" class="loginEntree">
-                    <span style="display: flex; justify-content: space-between;">
-                        <input type="submit" value="Connexion" class="loginBouton">
-                        <a href="register.php" class="loginLink" style="margin-top: 2vh; margin-right: 1vw; font-size: 1.5vmin; height: 1.5vmin;">Mot de passe oublié ?</a>
-                    </span>
+                    <input type="submit" value="Connexion" class="loginBouton">
                 </form>
                 <span style="font-size: 2vmin;">
                     Vous n'avez pas de compte ? <a href="<?= PROJECT_FOLDER ?>register.php" class="loginLink">Inscrivez-vous</a> !

@@ -114,20 +114,20 @@ require_once SITE_ROOT . 'partials/header.php';
                     </div>
                 </div>
                 <input type="button" onclick="genererGrille()" value="Jouer" id="gameBouton">
-        <?php endif; ?>
-        <div class="popup" id="popup">
-            <div class="popupFond"></div>
-            <div class="popupContainer">
-                Bien joué !
-                <br>
-                Votre score de <span id="scoreIci"> </span> à bien été enregistré !
-                <br>
-                <br>
-                <p id="popupQuitter">QUITTER</p><p id="popupRejouer">REJOUER</p>
-            </div>
-        </div>
+            <?php endif; ?>
     </section>
-
+    <div class="popup" id="popup">
+        <div class="popupFond"></div>
+        <div class="popupContainer">
+            Bien joué !
+            <br>
+            Votre score de <span id="scoreIci"> </span> à bien été enregistré !
+            <br>
+            <br>
+            <p id="popupRejouer">REJOUER</p>
+            <p id="popupQuitter">QUITTER</p>
+        </div>
+    </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script src="../../assets/js/memory.js"></script>
 </body>

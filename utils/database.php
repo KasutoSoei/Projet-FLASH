@@ -157,6 +157,7 @@ function obtenirPseudo($pdo, $id): string
     $pdoPseudo->execute([':id' => $id]);
     return $pdoPseudo->fetch()->pseudo;
 }
+
 function estBonMdp($pdo, $mdpEntre, $idUtilisateur): bool
 {
     $pdoMdpExistant = $pdo->prepare('SELECT mdp FROM Utilisateur WHERE id = :id');

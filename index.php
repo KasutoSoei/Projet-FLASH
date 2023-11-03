@@ -116,7 +116,7 @@ $nbPartiesJouees = obtenirNbPartiesJouees($pdo);
                 </div>
 
                 <div class="item">
-                    <img class="pp" src="<?= PROJECT_FOLDER ?>assets/images/Rizz.JPG">
+                    <img class="pp" src="<?= PROJECT_FOLDER ?>assets/images/Rizz.png">
                     <p><span>ELWAN</span></p>
                     <p class="text">Game Developer</p>
                     <div class="reseaux">
