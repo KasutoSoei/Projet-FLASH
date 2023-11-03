@@ -46,6 +46,7 @@ function ajouterMessage(chat, infos, n) {
   chatMessageBox.appendChild(chatMessage);
   chatMessageBox.appendChild(chatMessageHeure);
   chat.appendChild(chatMessageBox);
+  scrollChatEnBas();
 
   if (n > 1) {
     return ajouterMessage(chat, infos, n - 1);
@@ -69,3 +70,8 @@ setInterval(function () {
     },
   });
 });
+function scrollChatEnBas(){
+  const chatDiv = document.getElementById('chat');
+  chatDiv.scrollTop = chatDiv.scrollHeight;
+}
+
